@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <style>
+      .header {
+        text-align: center;
+        padding: 32px;
+      }
+
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+
+      /* Create two equal columns that sits next to each other */
+      .column {
+        -ms-flex: 50%; /* IE 10 */
+        flex: 50%;
+        padding: 0 4px;
+      }
+      .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+      }
+
+      /* Style the buttons */
+      .btn {
+        border: none;
+        outline: none;
+        padding: 10px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .btn:hover {
+        background-color: #ddd;
+      }
+
+      .btn.active {
+        background-color: #666;
+        color: white;
+      }
+    </style>
+    <title>Painting 画廊</title>
+  </head>
+
+    
+  <body>
+    <!-- header section -->
+    <div class="header", id="myHeader">
+      <h1>Painting 画廊</h1>
+      <button class="btn active" onclick="display('karan')">With Karan</button>
+      <button class="btn" onclick="display('map')">Austin Map</button>
+    </div>
+
+    <!-- source images -->
+
+    <img id="karan" src="karan_all.jpg" style="display:none">
+    <img id="map" src="austin_map.jpg" style="display:none">
+
+
+    <!-- photo to display -->
+    <img id="for_display" src="karan_all.jpg" style="display:block;width:80%" class="center">
+
+
+    <script>
+      // display pictures
+      function display(id) {
+        var toDisplay = document.getElementById("for_display");
+        var srcImage = document.getElementById(id);
+        toDisplay.src=srcImage.src
+        toDisplay.parentElement.style.display = "block"
+      }
+
+
+      // Highlight active button
+      var btns = document.getElementById("myHeader").getElementsByClassName("btn");
+      for (var i=0; i<btns.length; i++){
+        btns[i].addEventListener("click", function(){
+            // Change the current active button to not-active
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            // Active the new button
+            this.className += " active";
+          });
+      }
+    </script>
+
+
+  </body>
+
+</html>
