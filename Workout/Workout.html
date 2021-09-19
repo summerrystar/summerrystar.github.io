@@ -1,60 +1,147 @@
 <html>
-    <!--------------------->
     <!--  Global styles  -->
-    <!--------------------->
     <style>
         table, td {
           border:       1px solid black;
           text-align:   center;
-          height:       50;
+          height:       200;
         }
     </style>
 
     <head>
         <style>
+
+            .header {
+                text-align: center;
+            }
+
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 30%;
+            }
             /* Create a column section */
             .column {
                 float:  left;
                 width:  50%;
             }
+            /* Style the buttons */
+            .btn {
+                border: none;
+                outline: none;
+                padding: 10px 16px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }
+
+
         </style>
         <title>Workout 运动健身</title>
     </head>
 
     
     <body>
-        <!--TODO: change size and font of title-->
-        <h1 style="text-align: center">Workout 运动健身</h1>
-      
 
-        <p style="text-align:center;color:darkorchid">For regular workouts, this page provides helpful links and materials in an organized way for easy access.</p>
+        <h1 style="text-align:center;">Workout 运动健身</h1>
+
+        <h3>Regular Workouts:</h3>
         
+        <!--------------------->
+        <!-- button section --->
+        <!--------------------->
+        <div class="header", id="myHeader">
+            <button class="btn" onclick="display('yoga')">Yoga 瑜伽</button>
+            <button class="btn" onclick="display('biking')">Biking 骑车</button>
+            <button class="btn" onclick="display('dance')">Dance 跳舞</button>
+            <button class="btn" onclick="display('badminton')">Badminton 羽毛球</button>
+            <button class="btn" onclick="display('insanity')">Insanity 健身操</button>
+        </div>   
 
-        <table style='width:100%'>
-            <tr>
-                <td>
-                    <a href="Yoga/Yoga.html">Yoga 瑜伽</a>
-                </td>
-                <td>
-                    <a href="Biking/Biking.html">Biking 骑车</a>
-                </td>
-                <td>
-                    <p>Dance 跳舞</p>
-                    <p style="color:coral">剪辑max</p>
-                </td>
-                <td>
-                    Badminton 羽毛球
-                </td>
-            </tr>
-            <tr>
-                <td>Insanity 健身操</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
 
-        <p style="text-align:center;color:darkorchid">When out of ideas on what workout to do, this page provides a list of potential ideas to explore.</p>
+        <!------------------------------>
+        <!-- contents for each button -->
+        <!------------------------------>
+            <!-- yoga -->
+        <div id="yoga" style="display: none;">
+            <table style='width:100%'><tr><td>
+                <p>
+                    日月瑜伽：
+        
+                </p>
+                
+                <p>
+                    阿斯汤加：
+        
+                </p>
+                
+                <p>
+                    普拉提：
+                </p>
+            </td></tr></table>
+        </div>
+
+            <!-- biking -->
+        <div id="biking" style="display: none;">
+            <table style='width:100%'><tr><td>
+            
+                <p>
+                    Click for the Austin Online Biking Map:
+                    <a href="https://austin.maps.arcgis.com/apps/webappviewer/index.html?id=c7fecf32a2d946fabdf062285d58d40c&extent=3052120.7123%2C10036958.1486%2C3179054.0456%2C10097891.4819%2C102739">
+                    <img src="Biking/Map.jpg" class="center"></a>
+
+                </p>
+                
+                <p>
+                    Click <a href="https://smarttripsaustin.org/bicycling-resources/">here</a> for other DIY Maps.
+
+                </p>
+                
+                <p>
+                    For Markham resources, check <a href="https://www.markham.ca/wps/portal/home/neighbourhood-services/traffic/travel-options/01-cycling-maps">here</a> and <a href="https://www.mapmyride.com/ca/markham-ontario/">here</a>.
+                </p>
+
+            </td></tr></table>
+        </div>
+            
+            <!-- dance -->
+        <div id="dance" style="display: none;">
+            <table style='width:100%'><tr><td>
+            </td></tr></table>
+        </div>
+            <!-- badminton -->
+        <div id="badminton" style="display: none;">
+            <table style='width:100%'><tr><td>
+            </td></tr></table>
+        </div>
+            <!-- insanity -->
+        <div id="insanity" style="display: none;">
+            <table style='width:100%'><tr><td>
+            </td></tr></table>
+        </div>
+        
+        <!--------------------->
+        <!-- display section -->
+        <!--------------------->
+        <div id="display" style="display: none;">
+        </div>
+
+
+
+        <!--------------------->
+        <!--  other sections -->
+        <!--------------------->
+        <h3>For Inspiration:</h3>
 
         <div class="column">
 
@@ -75,7 +162,62 @@
 
 
 
+        <!--------------------->
+        <!--     scripts     -->
+        <!--------------------->
+        <script>
+            /* toggle display */
+            var current_id = "";
+            function display(id){
+                var disp = document.getElementById("display");
+                // if clicking on the same button, then toggle display
+                if (id===current_id){
+                    if (disp.style.display==="none"){
+                        disp.style.display = "block";
+                    }
+                    else{
+                        disp.style.display = "none";
+                    }
+                }
+                // otherwise, change the context
+                else{
+                    current_id = id;
+                    var sel = document.getElementById(id);
+                    disp.innerHTML = sel.innerHTML;
+                    disp.style.display="block";
+                }
+            }
 
+            /* Highlight active button */
+            var btns = document.getElementById("myHeader").getElementsByClassName("btn");
+
+            for (var i=0; i<btns.length; i++){
+                btns[i].addEventListener("click", function(){
+
+
+                    // if the current button is active, just deactivate it
+                    if (this.className === "btn active"){
+                        this.className = "btn";
+                    }
+                    // otherwise, need to activate current button and deactivate active button
+                    else{
+
+                        for (var j=0; j<btns.length; j++){
+                            btns[j].className = "btn";
+                        }
+                        // Change the current active button to not-active, if any
+                        // var current = document.getElementsByClassName("active");
+                        // current[0].className = "btn";
+                    
+                        // Active the new button
+                        this.className = "btn active";
+                    }
+
+
+                });
+            }
+        </script>
+        
 
     </body>
 
