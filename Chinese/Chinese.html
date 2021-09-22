@@ -43,7 +43,7 @@
             }
             .pdf-container {
                 width: 95%;
-                padding-top: 50%;
+                padding-top: 55%;
                 height: 0px;
                 position: relative;
                 margin-left: auto;
@@ -71,110 +71,77 @@
         <!-- button section --->
         <!--------------------->
         <div class="header", id="myHeader">
-            <table style="width:90%;margin-left: auto;margin-right: auto;">
-                <tr style="text-align: center;">
-                    <td style="border-top: 2px solid coral;
-                                border-left: 2px solid coral;
-                                border-right: 2px solid coral;
-                                padding-top:10px"><h3>HSK1</h3></td>
-                    <td style="border-top: 2px solid coral;
-                                border-left: 2px solid coral;
-                                border-right: 2px solid coral;
-                                padding-top:10px"><h3>HSK2</h3></td>
-                    <td style="border-top: 2px solid coral;
-                                border-left: 2px solid coral;
-                                border-right: 2px solid coral;
-                                padding-top:10px"><h3>HSK3</h3></td>
-                    <td ></td>
-                </tr>
-                <tr style="text-align: center;">
-                    <td style="border-bottom: 2px solid coral;
-                                border-left: 2px solid coral;
-                                border-right: 2px solid coral;
-                                padding-bottom: 10px;">
-                        <button class="btn" onclick="display('hsk1_sb')">Student Book</button>
-                        <button class="btn" onclick="display('hsk1_wb')">Workbook</button>
-                    </td>
-                    <td style="border-bottom: 2px solid coral;
-                                border-left: 2px solid coral;
-                                border-right: 2px solid coral;
-                                padding-bottom: 10px;">
-                        <button class="btn" onclick="display('hsk2_sb')">Student Book</button>
-                        <button class="btn" onclick="display('hsk2_wb')">Workbook</button>
-                    </td>
-                    <td style="border-bottom: 2px solid coral;
-                                border-left: 2px solid coral;
-                                border-right: 2px solid coral;
-                                padding-bottom: 10px;">
-                        <p>
+            <button class="btn" onclick="display('hsk1_wb')">HSK1 Workbook</button>                   
+            <button class="btn" onclick="display('hsk2_wb')">HSK2 Workbook</button>
+            <button class="btn" onclick="display('hsk3_wb')">HSK3 Workbook</button>                                
+            <button class="btn" onclick="display('resrc')">Resources</button>
 
-                            <button class="btn" onclick="display('hsk3_sb1')">Student Book 1-10</button>
-                            <button class="btn" onclick="display('hsk3_wb')">Workbook</button>
-                        </p>
-                        <p>
-
-                            <button class="btn" onclick="display('hsk3_sb2')">Student Book 11-20</button>
-                            <button class="btn" onclick="display('hsk3_hw')">HW & Exams</button>
-                        </p>
-                        
-                    </td>
-                    
-                    <td style="padding-bottom: 12px;">
-                                
-                        <button class="btn" onclick="display('resrc')">Resources</button>
-                    </td>
-                </tr>
-
-            </table>
         </div>   
 
 
         <!------------------------------>
         <!-- contents for each button -->
         <!------------------------------>
-        <!-- HSK1 SB -->
-        <div id="hsk1_sb" style="display: none;">
-            <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
-         
-            </td></tr></table>
-        </div>
-    
-        <!-- HSK3 SB1 -->
-        <div id="hsk3_sb1" style="display: none;">
-                
-            <div class="pdf-container">
-                <iframe class="pdf" src="HSK3/HSK3SBpart1.pdf"></iframe>
+        <!-- HSK1 WB -->
+        <div id="hsk1_wb" style="display: none;">
+            <!-- PDF -->
+            <div class="column" style="width:75%">
+                <div class="pdf-container">
+                    <iframe class="pdf" src="https://drive.google.com/file/d/1l96pFw1N99v4wSEMaPygE6VroVZlUkWV/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+            <!-- Audio -->
+            <div class="column" style="width:25%">
+                <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/548758425&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
             </div>
         </div>
-
-
-        <!-- HSK3 SB2 -->
-        <div id="hsk3_sb2" style="display: none;">
-                
-            <div class="pdf-container">
-                <iframe class="pdf" src="HSK3/HSK3SBpart2.pdf"></iframe>
+    
+        <!-- HSK2 WB -->
+        <div id="hsk2_wb" style="display: none;">
+            <!-- PDF -->
+            <div class="column" style="width:75%">
+                <div class="pdf-container">
+                    <iframe class="pdf" src="https://drive.google.com/file/d/10O3BMqvHmIIAd4dEkDT1sAbpZsKI7nMH/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+            <!-- Audio -->
+            <div class="column" style="width:25%">
+                <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/548770056&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
             </div>
         </div>
 
         
         <!-- HSK3 WB -->
         <div id="hsk3_wb" style="display: none;">
+            <!-- PDF -->
             <div class="column" style="width:75%">
                 <div class="pdf-container">
                     <iframe class="pdf" src="https://drive.google.com/file/d/17BBfMRCqUXL0K2YuIurcRxGuTgjcDgMj/preview" allow="autoplay"></iframe>
                 </div>
             </div>
-            
-            <div class="column" style="width:25%" id="hsk3_audios">
+            <!-- Audio -->
+            <div class="column" style="width:25%">
                 <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/548775495&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-
             </div>
-      
         </div>
 
         <!-- Resources -->
         <div id="resrc" style="display: none;">
             <table style='width:100%' class="table_for_display"><tr><td class="table_for_display" style="height: 300;">
+                <table style="padding-top:20px;margin-left: auto;margin-right: auto;">
+                    <tr>
+                        <td>HSK Main Page:</td>
+                        <td style="padding-left: 10px;">
+                            Click <a href="https://chinesehsk.info/en/main-page-2/">Here</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Links to HW and Exam:</td>
+                        <td style="padding-left: 10px;">
+                            TBD
+                        </td>
+                    </tr>
+                </table>
             </td></tr></table>
         </div>
         
@@ -183,8 +150,6 @@
         <!--------------------->
         <div id="display" style="display: none;">
         </div>
-
-
 
 
 
