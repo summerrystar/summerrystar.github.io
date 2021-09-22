@@ -87,9 +87,9 @@
                         <td style="padding-left:15px">
                             Day 2
                             <ol>
-                                <li>Marichyasana, Sitting stretches</li>
-                                <li>Back exercises</li>
-                                <li>Meditation and Breathing</li>
+                                <a href = "Yoga/day2_1.html"><li>Marichyasana, Sitting stretches</li></a>
+                                <a href = "Yoga/day2_2.html"><li>Back exercises</li></a>
+                                <a href = "Yoga/day2_3.html"><li>Meditation and Breathing</li></a>
                             </ol>
                         </td>
                     </tr>
@@ -137,19 +137,21 @@
                             <ul style="list-style-type: none;">
                                 <a href="Dance/max_day1.html"><li>Day 1: 爆发 Explosive Power</li></a>
                                 <a href="Dance/max_day2.html"><li>Day 2: 控制 Control Power</li></a>
-                                <li>Day 3: 爵士 Jazz Moves</li>
-                                <li>Day 4: 律动 Hiphop Grooves</li>
+                                <a href="Dance/max_day3.html"><li>Day 3: 爵士 Jazz Moves</li></a>
+                                <a href="Dance/max_day4.html"><li>Day 4: 律动 Hiphop Grooves</li></a>
                                 <li>Day 5: 进阶 Comprehensive Moves</li>
                             </ul>
                         </td>
                         <td style="padding-left:15px">
                             New Max
                             <ul style="list-style-type: none;">
-                                <a href="Dance/newmax_day1.html"><li>Day 1: ?</li></a>
-                                <a href="Dance/newmax_day2.html"><li>Day 2: ?</li></a>
-                                <li>Day 3: ?</li>
-                                <li>Day 4: ?</li>
+                                <a href="Dance/newmax_day1.html"><li>Day 1: 上半身基础 Upper Body Basics</li></a>
+                                <a href="Dance/newmax_day2.html"><li>Day 2: 爵士 Jazz Moves</li></a>
+                                <a href="Dance/newmax_day3.html"><li>Day 3: 体能和脚步 Physical & Footwork</li></a>
+                                <a href="Dance/newmax_day4.html"><li>Day 4: 延伸 Body Extensions</li></a>
                                 <li>Day 5: ?</li>
+                                <li>Day 6: ?</li>
+                                <li>Day 7: ?</li>
                             </ul>
                         </td>
                     </tr>
@@ -164,7 +166,9 @@
             <!-- insanity -->
         <div id="insanity" style="display: none;">
             <table style='width:100%' class="table_for_display"><tr><td class="table_for_display" style="height: 300;">
-
+                <p style="margin-top: 30px">From Bilibili:</p>
+                <p><a href="https://www.bilibili.com/video/BV1n4411G7L7?p=3">Insanity</a></p>
+                <p><a href="https://www.bilibili.com/video/BV1UJ41197PH?p=2">Insanity MAX30</a></p>
             </td></tr></table>
         </div>
         
@@ -206,15 +210,24 @@
         <script>
             /* toggle display */
             var current_id = "";
+            // sessionStorage.setItem("current_id", "");
             function display(id){
                 var disp = document.getElementById("display");
+                // if nothing to display
+                // if (id===""){
+                //     disp.style.display==="none"
+                //     current_id = "";
+                //     sessionStorage.setItem("current_id", "");
+                // }
                 // if clicking on the same button, then toggle display
                 if (id===current_id){
                     if (disp.style.display==="none"){
                         disp.style.display = "block";
+                        // sessionStorage.setItem("current_id", id);
                     }
                     else{
                         disp.style.display = "none";
+                        // sessionStorage.setItem("current_id", "");
                     }
                 }
                 // otherwise, change the context
@@ -223,8 +236,14 @@
                     var sel = document.getElementById(id);
                     disp.innerHTML = sel.innerHTML;
                     disp.style.display="block";
+                    // sessionStorage.setItem("current_id", id);
                 }
             }
+
+            // $(document).ready(function(){
+            //     display(sessionStorage.getItem("current_id"));
+            // });
+            //window.onload = function(){display(sessionStorage.getItem("current_id"));};
 
             /* Highlight active button */
             var btns = document.getElementById("myHeader").getElementsByClassName("btn");
