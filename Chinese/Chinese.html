@@ -1,0 +1,276 @@
+<html>
+
+    <head>
+        <style>
+
+            .header {
+                text-align: center;
+            }
+
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 30%;
+            }
+            /* Create a column section */
+            .column {
+                float:  left;
+            }
+            /* Style the buttons */
+            .btn {
+                border: none;
+                outline: none;
+                padding: 10px 16px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }
+
+            .table_for_display { 
+                border:1px solid black;
+                text-align:   center;
+                vertical-align: top;
+            }
+            .pdf-container {
+                width: 95%;
+                padding-top: 50%;
+                height: 0px;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .pdf {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        </style>
+        <title>Chinese 学中文</title>
+    </head>
+
+    
+    <body>
+
+        <h1 style="text-align:center;">Chinese 学中文</h1>
+        
+        <!--------------------->
+        <!-- button section --->
+        <!--------------------->
+        <div class="header", id="myHeader">
+            <table style="width:90%;margin-left: auto;margin-right: auto;">
+                <tr style="text-align: center;">
+                    <td style="border-top: 2px solid coral;
+                                border-left: 2px solid coral;
+                                border-right: 2px solid coral;
+                                padding-top:10px"><h3>HSK1</h3></td>
+                    <td style="border-top: 2px solid coral;
+                                border-left: 2px solid coral;
+                                border-right: 2px solid coral;
+                                padding-top:10px"><h3>HSK2</h3></td>
+                    <td style="border-top: 2px solid coral;
+                                border-left: 2px solid coral;
+                                border-right: 2px solid coral;
+                                padding-top:10px"><h3>HSK3</h3></td>
+                    <td ></td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td style="border-bottom: 2px solid coral;
+                                border-left: 2px solid coral;
+                                border-right: 2px solid coral;
+                                padding-bottom: 10px;">
+                        <button class="btn" onclick="display('hsk1_sb')">Student Book</button>
+                        <button class="btn" onclick="display('hsk1_wb')">Workbook</button>
+                    </td>
+                    <td style="border-bottom: 2px solid coral;
+                                border-left: 2px solid coral;
+                                border-right: 2px solid coral;
+                                padding-bottom: 10px;">
+                        <button class="btn" onclick="display('hsk2_sb')">Student Book</button>
+                        <button class="btn" onclick="display('hsk2_wb')">Workbook</button>
+                    </td>
+                    <td style="border-bottom: 2px solid coral;
+                                border-left: 2px solid coral;
+                                border-right: 2px solid coral;
+                                padding-bottom: 10px;">
+                        <p>
+
+                            <button class="btn" onclick="display('hsk3_sb1')">Student Book 1-10</button>
+                            <button class="btn" onclick="display('hsk3_wb')">Workbook</button>
+                        </p>
+                        <p>
+
+                            <button class="btn" onclick="display('hsk3_sb2')">Student Book 11-20</button>
+                            <button class="btn" onclick="display('hsk3_hw')">HW & Exams</button>
+                        </p>
+                        
+                    </td>
+                    
+                    <td style="padding-bottom: 12px;">
+                                
+                        <button class="btn" onclick="display('resrc')">Resources</button>
+                    </td>
+                </tr>
+
+            </table>
+        </div>   
+
+
+        <!------------------------------>
+        <!-- contents for each button -->
+        <!------------------------------>
+        <!-- HSK1 SB -->
+        <div id="hsk1_sb" style="display: none;">
+            <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
+         
+            </td></tr></table>
+        </div>
+    
+        <!-- HSK3 SB1 -->
+        <div id="hsk3_sb1" style="display: none;">
+                
+            <div class="pdf-container">
+                <iframe class="pdf" src="HSK3/HSK3SBpart1.pdf"></iframe>
+            </div>
+        </div>
+
+
+        <!-- HSK3 SB2 -->
+        <div id="hsk3_sb2" style="display: none;">
+                
+            <div class="pdf-container">
+                <iframe class="pdf" src="HSK3/HSK3SBpart2.pdf"></iframe>
+            </div>
+        </div>
+
+        
+        <!-- HSK3 WB -->
+        <div id="hsk3_wb" style="display: none;">
+            <div class="column" style="width:75%">
+                <div class="pdf-container">
+                    <iframe class="pdf" src="https://drive.google.com/file/d/17BBfMRCqUXL0K2YuIurcRxGuTgjcDgMj/preview" allow="autoplay"></iframe>
+                </div>
+            </div>
+            
+            <div class="column" style="width:25%" id="hsk3_audios">
+                <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/548775495&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
+            </div>
+      
+        </div>
+
+        <!-- Resources -->
+        <div id="resrc" style="display: none;">
+            <table style='width:100%' class="table_for_display"><tr><td class="table_for_display" style="height: 300;">
+            </td></tr></table>
+        </div>
+        
+        <!--------------------->
+        <!-- display section -->
+        <!--------------------->
+        <div id="display" style="display: none;">
+        </div>
+
+
+
+
+
+        <!--------------------->
+        <!--     scripts     -->
+        <!--------------------->
+        <script>
+            /* toggle display */
+            var current_id = "";
+            // sessionStorage.setItem("current_id", "");
+            function display(id){
+                var disp = document.getElementById("display");
+                // if nothing to display
+                // if (id===""){
+                //     disp.style.display==="none"
+                //     current_id = "";
+                //     sessionStorage.setItem("current_id", "");
+                // }
+                // if clicking on the same button, then toggle display
+                if (id===current_id){
+                    if (disp.style.display==="none"){
+                        disp.style.display = "block";
+                        // sessionStorage.setItem("current_id", id);
+                    }
+                    else{
+                        disp.style.display = "none";
+                        // sessionStorage.setItem("current_id", "");
+                    }
+                }
+                // otherwise, change the context
+                else{
+                    current_id = id;
+                    var sel = document.getElementById(id);
+                    disp.innerHTML = sel.innerHTML;
+                    disp.style.display="block";
+                    // sessionStorage.setItem("current_id", id);
+                }
+            }
+
+            // $(document).ready(function(){
+            //     display(sessionStorage.getItem("current_id"));
+            // });
+            //window.onload = function(){display(sessionStorage.getItem("current_id"));};
+
+            /* Highlight active button */
+            var btns = document.getElementById("myHeader").getElementsByClassName("btn");
+
+            for (var i=0; i<btns.length; i++){
+                btns[i].addEventListener("click", function(){
+
+
+                    // if the current button is active, just deactivate it
+                    if (this.className === "btn active"){
+                        this.className = "btn";
+                    }
+                    // otherwise, need to activate current button and deactivate active button
+                    else{
+
+                        for (var j=0; j<btns.length; j++){
+                            btns[j].className = "btn";
+                        }
+                        // Change the current active button to not-active, if any
+                        // var current = document.getElementsByClassName("active");
+                        // current[0].className = "btn";
+                    
+                        // Active the new button
+                        this.className = "btn active";
+                    }
+
+
+                });
+            }
+
+            /* HSK3 audios */
+            // function disp_hsk3_audio(id){
+            //     var disp = document.getElementById("display");
+            //     var tbl = disp.querySelector("[id='audio_tbl']")
+            //     var elem = disp.querySelector("[id='"+id+"']");
+            //     tbl.innerHTML = elem.innerHTML;
+            //     tbl.style.display = "block";
+
+            // }
+
+        </script>
+        
+
+    </body>
+
+</html>
