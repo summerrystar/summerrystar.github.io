@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <style>
+      .header {
+        text-align: center;
+        padding: 32px;
+      }
+
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+
+      /* Create two equal columns that sits next to each other */
+      .column {
+        -ms-flex: 50%; /* IE 10 */
+        flex: 50%;
+        padding: 0 4px;
+      }
+      .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+      }
+
+      /* Style the buttons */
+      .btn {
+        border: none;
+        outline: none;
+        padding: 10px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .btn:hover {
+        background-color: #ddd;
+      }
+
+      .btn.active {
+        background-color: #666;
+        color: white;
+      }
+      
+      .table_for_display { 
+        border:1px solid black;
+        text-align:   center;
+        vertical-align: top;
+        }
+    </style>
+    <title>Cooking 菜谱</title>
+  </head>
+
+    
+  <body>
+    <!-- header section -->
+    <div class="header", id="myHeader">
+      <h1>Cooking 菜谱</h1>
+      <button class="btn" onclick="display('tomato_pork')">Tomato Napa Pork<br>番茄白菜猪肉</button>
+      <button class="btn" onclick="display('russian_beef')">Russian-Style Beef Stew<br>俄式炖牛肉</button>
+      <button class="btn" onclick="display('daal')">Daal</button>
+      <button class="btn" onclick="display('steamed_eggs')">Steamed Eggs<br>水蒸蛋</button>
+    </div>
+    
+    <!------------------------------>
+    <!-- contents for each button -->
+    <!------------------------------>
+    <div id="tomato_pork" style="display: none;">
+        <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
+     
+        </td></tr></table>
+    </div>
+    <div id="russian_beef" style="display: none;">
+        <img src="russian_beef.jpg" class="center">
+    </div>
+    <div id="daal" style="display: none;">
+        <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
+            
+        </td></tr></table>
+    </div>
+    <div id="steamed_eggs" style="display: none;">
+        <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
+            过筛+保鲜膜，蛋水1:2
+        </td></tr></table>
+    </div>
+
+    <!--------------------->
+    <!-- display section -->
+    <!--------------------->
+    <div id="display" style="display: none;">
+    </div>
+
+
+
+    <!--------------------->
+    <!--     scripts     -->
+    <!--------------------->
+    <script>
+        /* toggle display */
+        var current_id = "";
+        // sessionStorage.setItem("current_id", "");
+        function display(id){
+            var disp = document.getElementById("display");
+            // if nothing to display
+            // if (id===""){
+            //     disp.style.display==="none"
+            //     current_id = "";
+            //     sessionStorage.setItem("current_id", "");
+            // }
+            // if clicking on the same button, then toggle display
+            if (id===current_id){
+                if (disp.style.display==="none"){
+                    disp.style.display = "block";
+                    // sessionStorage.setItem("current_id", id);
+                }
+                else{
+                    disp.style.display = "none";
+                    // sessionStorage.setItem("current_id", "");
+                }
+            }
+            // otherwise, change the context
+            else{
+                current_id = id;
+                var sel = document.getElementById(id);
+                disp.innerHTML = sel.innerHTML;
+                disp.style.display="block";
+                // sessionStorage.setItem("current_id", id);
+            }
+        }
+
+        // $(document).ready(function(){
+        //     display(sessionStorage.getItem("current_id"));
+        // });
+        //window.onload = function(){display(sessionStorage.getItem("current_id"));};
+
+        /* Highlight active button */
+        var btns = document.getElementById("myHeader").getElementsByClassName("btn");
+
+        for (var i=0; i<btns.length; i++){
+            btns[i].addEventListener("click", function(){
+
+
+                // if the current button is active, just deactivate it
+                if (this.className === "btn active"){
+                    this.className = "btn";
+                }
+                // otherwise, need to activate current button and deactivate active button
+                else{
+
+                    for (var j=0; j<btns.length; j++){
+                        btns[j].className = "btn";
+                    }
+                    // Change the current active button to not-active, if any
+                    // var current = document.getElementsByClassName("active");
+                    // current[0].className = "btn";
+                
+                    // Active the new button
+                    this.className = "btn active";
+                }
+
+
+            });
+        }
+    </script>
+
+
+  </body>
+
+</html>
