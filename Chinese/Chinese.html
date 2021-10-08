@@ -38,7 +38,6 @@
 
             .table_for_display { 
                 border:1px solid black;
-                text-align:   center;
                 vertical-align: top;
             }
             .pdf-container {
@@ -74,7 +73,7 @@
             <button class="btn" onclick="display('hsk1_wb')">HSK1 Workbook</button>                   
             <button class="btn" onclick="display('hsk2_wb')">HSK2 Workbook</button>
             <button class="btn" onclick="display('hsk3_wb')">HSK3 Workbook</button>                                
-            <button class="btn" onclick="display('resrc')">Resources</button>
+            <button class="btn" onclick="display('resrc')">Canvas</button>
 
         </div>   
 
@@ -128,20 +127,41 @@
         <!-- Resources -->
         <div id="resrc" style="display: none;">
             <table style='width:100%' class="table_for_display"><tr><td class="table_for_display" style="height: 300;">
-                <table style="padding-top:20px;margin-left: auto;margin-right: auto;">
-                    <tr>
-                        <td>HSK Main Page:</td>
-                        <td style="padding-left: 10px;">
-                            Click <a href="https://chinesehsk.info/en/main-page-2/">Here</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Links to HW and Exam:</td>
-                        <td style="padding-left: 10px;">
-                            TBD
-                        </td>
-                    </tr>
-                </table>
+                <div class="column" style="width:40%">
+                    <h3>Resources:</h3>
+                    <a href="https://chinesehsk.info/en/main-page-2/">HSK Main Page</a><br>
+                    ---------<br>
+                    <a href="https://mychinesereading.com/chinese-reading-material-beginners/">My Chinese Reading</a>: 文章不多，生词奇怪（需改写）<br>
+                    <a href="https://hskreading.com/">HSK Reading</a>: 多为短对话，生词奇怪（需改写）<br>
+                    <a href="https://mandarinbean.com/category/beginner/">Mandarin Bean</a>: 笑话和短篇，难度合适<br>
+                    <a href="https://www.duchinese.net/lessons/">Du Chinese</a>: 部分需Premium，故事多且有趣
+                </div>
+                <div class="column" style="width: 60%;">
+                    <h3>Homework and Projects:</h3>
+                    <table style='width:100%'>
+                        <tr>
+                            <td><b>Date of Class</b></td>
+                            <td><b>Item</b></td>
+                            <td><b>Score</b></td>
+                            <td><b>Attachments</b></td>
+                        </tr>
+                        <tr>
+                            <td>2021年10月4日星期一</td>
+                            <td><a href="https://www.duchinese.net/lessons/407-lili-s-siblings?from=category%3Deveryday_life">我有哥哥和姐姐</a></td>
+                            <td>8.5/10</td>
+                            <td><a href="https://youtu.be/pRB4V6Sq3cE">Video</a></td>
+                        </tr>
+                        <tr><td> </td></tr>
+                        
+                        <tr style="border-top: 1px solid black;">
+                            <td style="border-top: 1px solid black;" colspan="2"><b>Total Running Score</b></td>
+                            <td style="border-top: 1px solid black;">85%</td>
+                            <td style="border-top: 1px solid black;"></td>
+                        </tr>
+                    </table>
+                   
+
+                </div>
             </td></tr></table>
         </div>
         
