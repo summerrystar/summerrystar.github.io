@@ -56,9 +56,22 @@
                 top: 0;
                 left: 0;
             }
-
+            .disp{
+                width: 100%;
+            }
         </style>
         <title>Chinese 学中文</title>
+
+        <link rel="stylesheet" href="calendar_style.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+
     </head>
 
     
@@ -73,7 +86,7 @@
             <button class="btn" onclick="display('hsk1_wb')">HSK1 Workbook</button>                   
             <button class="btn" onclick="display('hsk2_wb')">HSK2 Workbook</button>
             <button class="btn" onclick="display('hsk3_wb')">HSK3 Workbook</button>                                
-            <button class="btn" onclick="display('resrc')">Canvas</button>
+            <button class="btn active" onclick="display('resrc')">Canvas</button>
 
         </div>   
 
@@ -82,7 +95,7 @@
         <!-- contents for each button -->
         <!------------------------------>
         <!-- HSK1 WB -->
-        <div id="hsk1_wb" style="display: none;">
+        <div id="hsk1_wb" style="display: none;" class="disp">
             <!-- PDF -->
             <div class="column" style="width:75%">
                 <div class="pdf-container">
@@ -96,7 +109,7 @@
         </div>
     
         <!-- HSK2 WB -->
-        <div id="hsk2_wb" style="display: none;">
+        <div id="hsk2_wb" style="display: none;" class="disp">
             <!-- PDF -->
             <div class="column" style="width:75%">
                 <div class="pdf-container">
@@ -111,7 +124,7 @@
 
         
         <!-- HSK3 WB -->
-        <div id="hsk3_wb" style="display: none;">
+        <div id="hsk3_wb" style="display: none;" class="disp">
             <!-- PDF -->
             <div class="column" style="width:75%">
                 <div class="pdf-container">
@@ -125,9 +138,32 @@
         </div>
 
         <!-- Resources -->
-        <div id="resrc" style="display: none;">
-            <table style='width:100%' class="table_for_display"><tr><td class="table_for_display" style="height: 300;">
-                <div class="column" style="width:40%">
+        <div id="resrc" style="display: block;" class="disp">
+            <table style='width:100%' class="table_for_display"><tr><td class="table_for_display" style="height: 500;">
+                <div class="column" style="width:500">
+
+                    <h3>Attendance:</h3>
+                    <div class="calendar">
+                        <div class="month">
+                            <i class="fas fa-angle-left prev" id="prev"></i>
+                            <div class="date">
+                                <h1></h1>
+                            </div>
+                            <i class="fas fa-angle-right next" id="next"></i>
+                        </div>
+                        <div class="weekdays">
+                            <div>日</div>
+                            <div>一</div>
+                            <div>二</div>
+                            <div>三</div>
+                            <div>四</div>
+                            <div>五</div>
+                            <div>六</div>
+                        </div>
+                        <div class="days"></div>
+                    </div>
+
+                    <br>
                     <h3>Resources:</h3>
                     <a href="https://chinesehsk.info/en/main-page-2/">HSK Main Page</a><br>
                     ---------<br>
@@ -135,77 +171,79 @@
                     <a href="https://hskreading.com/">HSK Reading</a>: 多为短对话，生词奇怪（需改写）<br>
                     <a href="https://mandarinbean.com/category/beginner/">Mandarin Bean</a>: 笑话和短篇，难度合适<br>
                     <a href="https://www.duchinese.net/lessons/">Du Chinese</a>: 部分需Premium，故事多且有趣
+
+                    <br>
+                    <br>
                 </div>
-                <div class="column" style="width: 60%;">
-                    <h3>Homework and Projects:</h3>
+                <div class="column" style="width: 700;">
+
+                    
+
+                    <h3>Notes, Homework, Projects:</h3>
+                    <br>
                     <table style='width:100%'>
                         <tr>
                             <td><b>Date of Class</b></td>
                             <td><b>Item</b></td>
                             <td><b>Score</b></td>
                             <td><b>Attachments</b></td>
+                            <td><b>Comments</b></td>
                         </tr>
                         <tr>
-                            <td>2021年10月4日星期一</td>
+                            <td>2021年10月4日(一)</td>
                             <td><a href="https://www.duchinese.net/lessons/407-lili-s-siblings?from=category%3Deveryday_life">我有哥哥和姐姐</a></td>
                             <td>8.5/10</td>
                             <td><a href="https://youtu.be/pRB4V6Sq3cE">Video</a></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2021年10月13日(三)</td>
+                            <td><a href="https://www.duchinese.net/lessons/796-american?from=category%3Dlanguage">美国人？</a></td>
+                            <td>14/20</td>
+                            <td><a href="https://www.youtube.com/watch?v=D1X0hCGjptU">Video</a></td>
+                            <td>snippet: 8/10; <br>correctness 4/5; tones 2/3; fluency 0/2</td>
                         </tr>
                         <tr><td> </td></tr>
                         
                         <tr style="border-top: 1px solid black;">
                             <td style="border-top: 1px solid black;" colspan="2"><b>Total Running Score</b></td>
-                            <td style="border-top: 1px solid black;">85%</td>
+                            <td style="border-top: 1px solid black;">75%</td>
+                            <td style="border-top: 1px solid black;"></td>
                             <td style="border-top: 1px solid black;"></td>
                         </tr>
                     </table>
                    
 
                 </div>
+                
+                <br>
+                <br>
             </td></tr></table>
         </div>
-        
-        <!--------------------->
-        <!-- display section -->
-        <!--------------------->
-        <div id="display" style="display: none;">
-        </div>
-
 
 
         <!--------------------->
         <!--     scripts     -->
         <!--------------------->
+        
+        <script src="calendar_script.js"></script>
+
         <script>
             /* toggle display */
-            var current_id = "";
-            // sessionStorage.setItem("current_id", "");
+
             function display(id){
-                var disp = document.getElementById("display");
-                // if nothing to display
-                // if (id===""){
-                //     disp.style.display==="none"
-                //     current_id = "";
-                //     sessionStorage.setItem("current_id", "");
-                // }
-                // if clicking on the same button, then toggle display
-                if (id===current_id){
-                    if (disp.style.display==="none"){
-                        disp.style.display = "block";
-                        // sessionStorage.setItem("current_id", id);
-                    }
-                    else{
-                        disp.style.display = "none";
-                        // sessionStorage.setItem("current_id", "");
+                var all_disp = document.getElementsByClassName("disp");
+                for (var i=0; i<all_disp.length; i++){
+                    if(all_disp[i].id != id){
+                        all_disp[i].style.display = "none";
                     }
                 }
-                // otherwise, change the context
+                var to_disp = document.getElementById(id);
+                if (to_disp.style.display==="none"){
+                    to_disp.style.display = "block";
+                }
                 else{
-                    current_id = id;
-                    var sel = document.getElementById(id);
-                    disp.innerHTML = sel.innerHTML;
-                    disp.style.display="block";
-                    // sessionStorage.setItem("current_id", id);
+                    to_disp.style.display = "none";
                 }
             }
 
