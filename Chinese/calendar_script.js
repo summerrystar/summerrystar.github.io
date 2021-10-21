@@ -3,7 +3,9 @@ const date = new Date();
 var attendance = [
   new Date(2021, 9, 4),
   new Date(2021, 9, 13),
-  new Date(2021, 9, 16)
+  new Date(2021, 9, 16),
+  new Date(2021, 9, 18),
+  new Date(2021, 9, 20)
 ];
 
 const renderCalendar = () => {
@@ -60,7 +62,9 @@ const renderCalendar = () => {
   for (let i = 1; i <= lastDay; i++) {
     let mark = 0;
     for (const att of attendance){
-      if (i === att.getDate() && date.getMonth() === att.getMonth()){
+      if (i === att.getDate() && 
+          date.getMonth() === att.getMonth() &&
+          date.getFullYear() === att.getFullYear()){
         
         days += `<div class="today">${i}</div>`;
         mark = 1;
