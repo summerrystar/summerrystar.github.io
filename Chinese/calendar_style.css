@@ -78,3 +78,8 @@
   .today {
     background-color: coral;
   }
+
+  .prev-next-today {
+    opacity: 0.5;
+    background-color: coral;
+  }

@@ -11,7 +11,9 @@ var attendance = [
   new Date(2021, 10, 14),
   new Date(2021, 10, 16),
   new Date(2021, 10, 21),
-  new Date(2021, 10, 29)
+  new Date(2021, 10, 29),
+  new Date(2021, 11, 5),
+  new Date(2021, 11, 6)
 ];
 
 const renderCalendar = () => {
@@ -56,36 +58,78 @@ const renderCalendar = () => {
     "十二月",
   ];
 
+  function IsAttendance(i){
+    for (const att of attendance){
+      if (i === att.getDate() && 
+          date.getMonth() === att.getMonth() &&
+          date.getFullYear() === att.getFullYear()){
+        
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // TODO: for the 2 functions below, potential bug when year rolls over
+
+  function IsAttendancePrev(i){
+    for (const att of attendance){
+      if (i === att.getDate() && 
+          date.getMonth()-1 === att.getMonth() &&
+          date.getFullYear() === att.getFullYear()){
+        
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function IsAttendanceNext(i){
+    for (const att of attendance){
+      if (i === att.getDate() && 
+          date.getMonth()+1 === att.getMonth() &&
+          date.getFullYear() === att.getFullYear()){
+        
+        return true;
+      }
+    }
+    return false;
+  }
+
   document.querySelector(".date h1").innerHTML = months[date.getMonth()] + " " + date.getFullYear();
 
 
   let days = "";
 
   for (let x = firstDayIndex; x > 0; x--) {
-    days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
+    let d = prevLastDay - x + 1;
+    if (IsAttendancePrev(d)){
+      days += `<div class="prev-next-today">${d}</div>`;
+    }
+    else{
+      days += `<div class="prev-date">${d}</div>`;
+    }
   }
 
   for (let i = 1; i <= lastDay; i++) {
-    let mark = 0;
-    for (const att of attendance){
-      if (i === att.getDate() && 
-          date.getMonth() === att.getMonth() &&
-          date.getFullYear() === att.getFullYear()){
-        
-        days += `<div class="today">${i}</div>`;
-        mark = 1;
-        break;
-      }
+    if (IsAttendance(i)){
+      days += `<div class="today">${i}</div>`;
     }
-    if (mark === 0) {
+    else{
       days += `<div>${i}</div>`;
     }
   }
 
   for (let j = 1; j <= nextDays; j++) {
-    days += `<div class="next-date">${j}</div>`;
-    monthDays.innerHTML = days;
+    if (IsAttendanceNext(j)){
+      days += `<div class="prev-next-today">${j}</div>`;
+    }
+    else{
+      days += `<div class="next-date">${j}</div>`;
+    }
+    
   }
+  monthDays.innerHTML = days;
 };
 
 renderCalendar();
