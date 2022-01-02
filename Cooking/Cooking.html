@@ -1,10 +1,6 @@
 <html>
   <head>
     <style>
-      .header {
-        text-align: center;
-        padding: 32px;
-      }
 
       .center {
         display: block;
@@ -13,41 +9,70 @@
         width: 50%;
       }
 
-      /* Create two equal columns that sits next to each other */
-      .column {
-        -ms-flex: 50%; /* IE 10 */
-        flex: 50%;
-        padding: 0 4px;
+
+      .button {
+        border: none;
+        padding: none;
+        display: inline-block;
+        text-align: left;
+        margin: none;
       }
-      .column img {
-        margin-top: 8px;
-        vertical-align: middle;
+
+      .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 300px;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
       }
+
+
 
       /* Style the buttons */
-      .btn {
-        border: none;
-        outline: none;
-        padding: 10px 16px;
-        background-color: #f1f1f1;
+      .sidebar btn {
         cursor: pointer;
-        font-size: 18px;
       }
 
-      .btn:hover {
+      .sidebar btn:hover {
         background-color: #ddd;
       }
 
-      .btn.active {
+      .sidebar btn.active {
         background-color: #666;
         color: white;
+      }
+
+      .sidebar a {
+        cursor: pointer;
+        display: block;
+        width: 100%;
+      }
+
+      .sidebar a:hover {
+        background-color: #ddd;
+        width: 100%;
+      }
+
+      .sidebar a.active {
+        background-color: #666;
+        color: white;
+        width: 100%;
       }
       
       .table_for_display { 
         border:1px solid black;
-        text-align:   center;
         vertical-align: top;
-        }
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+      }
+
+      .disp{
+          margin-left: 300px;
+      }
     </style>
     <title>Cooking 菜谱</title>
   </head>
@@ -55,164 +80,204 @@
     
   <body>
     <!-- header section -->
-    <div class="header", id="myHeader">
-      <h1>Cooking 菜谱</h1>
-      <button class="btn" onclick="display('tomato_pork')">Tomato Napa Pork<br>番茄白菜猪肉</button>
-      <button class="btn" onclick="display('russian_beef')">Russian-Style Beef Stew<br>俄式炖牛肉</button>
-      <button class="btn" onclick="display('daal')">Daal<br>印度豆子汤</button>
-      <button class="btn" onclick="display('steamed_eggs')">Steamed Eggs<br>水蒸蛋</button><br>
-      <button class="btn" onclick="display('salmon_rice')">Salmon Mushroom Rice<br>三文鱼蘑菇饭</button>
-      <button class="btn" onclick="display('butter_fish')">Butter Garlic Fish<br>蒜香黄油煎鱼</button>
-      <button class="btn" onclick="display('tofu_fish')">Tofu Fish Soup<br>鲶鱼豆腐汤</button>
+    <h1 style="text-align: center;">Cooking 菜谱</h1>
+
+    <div class="sidebar", id="myHeader">
+
+      <b>牛肉 Beef Dishes</b>
+      <a class="btn" onclick="display('russian_beef')">Russian-Style Beef Stew 俄式炖牛肉</a>
+      <br>
+  
+      
+      
+
+      <b>猪肉 Pork Dishes</b>
+      <a class="btn" onclick="display('tomato_pork')">Tomato Napa Pork 番茄白菜猪肉</a>
+      <br>
+
+      
+
+
+      <b>鸡肉 Chicken Dishes</b>
+      <a class="btn" onclick="display('mushroom_chicken')">Mushroom Chicken 卤味蘑菇炖鸡</a>
+      <br> 
+
+
+      
+
+      <b>海鲜 Seafood Dishes</b>
+      <a class="btn" onclick="display('salmon_rice')">Salmon Mushroom Rice 三文鱼蘑菇饭</a>
+      <a class="btn" onclick="display('butter_fish')">Butter Garlic Fish 蒜香黄油煎鱼</a>
+      <a class="btn" onclick="display('tofu_fish')">Tofu Fish Soup 鲶鱼豆腐汤</a>
+      <a class="btn" onclick="display('seafood_porridge')">Seafood Porridge 海鲜粥</a>
+      <br>
+      
+
+      <b>植物蛋白 Veggie-Protein</b>
+      <a class="btn" onclick="display('daal')">Daal 印度豆子汤</a>
+      <br>
+      
+
+
+      <b>鸡蛋 Egg Dishes</b>
+      <a class="btn" onclick="display('steamed_eggs')">Steamed Eggs 水蒸蛋</a>
+      <br>
+      
+      <b>蔬菜 Veggie Dishes</b>
+      <br>
+
     </div>
     
     <!------------------------------>
     <!-- contents for each button -->
     <!------------------------------>
-    <div id="tomato_pork" style="display: none;">
-        <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
-          <table style="margin-left: 10%;margin-right: 10%;">
-            <tr>
-              <td>
-                1. 买肋排或带点肥的猪肉，煎至金黄（不用放油），放盐、酱油、酒，煎好盛出备用
-              </td>
-              <td><span style="color: coral;">
-                1. Choose baby ribs or pork chops with some fat. Pan fry pork till golden (no need for oil). Put salt, soy sauce and rice wine. Remove from pan after ready.
-              </span></td>
-            </tr>
-            <tr>
-              <td>
-                2. 同一个锅下番茄炒软出汁（加盐），加开水，加猪肉煮开，焖10分钟
-              </td>
-              <td><span style="color: coral;">
-                2. In the same pan, pan fry tomatos till it's soft and juicy (put salt). Add boiling water and pork. Let it boil with small fire for 10 minutes.
-              </span></td>
-            </tr>
-            <tr>
-              <td>
-                3. 尝盐度，补足盐后加白菜（不然白菜没味道），再焖5分钟直到白菜变软
-              </td>
-              <td><span style="color: coral;">
-                3. Taste and add salt as needed, then add napa cabbage (add salt first or napa may not have enough taste). Boil with small fire for 5 more minutes till napa gets soft.
-              </span></td>
-            </tr>
-            <tr>
-              <td>
-                4. 可以加面条一起吃
-              </td>
-              <td><span style="color: coral;">
-                4. Optionally add noodles
-              </span></td>
-            </tr>
-          </table>
+    <div id="welcome_page" class="disp">
+      <span style="color: coral;text-align: center;">
+        <h2 style="padding-top: 10%;">Welcome!</h2>
+        <h3>我们的目标是——好好吃饭^ ^</h3>
+      </span>
+    </div>
+    <!----------------------------->
+    <div id="tomato_pork" style="display: none;" class="disp">
+        <table style='width:100%;' class="table_for_display" ><tr><td>
+          <p>
+            1. 买肋排或带点肥的猪肉，煎至金黄（不用放油），放盐、酱油、酒，煎好盛出备用
+          </p>
+          <p style="color: coral;">
+            1. Choose baby ribs or pork chops with some fat. Pan fry pork till golden (no need for oil). Put salt, soy sauce and rice wine. Remove from pan after ready.
+          </p>
+          <p>
+            2. 同一个锅下番茄炒软出汁（加盐），加开水，加猪肉煮开，焖10分钟
+          </p>
+          <p style="color: coral;">
+            2. In the same pan, pan fry tomatos till it's soft and juicy (put salt). Add boiling water and pork. Let it boil with small fire for 10 minutes.
+          </p>
+
+          <p>
+            3. 尝盐度，补足盐后加白菜（不然白菜没味道），再焖5分钟直到白菜变软
+          </p>
+          <p style="color: coral;">
+            3. Taste and add salt as needed, then add napa cabbage (add salt first or napa may not have enough taste). Boil with small fire for 5 more minutes till napa gets soft.
+          </p>
+          <p>
+            4. 可以加面条一起吃
+          </p>
+          <p style="color: coral;">
+            4. Optionally add noodles
+          </p>
+
         </td></tr></table>
     </div>
-    <div id="russian_beef" style="display: none;">
+    <!----------------------------->
+    <div id="russian_beef" style="display: none;" class="disp">
         <img src="russian_beef.jpg" class="center">
     </div>
-    <div id="daal" style="display: none;">
+    <!----------------------------->
+    <div id="daal" style="display: none;" class="disp">
         <img src="DAAL.jpg" class="center">
     </div>
-    <div id="steamed_eggs" style="display: none;">
+    <!----------------------------->
+    <div id="steamed_eggs" style="display: none;" class="disp">
         <img src="silky_egg.jpg" class="center">
     </div>
-    <div id="salmon_rice" style="display: none;">
-      <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
-        <table style="margin-left: 10%;margin-right: 10%;">
-          <tr>
-            <td>
-              1. 蘑菇与米放进电饭锅一起煮，煮完加盐
-            </td>
-            <td><span style="color: coral;">
-              1. Cook rice and mushroom together in the rice cooker. Add salt when finished
-            </span></td>
-          </tr>
-          <tr>
-            <td>
-              2. 煮饭的同时煎三文鱼：先把鱼皮煎到脆，然后可以捣碎了煎。调料用蒜盐、莳萝、一点柠檬汁。
-            </td>
-            <td><span style="color: coral;">
-              2. While rice is getting cooked, pan fry salmon: First the skin side till crispy, then break into small pieces. Use garlic salt, dill and a sprinkle of lemon juice.
-            </span></td>
-          </tr>
-          <tr>
-            <td>
-              3. 组装三文鱼、蘑菇饭、足量葱花。三文鱼煎出的油恰好能使米饭颗粒分明。
-            </td>
-            <td><span style="color: coral;">
-              3. Stir together salmon, mushroom rice, and enough chopped green onions. The oil produced while pan-frying the salmon can make rice grains separate from each other.
-            </span></td>
-          </tr>
-        </table>
+    <!----------------------------->
+    <div id="salmon_rice" style="display: none;" class="disp">
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          1. 蘑菇与米放进电饭锅一起煮，煮完加盐
+        </p>
+        <p style="color: coral;">
+          1. Cook rice and mushroom together in the rice cooker. Add salt when finished
+        </p>
+        <p>
+          2. 煮饭的同时煎三文鱼：先把鱼皮煎到脆，然后可以捣碎了煎。调料用蒜盐、莳萝、一点柠檬汁。
+        </p>
+        <p style="color: coral;">
+          2. While rice is getting cooked, pan fry salmon: First the skin side till crispy, then break into small pieces. Use garlic salt, dill and a sprinkle of lemon juice.
+        </p>
+        <p>
+          3. 组装三文鱼、蘑菇饭、足量葱花。三文鱼煎出的油恰好能使米饭颗粒分明。
+        </p>
+        <p style="color: coral;">
+          3. Stir together salmon, mushroom rice, and enough chopped green onions. The oil produced while pan-frying the salmon can make rice grains separate from each other.
+        </p>
       </td></tr></table>
     </div>
-    <div id="butter_fish" style="display: none;">
-      <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
-        <table style="margin-left: 10%;margin-right: 10%;">
-          <tr>
-            <td>
-              1. 鱼两面撒上蒜盐
-            </td>
-            <td><span style="color: coral;">
-              1. Sprinkle garlic salt to both sides of the fish
-            </span></td>
-          </tr>
-          <tr>
-            <td>
-              2. 热锅内放食用油、黄油、蒜泥，下鱼，两面充分混合，煎至金黄。如果中间还没熟，再用小火焖一会儿
-            </td>
-            <td><span style="color: coral;">
-              2. In a hot pan, put oil, butter, chopped garlic, put in fish, mix both sides properly, pan-fry till golden. If the inside is still raw, put on small flame and close lid for a while.
-            </span></td>
-          </tr>
-          <tr>
-            <td>
-              3. 撒柠檬汁，盛出，撒葱
-            </td>
-            <td><span style="color: coral;">
-              3. Sprinkle lemon juice and green onions
-            </span></td>
-          </tr>
-        </table>
+    <!----------------------------->
+    <div id="butter_fish" style="display: none;" class="disp">
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          1. 鱼两面撒上蒜盐
+        </p>
+        <p style="color: coral;">
+          1. Sprinkle garlic salt to both sides of the fish
+        </p>
+        <p>
+          2. 热锅内放食用油、黄油、蒜泥，下鱼，两面充分混合，煎至金黄。如果中间还没熟，再用小火焖一会儿
+        </p>
+        <p style="color: coral;">
+          2. In a hot pan, put oil, butter, chopped garlic, put in fish, mix both sides properly, pan-fry till golden. If the inside is still raw, put on small flame and close lid for a while.
+        </p>
+        <p>
+          3. 撒柠檬汁，盛出，撒葱
+        </p>
+        <p style="color: coral;">
+          3. Sprinkle lemon juice and green onions
+        </p>
       </td></tr></table>
     </div>
-    <div id="tofu_fish" style="display: none;">
-      <table style='width:100%;' class="table_for_display" ><tr><td class="table_for_display" style="height: 300;">
-        <table style="margin-left: 10%;margin-right: 10%;">
-          <tr>
-            <td>
-              1. 原料包括鲶鱼、嫩豆腐、葱花、盐、胡椒
-            </td>
-            <td><span style="color: coral;">
-              1. Ingredients: catfish, silk tofu, spring onions, salt, pepper
-            </span></td>
-          </tr>
-          <tr>
-            <td>
-              2. 鲶鱼煎至金黄后，加水和盐，放入切成块的豆腐一起煮。由于鲶鱼较肥，煎的时候可以少放或不放油
-            </td>
-            <td><span style="color: coral;">
-              2. Pan fry catfish to golden. Then add water and salt, boil with chopped silk tofu. Since catfish contains fat, put less or no oil while pan frying.
-            </span></td>
-          </tr>
-          <tr>
-            <td>
-              3. 待汤烧好后，在空碗里放葱花、胡椒、盐（若需要），盛汤享用。理想情况下汤呈淡淡的白色。
-            </td>
-            <td><span style="color: coral;">
-              3. When soup is ready, get an empty bowl and add chopped green onions, pepper and salt (if needed). Then get the soup and enjoy! Ideally the soup should be cream-colored.
-            </span></td>
-          </tr>
-        </table>
+    <!----------------------------->
+    <div id="tofu_fish" style="display: none;" class="disp">
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          1. 原料包括鲶鱼、嫩豆腐、葱花、盐、胡椒
+        </p>
+        <p style="color: coral;">
+          1. Ingredients: catfish, silk tofu, spring onions, salt, pepper
+        </p>
+        <p>
+          2. 鲶鱼煎至金黄后，加水和盐，放入切成块的豆腐一起煮。由于鲶鱼较肥，煎的时候可以少放或不放油
+        </p>
+        <p style="color: coral;">
+          2. Pan fry catfish to golden. Then add water and salt, boil with chopped silk tofu. Since catfish contains fat, put less or no oil while pan frying.
+        </p>
+        <p>
+          3. 待汤烧好后，在空碗里放葱花、胡椒、盐（若需要），盛汤享用。理想情况下汤呈淡淡的白色。
+        </p>
+        <p style="color: coral;">
+          3. When soup is ready, get an empty bowl and add chopped green onions, pepper and salt (if needed). Then get the soup and enjoy! Ideally the soup should be cream-colored.
+        </p>
       </td></tr></table>
   </div>
+  <!----------------------------->
+  <div id="mushroom_chicken" style="display: none;" class="disp">
+    
+    <table style='width:100%;' class="table_for_display" ><tr><td>
+      <p>
+        青椒+蘑菇+鸡肉+八角+香叶+老抽，加水炖后收汁
+      </p>
+      <p style="color: coral">
+        Green peppers + mushroom + chicken pieces + star anise + bay leaf + dark soy sauce, 
+        add water to just cover the ingredients, simmer for some time, then evaporate water with big flame until ready.
+    
+      </p>
+    </td></tr></table>
 
-    <!--------------------->
-    <!-- display section -->
-    <!--------------------->
-    <div id="display" style="display: none;">
-    </div>
+  </div>
+  <!----------------------------->
+  <div id="seafood_porridge" style="display: none;" class="disp">
+    
+    <table style='width:100%;' class="table_for_display" ><tr><td>
+      <p>
+        虾或scallop等海鲜，加蘑菇和青菜炖粥，加一勺花生酱，加盐和胡椒
+      </p>
+      <p style="color: coral">
+        Use shrimp or scallop, + mushroom and chopped baby bok-choy to make a porridge with rice. Also add one spoon of peanut butter, then salt and pepper.
+      </p>
+    
+    </td></tr></table>
 
+  </div> 
 
 
     <!--------------------->
@@ -220,41 +285,24 @@
     <!--------------------->
     <script>
         /* toggle display */
-        var current_id = "";
-        // sessionStorage.setItem("current_id", "");
+
+
         function display(id){
-            var disp = document.getElementById("display");
-            // if nothing to display
-            // if (id===""){
-            //     disp.style.display==="none"
-            //     current_id = "";
-            //     sessionStorage.setItem("current_id", "");
-            // }
-            // if clicking on the same button, then toggle display
-            if (id===current_id){
-                if (disp.style.display==="none"){
-                    disp.style.display = "block";
-                    // sessionStorage.setItem("current_id", id);
-                }
-                else{
-                    disp.style.display = "none";
-                    // sessionStorage.setItem("current_id", "");
-                }
-            }
-            // otherwise, change the context
-            else{
-                current_id = id;
-                var sel = document.getElementById(id);
-                disp.innerHTML = sel.innerHTML;
-                disp.style.display="block";
-                // sessionStorage.setItem("current_id", id);
-            }
+          var all_disp = document.getElementsByClassName("disp");
+          for (var i=0; i<all_disp.length; i++){
+              if(all_disp[i].id != id){
+                  all_disp[i].style.display = "none";
+              }
+          }
+          var to_disp = document.getElementById(id);
+          // if (to_disp.style.display==="none"){
+              to_disp.style.display = "block";
+          // }
+          // else{
+          //     to_disp.style.display = "none";
+          // }
         }
 
-        // $(document).ready(function(){
-        //     display(sessionStorage.getItem("current_id"));
-        // });
-        //window.onload = function(){display(sessionStorage.getItem("current_id"));};
 
         /* Highlight active button */
         var btns = document.getElementById("myHeader").getElementsByClassName("btn");
@@ -264,11 +312,11 @@
 
 
                 // if the current button is active, just deactivate it
-                if (this.className === "btn active"){
-                    this.className = "btn";
-                }
+                // if (this.className === "btn active"){
+                //     this.className = "btn";
+                // }
                 // otherwise, need to activate current button and deactivate active button
-                else{
+                // else{
 
                     for (var j=0; j<btns.length; j++){
                         btns[j].className = "btn";
@@ -279,7 +327,7 @@
                 
                     // Active the new button
                     this.className = "btn active";
-                }
+                // }
 
 
             });
