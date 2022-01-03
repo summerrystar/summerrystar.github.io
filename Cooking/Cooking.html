@@ -6,7 +6,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
+        width: 60%
       }
 
 
@@ -79,7 +79,7 @@
 
     
   <body>
-    <!-- header section -->
+    <!-- side bar section -->
     <h1 style="text-align: center;">Cooking 菜谱</h1>
 
     <div class="sidebar", id="myHeader">
@@ -87,23 +87,21 @@
       <b>牛肉 Beef Dishes</b>
       <a class="btn" onclick="display('russian_beef')">Russian-Style Beef Stew 俄式炖牛肉</a>
       <br>
-  
-      
-      
+
 
       <b>猪肉 Pork Dishes</b>
       <a class="btn" onclick="display('tomato_pork')">Tomato Napa Pork 番茄白菜猪肉</a>
       <br>
 
-      
-
 
       <b>鸡肉 Chicken Dishes</b>
       <a class="btn" onclick="display('mushroom_chicken')">Mushroom Chicken 卤味蘑菇炖鸡</a>
+      <a class="btn" onclick="display('potato_chicken')">Potato Chicken 土豆鸡块</a>
+      <a class="btn" onclick="display('airfry_wings')">Air-Fried Chicken Wings 空气炸锅烤鸡翅</a>
+      <a class="btn" onclick="display('original_curry_chicken')">Original Curry Chicken 原创咖喱鸡</a>
+      <a class="btn" onclick="display('mysterious')">Mysterious Dish 迷之菜谱</a>
+
       <br> 
-
-
-      
 
       <b>海鲜 Seafood Dishes</b>
       <a class="btn" onclick="display('salmon_rice')">Salmon Mushroom Rice 三文鱼蘑菇饭</a>
@@ -116,8 +114,6 @@
       <b>植物蛋白 Veggie-Protein</b>
       <a class="btn" onclick="display('daal')">Daal 印度豆子汤</a>
       <br>
-      
-
 
       <b>鸡蛋 Egg Dishes</b>
       <a class="btn" onclick="display('steamed_eggs')">Steamed Eggs 水蒸蛋</a>
@@ -139,34 +135,34 @@
     </div>
     <!----------------------------->
     <div id="tomato_pork" style="display: none;" class="disp">
-        <table style='width:100%;' class="table_for_display" ><tr><td>
-          <p>
-            1. 买肋排或带点肥的猪肉，煎至金黄（不用放油），放盐、酱油、酒，煎好盛出备用
-          </p>
-          <p style="color: coral;">
-            1. Choose baby ribs or pork chops with some fat. Pan fry pork till golden (no need for oil). Put salt, soy sauce and rice wine. Remove from pan after ready.
-          </p>
-          <p>
-            2. 同一个锅下番茄炒软出汁（加盐），加开水，加猪肉煮开，焖10分钟
-          </p>
-          <p style="color: coral;">
-            2. In the same pan, pan fry tomatos till it's soft and juicy (put salt). Add boiling water and pork. Let it boil with small fire for 10 minutes.
-          </p>
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          1. 买肋排或带点肥的猪肉，煎至金黄（不用放油），放盐、酱油、酒，煎好盛出备用
+        </p>
+        <p style="color: coral;">
+          1. Choose baby ribs or pork chops with some fat. Pan fry pork till golden (no need for oil). Put salt, soy sauce and rice wine. Remove from pan after ready.
+        </p>
+        <p>
+          2. 同一个锅下番茄炒软出汁（加盐），加开水，加猪肉煮开，焖10分钟
+        </p>
+        <p style="color: coral;">
+          2. In the same pan, pan fry tomatos till it's soft and juicy (put salt). Add boiling water and pork. Let it boil with small fire for 10 minutes.
+        </p>
 
-          <p>
-            3. 尝盐度，补足盐后加白菜（不然白菜没味道），再焖5分钟直到白菜变软
-          </p>
-          <p style="color: coral;">
-            3. Taste and add salt as needed, then add napa cabbage (add salt first or napa may not have enough taste). Boil with small fire for 5 more minutes till napa gets soft.
-          </p>
-          <p>
-            4. 可以加面条一起吃
-          </p>
-          <p style="color: coral;">
-            4. Optionally add noodles
-          </p>
+        <p>
+          3. 尝盐度，补足盐后加白菜（不然白菜没味道），再焖5分钟直到白菜变软
+        </p>
+        <p style="color: coral;">
+          3. Taste and add salt as needed, then add napa cabbage (add salt first or napa may not have enough taste). Boil with small fire for 5 more minutes till napa gets soft.
+        </p>
+        <p>
+          4. 可以加面条一起吃
+        </p>
+        <p style="color: coral;">
+          4. Optionally add noodles
+        </p>
 
-        </td></tr></table>
+      </td></tr></table>
     </div>
     <!----------------------------->
     <div id="russian_beef" style="display: none;" class="disp">
@@ -248,37 +244,138 @@
           3. When soup is ready, get an empty bowl and add chopped green onions, pepper and salt (if needed). Then get the soup and enjoy! Ideally the soup should be cream-colored.
         </p>
       </td></tr></table>
-  </div>
-  <!----------------------------->
-  <div id="mushroom_chicken" style="display: none;" class="disp">
-    
-    <table style='width:100%;' class="table_for_display" ><tr><td>
-      <p>
-        青椒+蘑菇+鸡肉+八角+香叶+老抽，加水炖后收汁
-      </p>
-      <p style="color: coral">
-        Green peppers + mushroom + chicken pieces + star anise + bay leaf + dark soy sauce, 
-        add water to just cover the ingredients, simmer for some time, then evaporate water with big flame until ready.
-    
-      </p>
-    </td></tr></table>
-
-  </div>
-  <!----------------------------->
-  <div id="seafood_porridge" style="display: none;" class="disp">
-    
-    <table style='width:100%;' class="table_for_display" ><tr><td>
-      <p>
-        虾或scallop等海鲜，加蘑菇和青菜炖粥，加一勺花生酱，加盐和胡椒
-      </p>
-      <p style="color: coral">
-        Use shrimp or scallop, + mushroom and chopped baby bok-choy to make a porridge with rice. Also add one spoon of peanut butter, then salt and pepper.
-      </p>
-    
-    </td></tr></table>
-
-  </div> 
-
+    </div>
+    <!----------------------------->
+    <div id="mushroom_chicken" style="display: none;" class="disp">
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          青椒+蘑菇+鸡肉+八角+香叶+老抽，加水炖后收汁
+        </p>
+        <p style="color: coral">
+          Green peppers + mushroom + chicken pieces + star anise + bay leaf + dark soy sauce, 
+          add water to just cover the ingredients, simmer for some time, then evaporate excess water.
+      
+        </p>
+      </td></tr></table>
+    </div>
+    <!----------------------------->
+    <div id="seafood_porridge" style="display: none;" class="disp">
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          虾或scallop等海鲜，加蘑菇和青菜炖粥，加一勺花生酱，加盐和胡椒
+        </p>
+        <p style="color: coral">
+          Use shrimp or scallop, + mushroom and chopped baby bok-choy to make a porridge with rice. Also add one spoon of peanut butter, then salt and pepper.
+        </p>
+      
+      </td></tr></table>
+    </div> 
+    <!----------------------------->
+    <div id="potato_chicken" style="display: none;" class="disp">  
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          鸡块进行基本调味（料酒、蚝油、蒜粉、辣椒粉、盐、胡椒粉）之后下锅炒变色捞出。
+        </p>
+        <p style="color: coral">
+          Marinate chicken with basic spices (rice wine, oyster sauce, garlic powder, chili powder, salt and pepper).
+          Pan fry till color change, then put it aside for later use.
+        </p>
+        <p>
+          炒土豆，放盐和辣椒粉，随意加点香料（dill, rosemary之类的），加水煮软
+        </p>
+        <p style="color: coral">
+          Pan fry potatos with salt, chili powder and optional dill/rosemary. Add water and boil till soft.
+        </p>
+        <p>
+          放入鸡块焖熟收汁
+        </p>
+        <p style="color: coral">
+          Add chicken and simmer until chicken is fully cooked. Then evaporate excess water.
+        </p>
+        <p>
+          (土豆的主要作用是提供淀粉，让鸡块更嫩)
+        </p>
+        <p style="color: coral">
+          (The main idea is to use the starch from the potatoes to make the chicken taste more tender)
+        </p>
+      </td></tr></table>
+    </div>   
+    <!----------------------------->
+    <div id="airfry_wings" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          腌料：酱油、辣椒粉、蚝油、酒、蜂蜜、蒜粉、胡椒
+        </p>
+        <p style="color: coral">
+          Marinate chicken wings with soy sauce, chili powder, oyster sauce, rice wine, honey, garlic powder and pepper (and optionally salt).
+        </p>
+        <p>
+          放入空气炸锅360度烤20分钟
+        </p>
+        <p style="color: coral;">
+          Air-fry with 360 degrees for 20 minutes
+        </p>
+      </td></tr></table>
+    </div> 
+    <!----------------------------->
+    <div id="original_curry_chicken" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          鸡肉尽量切小块，用酱油、淀粉、酒、盐腌一下。（淀粉重要，作用等于嫩肉粉）
+        </p>
+        <p style="color: coral">
+          Cut chicken into small pieces, marinate with soy sauce, starch, rice wine and salt.
+          Starch is important because it can make the meat tender.
+        </p>
+        <p>
+          切出大蒜碎、洋葱碎、番茄碎
+        </p>
+        <p style="color: coral;">
+          Prepare chopped garlic, onions and tomatoes
+        </p>
+        <p>
+          起锅先炒大蒜洋葱，随后鸡肉。基本炒熟后加入番茄。再加入牛奶、希腊酸奶、咖喱粉、辣椒粉、盐。煮好之后撒上柠檬汁出锅。
+        </p>
+        <p style="color: coral;">
+          Pan fry garlic and onions, then add chicken.
+          When chicken is almost fully cooked, add tomatoes, and then milk, yogurt, curry powder, chili powder and salt.
+          Once ready, sprinkle lemon juice as the last step.
+        </p>
+      </td></tr></table>
+    </div>   
+    <!----------------------------->
+    <div id="mysterious" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          鸡肉加料酒、酒酿、盐腌一腌
+        </p>
+        <p style="color: coral">
+          Marinate chicken with rice wine, fermented rice and salt
+        </p>
+        <p>
+          蒜片+盐和酱油炒白萝卜，随后另起一锅加水煮。
+        </p>
+        <p style="color: coral;">
+          Pan fry radish with salt and soy sauce. Then transfer to another pot and boil with water.
+        </p>
+        <p>
+          炒鸡肉（放盐）和腊肠，然后加入锅中一起煮，放入鹌鹑蛋
+        </p>
+        <p style="color: coral;">
+          Pan fry chicken (with salt) and Chinese sweet sausage. Then add to the radish soup and boil together. 
+          Add boiled and peeled quail eggs too.
+        </p>
+        <p>
+          收汁，调整盐度，加入香菜碎出锅。
+        </p>
+        <p style="color: coral">
+          Evaporate excess water. Adjust the salt level. Add cilantro and serve.
+        </p>
+        <p>
+          注：原型为腌笃鲜。鲜肉->鸡肉。咸肉->腊肠。春笋->白萝卜。
+        </p>
+      </td></tr></table>
+    </div> 
 
     <!--------------------->
     <!--     scripts     -->
