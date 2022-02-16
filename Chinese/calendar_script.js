@@ -19,7 +19,9 @@ var attendance = [
   new Date(2021, 11, 26),
   new Date(2022, 0, 16),
   new Date(2022, 0, 20),
-  new Date(2022, 0, 23)
+  new Date(2022, 0, 23),
+  new Date(2022, 0, 29),
+  new Date(2022, 1, 5)
 ];
 
 const renderCalendar = () => {

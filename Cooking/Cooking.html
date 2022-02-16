@@ -23,9 +23,8 @@
         padding: 0;
         width: 300px;
         background-color: #f1f1f1;
-        position: fixed;
         height: 100%;
-        overflow: auto;
+        float: left;
       }
 
 
@@ -71,7 +70,7 @@
       }
 
       .disp{
-          margin-left: 300px;
+        margin-left: 300px;
       }
     </style>
     <title>Cooking 菜谱</title>
@@ -96,7 +95,8 @@
 
       <b>鸡肉 Chicken Dishes</b>
       <a class="btn" onclick="display('mushroom_chicken')">Mushroom Chicken 卤味蘑菇炖鸡</a>
-      <a class="btn" onclick="display('potato_chicken')">Potato Chicken 土豆鸡块</a>
+      <a class="btn" onclick="display('potato_chicken')">Potato Chicken 风味土豆鸡块</a>
+      <a class="btn" onclick="display('potato_carrot_chicken')">Potato Carrot Chicken 土豆胡萝卜焖鸡</a>
       <a class="btn" onclick="display('airfry_wings')">Air-Fried Chicken Wings 空气炸锅烤鸡翅</a>
       <a class="btn" onclick="display('original_curry_chicken')">Original Curry Chicken 原创咖喱鸡</a>
       <a class="btn" onclick="display('mysterious')">Mysterious Dish 迷之菜谱</a>
@@ -106,6 +106,7 @@
       <b>海鲜 Seafood Dishes</b>
       <a class="btn" onclick="display('salmon_rice')">Salmon Mushroom Rice 三文鱼蘑菇饭</a>
       <a class="btn" onclick="display('butter_fish')">Butter Garlic Fish 蒜香黄油煎鱼</a>
+      <a class="btn" onclick="display('tomato_fish')">Tomato Fish 番茄龙利鱼</a>
       <a class="btn" onclick="display('fish_salad')">Fish Salad 煎鱼沙拉</a>
       <a class="btn" onclick="display('tofu_fish')">Tofu Fish Soup 鲶鱼豆腐汤</a>
       <a class="btn" onclick="display('seafood_porridge')">Seafood Porridge 海鲜粥</a>
@@ -121,6 +122,7 @@
       <br>
       
       <b>蔬菜 Veggie Dishes</b>
+      <a class="btn" onclick="display('vinegar_napa')">Napa with Vinegar 醋溜白菜</a>
       <br>
 
     </div>
@@ -381,16 +383,16 @@
     <div id="fish_salad" style="display: none;" class="disp">    
       <table style='width:100%;' class="table_for_display" ><tr><td>
         <p>
-          沙拉原料：以power greens为底，加上切成小块的番茄、少量洋葱丝，以及些许芝士碎。
+          沙拉以power greens为底，加上蒜盐、柠檬汁、油、蒸鱼豉油，用手揉搓均匀。
         </p>
         <p style="color: coral">
-          Salad ingredients: Power greens, tomatos cut into small cubes, some shredded onion and shredded cheese. 
+          Use hand to press and mix power greens, garlic salt, lemon juice, oil, and seasoned soy sauce for seafood.
         </p>
         <p>
-          沙拉酱料：蒜盐、柠檬汁、油、蒸鱼豉油。将酱料与原料混合搅拌均匀。
+          再加入切成小块的番茄、少量洋葱丝，以及些许芝士碎，一起摇晃均匀。
         </p>
         <p style="color: coral;">
-          Salad sauce: garlic salt, lemon juice, oil, seasoned soy sauce for seafood. Mix sauce and ingredients well.
+          Add tomatos cut into small cubes, some shredded onion and shredded cheese. Shake and mix well.
         </p>
         <p>
           取龙利鱼，撒上适量蒜盐，用黄油两面煎熟。
@@ -403,6 +405,63 @@
         </p>
         <p style="color: coral">
           Put cooked fish on top of salad and enjoy~
+        </p>
+      </td></tr></table>
+    </div> 
+    <!----------------------------->
+    <div id="potato_carrot_chicken" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          鸡块洗净，与土豆块、胡萝卜块一同放入锅中。选用带脂肪的鸡腿肉，增添汤汁中的胶质。
+        </p>
+        <p style="color: coral">
+          Put chopped chicken, potatos and carrots into the same pot. Use fatty meat from chicken legs to increase the stickiness of the soup.
+        </p>
+        <p>
+          加少量水、料酒、老抽、八角、盐，炖煮1小时左右
+        </p>
+        <p style="color: coral;">
+          Add a little water, rice wine, dark soy sauce, star anise and salt. Cook with lid for around 1 hour.
+        </p>
+        <p>
+          收汁后完成。
+        </p>
+        <p style="color: coral;">
+          Evaporate excessive water and serve.
+        </p>
+      </td></tr></table>
+    </div> 
+    <!----------------------------->
+    <div id="tomato_fish" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          番茄切小块，翻炒出汁后加水、少量酒、少量老干妈豆瓣酱、少量蒸鱼豉油，煮开。
+        </p>
+        <p style="color: coral">
+          Stir fry finely chopped tomatoes until juicy. Add water, a little rice wine, a little bean paste, a little seasoned soy sauce for seafood. Bring to boil. 
+        </p>
+        <p>
+          放入切好片的龙利鱼，焖煮一段时间。最后撒葱出锅。
+        </p>
+        <p style="color: coral;">
+          Add flounder fillets, boil with lid for some time. Once done, add spring onions and serve.
+        </p>
+      </td></tr></table>
+    </div> 
+    <!----------------------------->
+    <div id="vinegar_napa" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          白菜切好后放入热锅翻炒，撒适量蒜盐。
+        </p>
+        <p style="color: coral">
+          Stir fry chopped napa cabbage with garlic salt
+        </p>
+        <p>
+          炒熟后，出锅前放适量醋，翻炒均匀
+        </p>
+        <p style="color: coral;">
+          Once cooked, add the right amount of vinegar, mix well, and serve.
         </p>
       </td></tr></table>
     </div> 
