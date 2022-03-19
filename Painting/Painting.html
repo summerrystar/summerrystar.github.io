@@ -42,6 +42,14 @@
         background-color: #666;
         color: white;
       }
+
+
+      .disp{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
     </style>
     <title>Painting 画廊</title>
   </head>
@@ -57,33 +65,57 @@
 
     <!-- source images -->
 
-    <img id="karan" src="karan_all.jpg" style="display:none">
-    <img id="map" src="austin_map.jpg" style="display:none">
+    <div class="disp" id="karan" style="display: block;">
+      <!--Copied from https://flickrembed.com/-->
+      <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720297455112&sort=0&by=album&theme=tiles&scale=fill&speed=1000&limit=100&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.compareboilercover.co.uk">Compare Boiler Insurance Policies</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script>
+    </div>
 
-
-    <!-- photo to display -->
-    <img id="for_display" src="karan_all.jpg" style="display:block;width:80%" class="center">
+    <div class="disp" id="map" style="display: none; text-align: center;">
+      <img id="map" src="https://live.staticflickr.com/65535/51947566095_ccf841a463_h.jpg" style="width: 80%;">
+    </div>
 
 
     <script>
       // display pictures
       function display(id) {
-        var toDisplay = document.getElementById("for_display");
-        var srcImage = document.getElementById(id);
-        toDisplay.src=srcImage.src
-        toDisplay.parentElement.style.display = "block"
+        var all_disp = document.getElementsByClassName("disp");
+        for (var i=0; i<all_disp.length; i++){
+            if(all_disp[i].id != id){
+                all_disp[i].style.display = "none";
+            }
+        }
+        var to_disp = document.getElementById(id);
+        if (to_disp.style.display==="none"){
+            to_disp.style.display = "block";
+        }
+        else{
+            to_disp.style.display = "none";
+        }
+
       }
 
-
+      
       // Highlight active button
       var btns = document.getElementById("myHeader").getElementsByClassName("btn");
       for (var i=0; i<btns.length; i++){
         btns[i].addEventListener("click", function(){
-            // Change the current active button to not-active
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            // Active the new button
-            this.className += " active";
+              // if the current button is active, just deactivate it
+              if (this.className === "btn active"){
+                  this.className = "btn";
+              }
+              // otherwise, need to activate current button and deactivate active button
+              else{
+
+                  for (var j=0; j<btns.length; j++){
+                      btns[j].className = "btn";
+                  }
+                  // Change the current active button to not-active, if any
+                  // var current = document.getElementsByClassName("active");
+                  // current[0].className = "btn";
+              
+                  // Active the new button
+                  this.className = "btn active";
+              }
           });
       }
     </script>
