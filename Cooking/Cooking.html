@@ -2,11 +2,26 @@
   <head>
     <style>
 
+      /* body {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+      } */
+
+      /* #full {
+        display: flex;
+        flex-direction: column;
+      }
+      #someid {
+        flex-grow: 1;
+      } */
+
       .center {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 60%
+        width: 60%;
       }
 
 
@@ -25,8 +40,8 @@
         background-color: #f1f1f1;
         height: 100%;
         float: left;
+        overflow: auto;
       }
-
 
 
       /* Style the buttons */
@@ -69,9 +84,44 @@
         padding-bottom: 5%;
       }
 
-      .disp{
+      .disp {
         margin-left: 300px;
+        height: 100%;
+        /* background-color: chartreuse; */
       }
+
+      /* .container.body-content {
+          height: 500px; 
+          position: relative;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 0;
+        text-align: center;  
+        right: 0;
+        left: 0;
+        height: 110px;
+      }
+
+      .footer p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+      } */
+
+      /* .footer {
+          position: relative;
+          bottom: 0;
+          background-color: #ffd800;
+          width: 100%;
+          text-align: center;
+          left: 0;
+          height: 110px;
+          border-top: 3px solid #082603;
+      } */
     </style>
     <title>Cooking 菜谱</title>
   </head>
@@ -85,6 +135,8 @@
 
       <b>牛肉 Beef Dishes</b>
       <a class="btn" onclick="display('russian_beef')">Russian-Style Beef Stew 俄式炖牛肉</a>
+      <a class="btn" onclick="display('steak')">Simple Steak 简易牛排</a>
+      
       <br>
 
 
@@ -104,6 +156,7 @@
       <br> 
 
       <b>海鲜 Seafood Dishes</b>
+      <a class="btn" onclick="display('salmon')">Grilled Salmon 香煎三文鱼</a>
       <a class="btn" onclick="display('salmon_rice')">Salmon Mushroom Rice 三文鱼蘑菇饭</a>
       <a class="btn" onclick="display('butter_fish')">Butter Garlic Fish 蒜香黄油煎鱼</a>
       <a class="btn" onclick="display('tomato_fish')">Tomato Fish 番茄龙利鱼</a>
@@ -115,6 +168,7 @@
 
       <b>植物蛋白 Veggie-Protein</b>
       <a class="btn" onclick="display('daal')">Daal 印度豆子汤</a>
+      <a class="btn" onclick="display('tofu')">Silky Tofu 肉沫豆腐</a>
       <br>
 
       <b>鸡蛋 Egg Dishes</b>
@@ -229,22 +283,22 @@
     <div id="tofu_fish" style="display: none;" class="disp">
       <table style='width:100%;' class="table_for_display" ><tr><td>
         <p>
-          1. 原料包括鲶鱼、嫩豆腐、葱花、盐、胡椒
+          1. 鲶鱼两面加盐和胡椒，中火慢煎出油脂。（由于鲶鱼较肥，锅里不用放油）
         </p>
         <p style="color: coral;">
-          1. Ingredients: catfish, silk tofu, spring onions, salt, pepper
+          1. Add some salt & pepper to both sides of catfish. Use medium fire, slowly pan fry till the oil comes out. (No need to put oil in the pan)
         </p>
         <p>
-          2. 鲶鱼煎至金黄后，加水和盐，放入切成块的豆腐一起煮。由于鲶鱼较肥，煎的时候可以少放或不放油
+          2. 盛出鲶鱼，锅里放入切块的豆腐。稍煎一会后，再次放入鱼，加水炖煮。稍加盐。
         </p>
         <p style="color: coral;">
-          2. Pan fry catfish to golden. Then add water and salt, boil with chopped silk tofu. Since catfish contains fat, put less or no oil while pan frying.
+          2. Get the fish out, put in soft tofu and just pan fry for a little bit. Put fish back in, add water and bring to boil. Add some salt. 
         </p>
         <p>
-          3. 待汤烧好后，在空碗里放葱花、胡椒、盐（若需要），盛汤享用。理想情况下汤呈淡淡的白色。
+          3. 在空碗里放葱花、香菜、胡椒、盐等，盛汤享用。
         </p>
         <p style="color: coral;">
-          3. When soup is ready, get an empty bowl and add chopped green onions, pepper and salt (if needed). Then get the soup and enjoy! Ideally the soup should be cream-colored.
+          3. Get an empty bowl and add green onions, cilantro, pepper, salt, etc. Pour the soup in and enjoy!
         </p>
       </td></tr></table>
     </div>
@@ -465,6 +519,71 @@
         </p>
       </td></tr></table>
     </div> 
+    <!----------------------------->
+    <div id="salmon" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          选择带皮的厚三文鱼排。鱼皮面抹上蒜盐、胡椒、莳萝；鱼肉面抹上蒜盐和莳萝。
+        </p>
+        <p style="color: coral">
+          Choose salmon steak with skin. On the skin side, sprinkle garlic salt, pepper and dill. On the flesh side, sprinkle garlic salt and dill.
+        </p>
+        <p>
+          先用中高火将鱼皮面煎脆。然后转小火，盖锅盖，慢煎至熟。可以用锅铲切开中间来加速。
+        </p>
+        <p style="color: coral;">
+          First pan-fry the skin till crispy with medium high flame. Then cover with lid and turn to small flame, slowly grill salmon till fully-cooked. To accelerate the process, cut the steak from the middle with spatula.
+        </p>
+        <p>
+          撒柠檬汁出锅。剩下的鱼油可以用来炒一点蔬菜~
+        </p>
+        <p style="color: coral;">
+          Add lemon juice and serve. Use the remaining fish oil to cook some veggies!
+        </p>
+      </td></tr></table>
+    </div> 
+
+    <!----------------------------->
+    <div id="steak" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          选择薄切的牛排，两面抹上蒜盐、胡椒、莳萝。高火将两面煎熟，以保证中间的肉不老。
+        </p>
+        <p style="color: coral">
+          Choose thin-sliced steak. Add garlic salt, pepper and dill to both sides. Grill both sides with high flame and make sure the middle remains tender.
+        </p>
+      </td></tr></table>
+    </div> 
+
+    <!----------------------------->
+    <div id="tofu" style="display: none;" class="disp">    
+      <table style='width:100%;' class="table_for_display" ><tr><td>
+        <p>
+          肉沫加盐，中火炒出油脂后加蒜瓣、豆瓣酱，翻炒均匀。
+        </p>
+        <p style="color: coral">
+          Pan fry ground pork (with salt) till oil comes out. Then add garlic, bean paste and mix together.
+        </p>
+        <p>
+          加水下豆腐。加盐、酱油、油泼辣子焖煮。
+        </p>
+        <p style="color: coral">
+          Add water and tofu. Add salt, soy sauce, chili oil. Simmer with lid.
+        </p>
+        <p>
+          开盖收汁。收得差不多了加点醋，勾芡，洒葱，出锅。
+        </p>
+        <p style="color: coral">
+          Open the lid and evaporate excess water. When almost ready, add a bit of vinegar, thicken the soup with starch, sprinkle green onions, and serve.
+        </p>
+      </td></tr></table>
+    </div> 
+
+
+    <div style="text-align: center; width: 100%; font-size: small;">
+      <hr>
+      <a href="../index.html">回主页 Back to Main Page</a>
+    </div>
 
     <!--------------------->
     <!--     scripts     -->
