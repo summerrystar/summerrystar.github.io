@@ -1,598 +1,802 @@
+<!DOCTYPE html>
 <html>
-  <head>
+	
+<head>
     <style>
-
-      /* body {
-        height: 100vh;
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-      } */
-
-      /* #full {
-        display: flex;
-        flex-direction: column;
-      }
-      #someid {
-        flex-grow: 1;
-      } */
-
-      .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 60%;
-      }
-
-
-      .button {
-        border: none;
-        padding: none;
-        display: inline-block;
-        text-align: left;
-        margin: none;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 300px;
-        background-color: #f1f1f1;
-        height: 100%;
-        float: left;
-        overflow: auto;
-      }
-
-
-      /* Style the buttons */
-      .sidebar btn {
-        cursor: pointer;
-      }
-
-      .sidebar btn:hover {
-        background-color: #ddd;
-      }
-
-      .sidebar btn.active {
-        background-color: #666;
-        color: white;
-      }
-
-      .sidebar a {
-        cursor: pointer;
-        display: block;
-        width: 100%;
-      }
-
-      .sidebar a:hover {
-        background-color: #ddd;
-        width: 100%;
-      }
-
-      .sidebar a.active {
-        background-color: #666;
-        color: white;
-        width: 100%;
-      }
+        * {
+            box-sizing: border-box;
+        }
       
-      .table_for_display { 
-        border:1px solid black;
-        vertical-align: top;
-        padding-left: 5%;
-        padding-right: 5%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-      }
+        /* Create a column layout with Flexbox */
+        .row {
+            display: flex;
+        }
+        /* Left column (menu) */
+        .left {
+            flex: 25%;
+            padding: 15px 0;
+        }
 
-      .disp {
-        margin-left: 300px;
-        height: 100%;
-        /* background-color: chartreuse; */
-      }
+        .left h2 {
+            padding-left: 8px;
+        }
 
-      /* .container.body-content {
-          height: 500px; 
-          position: relative;
-      }
+        /* Right column (page content) */
+        .right {
+            flex: 75%;
+            padding: 15px;
+        }
+        /* Style the search box */
+        #mySearch {
+            width: 100%;
+            font-size: 15px;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
 
-      .footer {
-        position: absolute;
-        bottom: 0;
-        text-align: center;  
-        right: 0;
-        left: 0;
-        height: 110px;
-      }
+        /* Style the navigation menu inside the left column */
+        #myMenu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
 
-      .footer p {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
-      } */
+        .ingred {
+            padding: 5px;
+            text-decoration: none;
+            color: black;
+            display: inline-block;
+            width: 45%;
+        }
 
-      /* .footer {
-          position: relative;
-          bottom: 0;
-          background-color: #ffd800;
-          width: 100%;
-          text-align: center;
-          left: 0;
-          height: 110px;
-          border-top: 3px solid #082603;
-      } */
+        .ingred:hover {
+            background-color: #ddd;
+        }
+
+        .ingred.active {
+            background-color: #666;
+            color: white;
+        }
+
+        .cards {
+            border: none;
+            outline: none;
+            padding: 1px 8px;
+            margin: 2px;
+            background-color: #f1f1f1;
+            font-size: 15px;
+            text-align: center;
+            width: 90%;
+        }
+
+        .clickable:hover{
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        .columns-for-dishes {
+            width: 33%;
+            float: left;
+        }
+
+        .disp {
+            width: 100%;
+            height: 100%;
+        }
+/* 
+        .table_for_display * {
+            width: 100%; 
+            height: 100%;
+            vertical-align: top;
+        } */
+
     </style>
-    <title>Cooking 菜谱</title>
-  </head>
+	<title>
+		Cooking 菜谱
+	</title>
+	
+</head>
 
-    
-  <body>
-    <!-- side bar section -->
+<body>
+	
     <h1 style="text-align: center;">Cooking 菜谱</h1>
+    <div class="row">
+        <div class="left" style="background-color:#f1f1f1;">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style -->
+        <input type="text" id="mySearch" onkeyup="filter_ingredients()" placeholder="选择原料 Search for ingredent.." title="Type in a category">
+        <div id="myMenu">
+            <h4 style="width: 100%; display: block;">主食 Carbs</h4>
+            <div class="ingred" onclick="filter_dishes('rice',this)">
+                米饭 Rice
+            </div>
+            <div class="ingred" onclick="filter_dishes('noodle',this)">
+                面条 Noodles
+            </div>
+            <div class="ingred" onclick="filter_dishes('ri-no',this)">
+                米粉 Rice Noodle
+            </div>
 
-    <div class="sidebar", id="myHeader">
+            <h4 style="width: 100%; display: block;">蛋白质来源 Protein</h4>
+            <div class="ingred" onclick="filter_dishes('beef',this)">
+                牛肉 Beef
+            </div>
+            <div class="ingred" onclick="filter_dishes('pork',this)">
+                猪肉 Pork
+            </div>
+            <div class="ingred" onclick="filter_dishes('chicken',this)">
+                鸡肉 Chicken
+            </div>
+            <div class="ingred" onclick="filter_dishes('lamb',this)">
+                羊肉 Lamb
+            </div>
+            <div class="ingred" onclick="filter_dishes('fish',this)">
+                鱼 Fish
+            </div>
+            <div class="ingred" onclick="filter_dishes('salmon',this)">
+                三文鱼 Salmon
+            </div>
+            <div class="ingred" onclick="filter_dishes('shrimp',this)">
+                虾 Shrimp
+            </div>
+            <div class="ingred" onclick="filter_dishes('egg',this)">
+                鸡蛋 Eggs
+            </div>
+            <div class="ingred" onclick="filter_dishes('tofu',this)">
+                豆腐 Tofu
+            </div>
+            <div class="ingred" onclick="filter_dishes('daal',this)">
+                印度豆子 Daal
+            </div>
 
-      <b>牛肉 Beef Dishes</b>
-      <a class="btn" onclick="display('russian_beef')">Russian-Style Beef Stew 俄式炖牛肉</a>
-      <a class="btn" onclick="display('steak')">Simple Steak 简易牛排</a>
-      
-      <br>
+            <h4 style="width: 100%; display: block;">蔬菜 Veggies</h4>
+            <div class="ingred" onclick="filter_dishes('bokchoy',this)">
+                青菜 Bok-Choy
+            </div>
+            <div class="ingred" onclick="filter_dishes('napa',this)">
+                白菜 Napa
+            </div>
+            <div class="ingred" onclick="filter_dishes('greens',this)">
+                绿叶菜 Greens
+            </div>
+            <div class="ingred" onclick="filter_dishes('tomato',this)">
+                番茄 Tomatoes
+            </div>
+            <div class="ingred" onclick="filter_dishes('pepper',this)">
+                青椒 Green Pepper
+            </div>
+            <div class="ingred" onclick="filter_dishes('onion',this)">
+                洋葱 Onions
+            </div>
+            <div class="ingred" onclick="filter_dishes('potato',this)">
+                土豆 Potatoes
+            </div>
+            <div class="ingred" onclick="filter_dishes('chi-ya',this)">
+                山药 Chinese Yam
+            </div>
+            <div class="ingred" onclick="filter_dishes('sweet-po',this)">
+                红薯 Sweet Potatoes
+            </div>
+            <div class="ingred" onclick="filter_dishes('carrot',this)">
+                胡萝卜 Carrots
+            </div>
+            <div class="ingred" onclick="filter_dishes('mushroom',this)">
+                蘑菇 Mushroom
+            </div>
 
-
-      <b>猪肉 Pork Dishes</b>
-      <a class="btn" onclick="display('tomato_pork')">Tomato Napa Pork 番茄白菜猪肉</a>
-      <br>
-
-
-      <b>鸡肉 Chicken Dishes</b>
-      <a class="btn" onclick="display('mushroom_chicken')">Mushroom Chicken 卤味蘑菇炖鸡</a>
-      <a class="btn" onclick="display('potato_chicken')">Potato Chicken 风味土豆鸡块</a>
-      <a class="btn" onclick="display('potato_carrot_chicken')">Potato Carrot Chicken 土豆胡萝卜焖鸡</a>
-      <a class="btn" onclick="display('airfry_wings')">Air-Fried Chicken Wings 空气炸锅烤鸡翅</a>
-      <a class="btn" onclick="display('original_curry_chicken')">Original Curry Chicken 原创咖喱鸡</a>
-      <a class="btn" onclick="display('mysterious')">Mysterious Dish 迷之菜谱</a>
-
-      <br> 
-
-      <b>海鲜 Seafood Dishes</b>
-      <a class="btn" onclick="display('salmon')">Grilled Salmon 香煎三文鱼</a>
-      <a class="btn" onclick="display('salmon_rice')">Salmon Mushroom Rice 三文鱼蘑菇饭</a>
-      <a class="btn" onclick="display('butter_fish')">Butter Garlic Fish 蒜香黄油煎鱼</a>
-      <a class="btn" onclick="display('tomato_fish')">Tomato Fish 番茄龙利鱼</a>
-      <a class="btn" onclick="display('fish_salad')">Fish Salad 煎鱼沙拉</a>
-      <a class="btn" onclick="display('tofu_fish')">Tofu Fish Soup 鲶鱼豆腐汤</a>
-      <a class="btn" onclick="display('seafood_porridge')">Seafood Porridge 海鲜粥</a>
-      <br>
-      
-
-      <b>植物蛋白 Veggie-Protein</b>
-      <a class="btn" onclick="display('daal')">Daal 印度豆子汤</a>
-      <a class="btn" onclick="display('tofu')">Silky Tofu 肉沫豆腐</a>
-      <br>
-
-      <b>鸡蛋 Egg Dishes</b>
-      <a class="btn" onclick="display('steamed_eggs')">Steamed Eggs 水蒸蛋</a>
-      <br>
-      
-      <b>蔬菜 Veggie Dishes</b>
-      <a class="btn" onclick="display('vinegar_napa')">Napa with Vinegar 醋溜白菜</a>
-      <br>
-
+            <h4 style="width: 100%; display: block;">稀有食材 Misc</h4>
+            <div class="ingred" onclick="filter_dishes('scallop',this)">
+                鲜贝 Scallop
+            </div>
+            <div class="ingred" onclick="filter_dishes('thousand-eg',this)">
+                皮蛋 Thousand-Year Eggs
+            </div>
+        </div>
     </div>
     
-    <!------------------------------>
-    <!-- contents for each button -->
-    <!------------------------------>
-    <div id="welcome_page" class="disp">
-      <span style="color: coral;text-align: center;">
-        <h2 style="padding-top: 10%;">Welcome!</h2>
-        <h3>我们的目标是——好好吃饭^ ^</h3>
-      </span>
-    </div>
-    <!----------------------------->
-    <div id="tomato_pork" style="display: none;" class="disp">
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          1. 买肋排或带点肥的猪肉，煎至金黄（不用放油），放盐、酱油、酒，煎好盛出备用
-        </p>
-        <p style="color: coral;">
-          1. Choose baby ribs or pork chops with some fat. Pan fry pork till golden (no need for oil). Put salt, soy sauce and rice wine. Remove from pan after ready.
-        </p>
-        <p>
-          2. 同一个锅下番茄炒软出汁（加盐），加开水，加猪肉煮开，焖10分钟
-        </p>
-        <p style="color: coral;">
-          2. In the same pan, pan fry tomatos till it's soft and juicy (put salt). Add boiling water and pork. Let it boil with small fire for 10 minutes.
-        </p>
+    <div class="right">
+        <!--------------- filtered results ---------------->
+        <div id="filtered_dishes" class="disp">
+            <div style="display: block;">
+                <button onclick="shuffle()" style="display: inline-block; margin-inline: 10px;">翻滚吧！Shuffle!</button>
+                <button onclick="get_todays_dish()" style="display: inline-block; margin-inline: 10px;">今日随缘菜谱 Random menu for today ^^</button>
+                <button onclick="reset()" style="display: inline-block; margin-inline: 10px;">重置 Reset</button>
+            </div>
+            <div class="columns-for-dishes">
+                <!----------------------------->
+                <h3>蛋白类 Protein Dishes</h3>
+                <div class="dish-list">
+                    <div class="cards clickable" onclick="show_recipe('russian_beef')" >
+                        <p>俄式炖牛肉 Russian-Style Beef Stew</p>
+                        <span style="display: none">beef carrot onion potato</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('steak')" >
+                        <p>简易牛排 Simple Steak</p>
+                        <span style="display: none">beef</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('tomato_pork')">
+                        <p>番茄白菜猪肉 Tomato Napa Pork</p>
+                        <span style="display: none">tomato napa pork</span>
+                    </div>
+                    <div class="cards">
+                        <p>粉蒸肉 Steamed Pork</p>
+                        <span style="display: none">pork potato sweet-po</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('mushroom_chicken')"> 
+                        <p>卤味蘑菇炖鸡 Mushroom Chicken</p>
+                        <span style="display:none;">mushroom pepper chicken</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('potato_chicken')"> 
+                        <p>土豆胡萝卜鸡块 Potato Chicken</p>
+                        <span style="display:none;">potato carrot chicken</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('airfry_wings')"> 
+                        <p>空气炸锅烤鸡翅 Air-Fried Chicken Wings</p>
+                        <span style="display:none;">chicken</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('original_curry_chicken')"> 
+                        <p>原创咖喱鸡 Original Curry Chicken</p>
+                        <span style="display:none;">chicken onion tomato potato carrot</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('mysterious')"> 
+                        <p>迷之菜谱 Mysterious Dish</p>
+                        <span style="display:none;"></span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('salmon')"> 
+                        <p>香煎三文鱼 Grilled Salmon</p>
+                        <span style="display:none;">fish salmon</span>
+                    </div>      
+                    <div class="cards clickable" onclick="show_recipe('butter_fish')"> 
+                        <p>蒜香黄油煎鱼 Butter Garlic Fish</p>
+                        <span style="display:none;">fish</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('tomato_fish')"> 
+                        <p>番茄龙利鱼 Tomato Fish</p>
+                        <span style="display:none;">tomato fish</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('fish_salad')"> 
+                        <p>煎鱼沙拉 Fish Salad</p>
+                        <span style="display:none;">fish greens tomato onion</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('tofu_fish')"> 
+                        <p>鲶鱼豆腐汤 Tofu Fish Soup</p>
+                        <span style="display:none;">fish tofu</span>
+                    </div>
+                    <div class="cards">
+                        <p>酸菜鱼 Fish with Pickled Cabbage</p>
+                        <span style="display: none">fish</span>
+                    </div>
+                    <div class="cards">
+                        <p>料酒蒸鱼 Steamed Fish</p>
+                        <span style="display: none">fish</span>
+                    </div>
+                    <div class="cards">
+                        <p>红烧鱼 Braised Fish</p>
+                        <span style="display: none">fish</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('daal')"> 
+                        <p>印度豆子汤 Daal</p>
+                        <span style="display:none;">daal tomato onion</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('tofu')"> 
+                        <p>肉沫豆腐 Silky Tofu</p>
+                        <span style="display:none;">pork tofu</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('steamed_eggs')"> 
+                    <p>水蒸蛋 Steamed Eggs</p>
+                    <span style="display:none;">pork beef egg</span>
+                    </div>
+                    <div class="cards">
+                        <p>皮蛋拌豆腐 Thousand-Year Egg and Tofu</p>
+                        <span style="display: none">thousand-eg tofu</span>
+                    </div>
+                    <div class="cards">
+                        <p>红烧羊肉 Braised Lamb</p>
+                        <span style="display: none">lamb carrot</span>
+                    </div>
+                    <div class="cards">
+                        <p>青椒虾仁滑蛋 Green Pepper Shrimp Egg</p>
+                        <span style="display: none">pepper shrimp egg</span>
+                    </div>
+                    <div class="cards">
+                        <p>山药排骨汤 Chinese Yam and Pork Soup</p>
+                        <span style="display: none">chi-ya pork</span>
+                    </div>
+                </div>
+            </div>
 
-        <p>
-          3. 尝盐度，补足盐后加白菜（不然白菜没味道），再焖5分钟直到白菜变软
-        </p>
-        <p style="color: coral;">
-          3. Taste and add salt as needed, then add napa cabbage (add salt first or napa may not have enough taste). Boil with small fire for 5 more minutes till napa gets soft.
-        </p>
-        <p>
-          4. 可以加面条一起吃
-        </p>
-        <p style="color: coral;">
-          4. Optionally add noodles
-        </p>
+            <div class="columns-for-dishes">
+                <!----------------------------->
+                <h3>蔬菜类 Veggies</h3>
+                <div class="dish-list">
+                    <div class="cards">
+                        <p>清炒时蔬 Pan-Fried Veggies</p>
+                        <span style="display: none">greens bokchoy napa</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('vinegar_napa')">
+                        <p>醋溜白菜 Napa with Vinegar</p>
+                        <span style="display: none">napa</span>
+                    </div>
+                    <div class="cards">
+                        <p>青椒土豆丝 Green Pepper and Potatoes</p>
+                        <span style="display: none">pepper potato</span>
+                    </div>
+                    <div class="cards">
+                        <p>蚝油青菜 Bok-Choy with Oyster Sauce</p>
+                        <span style="display: none">bokchoy mushroom</span>
+                    </div>
+                </div>
+            </div>
 
-      </td></tr></table>
-    </div>
-    <!----------------------------->
-    <div id="russian_beef" style="display: none;" class="disp">
-        <img src="russian_beef.jpg" class="center">
-    </div>
-    <!----------------------------->
-    <div id="daal" style="display: none;" class="disp">
-        <img src="DAAL.jpg" class="center">
-    </div>
-    <!----------------------------->
-    <div id="steamed_eggs" style="display: none;" class="disp">
-        <img src="silky_egg.jpg" class="center">
-    </div>
-    <!----------------------------->
-    <div id="salmon_rice" style="display: none;" class="disp">
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          1. 蘑菇与米放进电饭锅一起煮，煮完加盐
-        </p>
-        <p style="color: coral;">
-          1. Cook rice and mushroom together in the rice cooker. Add salt when finished
-        </p>
-        <p>
-          2. 煮饭的同时煎三文鱼：先把鱼皮煎到脆，然后可以捣碎了煎。调料用蒜盐、莳萝、一点柠檬汁。
-        </p>
-        <p style="color: coral;">
-          2. While rice is getting cooked, pan fry salmon: First the skin side till crispy, then break into small pieces. Use garlic salt, dill and a sprinkle of lemon juice.
-        </p>
-        <p>
-          3. 组装三文鱼、蘑菇饭、足量葱花。三文鱼煎出的油恰好能使米饭颗粒分明。
-        </p>
-        <p style="color: coral;">
-          3. Stir together salmon, mushroom rice, and enough chopped green onions. The oil produced while pan-frying the salmon can make rice grains separate from each other.
-        </p>
-      </td></tr></table>
-    </div>
-    <!----------------------------->
-    <div id="butter_fish" style="display: none;" class="disp">
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          1. 鱼两面撒上蒜盐
-        </p>
-        <p style="color: coral;">
-          1. Sprinkle garlic salt to both sides of the fish
-        </p>
-        <p>
-          2. 热锅内放食用油、黄油、蒜泥，下鱼，两面充分混合，煎至金黄。如果中间还没熟，再用小火焖一会儿
-        </p>
-        <p style="color: coral;">
-          2. In a hot pan, put oil, butter, chopped garlic, put in fish, mix both sides properly, pan-fry till golden. If the inside is still raw, put on small flame and close lid for a while.
-        </p>
-        <p>
-          3. 撒柠檬汁，盛出，撒葱
-        </p>
-        <p style="color: coral;">
-          3. Sprinkle lemon juice and green onions
-        </p>
-      </td></tr></table>
-    </div>
-    <!----------------------------->
-    <div id="tofu_fish" style="display: none;" class="disp">
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          1. 鲶鱼两面加盐和胡椒，中火慢煎出油脂。（由于鲶鱼较肥，锅里不用放油）
-        </p>
-        <p style="color: coral;">
-          1. Add some salt & pepper to both sides of catfish. Use medium fire, slowly pan fry till the oil comes out. (No need to put oil in the pan)
-        </p>
-        <p>
-          2. 盛出鲶鱼，锅里放入切块的豆腐。稍煎一会后，再次放入鱼，加水炖煮。稍加盐。
-        </p>
-        <p style="color: coral;">
-          2. Get the fish out, put in soft tofu and just pan fry for a little bit. Put fish back in, add water and bring to boil. Add some salt. 
-        </p>
-        <p>
-          3. 在空碗里放葱花、香菜、胡椒、盐等，盛汤享用。
-        </p>
-        <p style="color: coral;">
-          3. Get an empty bowl and add green onions, cilantro, pepper, salt, etc. Pour the soup in and enjoy!
-        </p>
-      </td></tr></table>
-    </div>
-    <!----------------------------->
-    <div id="mushroom_chicken" style="display: none;" class="disp">
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          青椒+蘑菇+鸡肉+八角+香叶+老抽，加水炖后收汁
-        </p>
-        <p style="color: coral">
-          Green peppers + mushroom + chicken pieces + star anise + bay leaf + dark soy sauce, 
-          add water to just cover the ingredients, simmer for some time, then evaporate excess water.
-      
-        </p>
-      </td></tr></table>
-    </div>
-    <!----------------------------->
-    <div id="seafood_porridge" style="display: none;" class="disp">
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          虾或scallop等海鲜，加蘑菇和青菜炖粥，加一勺花生酱，加盐和胡椒
-        </p>
-        <p style="color: coral">
-          Use shrimp or scallop, + mushroom and chopped baby bok-choy to make a porridge with rice. Also add one spoon of peanut butter, then salt and pepper.
-        </p>
-      
-      </td></tr></table>
-    </div> 
-    <!----------------------------->
-    <div id="potato_chicken" style="display: none;" class="disp">  
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          鸡块进行基本调味（料酒、蚝油、蒜粉、辣椒粉、盐、胡椒粉）之后下锅炒变色捞出。
-        </p>
-        <p style="color: coral">
-          Marinate chicken with basic spices (rice wine, oyster sauce, garlic powder, chili powder, salt and pepper).
-          Pan fry till color change, then put it aside for later use.
-        </p>
-        <p>
-          炒土豆，放盐和辣椒粉，随意加点香料（dill, rosemary之类的），加水煮软
-        </p>
-        <p style="color: coral">
-          Pan fry potatos with salt, chili powder and optional dill/rosemary. Add water and boil till soft.
-        </p>
-        <p>
-          放入鸡块焖熟收汁
-        </p>
-        <p style="color: coral">
-          Add chicken and simmer until chicken is fully cooked. Then evaporate excess water.
-        </p>
-        <p>
-          (土豆的主要作用是提供淀粉，让鸡块更嫩)
-        </p>
-        <p style="color: coral">
-          (The main idea is to use the starch from the potatoes to make the chicken taste more tender)
-        </p>
-      </td></tr></table>
-    </div>   
-    <!----------------------------->
-    <div id="airfry_wings" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          腌料：酱油、辣椒粉、蚝油、酒、蜂蜜、蒜粉、胡椒
-        </p>
-        <p style="color: coral">
-          Marinate chicken wings with soy sauce, chili powder, oyster sauce, rice wine, honey, garlic powder and pepper (and optionally salt).
-        </p>
-        <p>
-          放入空气炸锅360度烤20分钟
-        </p>
-        <p style="color: coral;">
-          Air-fry with 360 degrees for 20 minutes
-        </p>
-      </td></tr></table>
-    </div> 
-    <!----------------------------->
-    <div id="original_curry_chicken" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          鸡肉尽量切小块，用酱油、淀粉、酒、盐腌一下。（淀粉重要，作用等于嫩肉粉）
-        </p>
-        <p style="color: coral">
-          Cut chicken into small pieces, marinate with soy sauce, starch, rice wine and salt.
-          Starch is important because it can make the meat tender.
-        </p>
-        <p>
-          切出大蒜碎、洋葱碎、番茄碎
-        </p>
-        <p style="color: coral;">
-          Prepare chopped garlic, onions and tomatoes
-        </p>
-        <p>
-          起锅先炒大蒜洋葱，随后鸡肉。基本炒熟后加入番茄。再加入牛奶、希腊酸奶、咖喱粉、辣椒粉、盐。煮好之后撒上柠檬汁出锅。
-        </p>
-        <p style="color: coral;">
-          Pan fry garlic and onions, then add chicken.
-          When chicken is almost fully cooked, add tomatoes, and then milk, yogurt, curry powder, chili powder and salt.
-          Once ready, sprinkle lemon juice as the last step.
-        </p>
-      </td></tr></table>
-    </div>   
-    <!----------------------------->
-    <div id="mysterious" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          鸡肉加料酒、酒酿、盐腌一腌
-        </p>
-        <p style="color: coral">
-          Marinate chicken with rice wine, fermented rice and salt
-        </p>
-        <p>
-          蒜片+盐和酱油炒白萝卜，随后另起一锅加水煮。
-        </p>
-        <p style="color: coral;">
-          Pan fry radish with salt and soy sauce. Then transfer to another pot and boil with water.
-        </p>
-        <p>
-          炒鸡肉（放盐）和腊肠，然后加入锅中一起煮，放入鹌鹑蛋
-        </p>
-        <p style="color: coral;">
-          Pan fry chicken (with salt) and Chinese sweet sausage. Then add to the radish soup and boil together. 
-          Add boiled and peeled quail eggs too.
-        </p>
-        <p>
-          收汁，调整盐度，加入香菜碎出锅。
-        </p>
-        <p style="color: coral">
-          Evaporate excess water. Adjust the salt level. Add cilantro and serve.
-        </p>
-        <p>
-          注：原型为腌笃鲜。鲜肉->鸡肉。咸肉->腊肠。春笋->白萝卜。
-        </p>
-      </td></tr></table>
-    </div>     
-    <!----------------------------->
-    <div id="fish_salad" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          沙拉以power greens为底，加上蒜盐、柠檬汁、油、蒸鱼豉油，用手揉搓均匀。
-        </p>
-        <p style="color: coral">
-          Use hand to press and mix power greens, garlic salt, lemon juice, oil, and seasoned soy sauce for seafood.
-        </p>
-        <p>
-          再加入切成小块的番茄、少量洋葱丝，以及些许芝士碎，一起摇晃均匀。
-        </p>
-        <p style="color: coral;">
-          Add tomatos cut into small cubes, some shredded onion and shredded cheese. Shake and mix well.
-        </p>
-        <p>
-          取龙利鱼，撒上适量蒜盐，用黄油两面煎熟。
-        </p>
-        <p style="color: coral;">
-          Sprinkle garlic salt onto flonder fillets. Pan fry both sides with butter.
-        </p>
-        <p>
-          把煎好的鱼放在沙拉上即完成~
-        </p>
-        <p style="color: coral">
-          Put cooked fish on top of salad and enjoy~
-        </p>
-      </td></tr></table>
-    </div> 
-    <!----------------------------->
-    <div id="potato_carrot_chicken" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          鸡块洗净，与土豆块、胡萝卜块一同放入锅中。选用带脂肪的鸡腿肉，增添汤汁中的胶质。
-        </p>
-        <p style="color: coral">
-          Put chopped chicken, potatos and carrots into the same pot. Use fatty meat from chicken legs to increase the stickiness of the soup.
-        </p>
-        <p>
-          加少量水、料酒、老抽、八角、盐，炖煮1小时左右
-        </p>
-        <p style="color: coral;">
-          Add a little water, rice wine, dark soy sauce, star anise and salt. Cook with lid for around 1 hour.
-        </p>
-        <p>
-          收汁后完成。
-        </p>
-        <p style="color: coral;">
-          Evaporate excessive water and serve.
-        </p>
-      </td></tr></table>
-    </div> 
-    <!----------------------------->
-    <div id="tomato_fish" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          番茄切小块，翻炒出汁后加水、少量酒、少量老干妈豆瓣酱、少量蒸鱼豉油，煮开。
-        </p>
-        <p style="color: coral">
-          Stir fry finely chopped tomatoes until juicy. Add water, a little rice wine, a little bean paste, a little seasoned soy sauce for seafood. Bring to boil. 
-        </p>
-        <p>
-          放入切好片的龙利鱼，焖煮一段时间。最后撒葱出锅。
-        </p>
-        <p style="color: coral;">
-          Add flounder fillets, boil with lid for some time. Once done, add spring onions and serve.
-        </p>
-      </td></tr></table>
-    </div> 
-    <!----------------------------->
-    <div id="vinegar_napa" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          白菜切好后放入热锅翻炒，撒适量蒜盐。
-        </p>
-        <p style="color: coral">
-          Stir fry chopped napa cabbage with garlic salt
-        </p>
-        <p>
-          炒熟后，出锅前放适量醋，翻炒均匀
-        </p>
-        <p style="color: coral;">
-          Once cooked, add the right amount of vinegar, mix well, and serve.
-        </p>
-      </td></tr></table>
-    </div> 
-    <!----------------------------->
-    <div id="salmon" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          选择带皮的厚三文鱼排。鱼皮面抹上蒜盐、胡椒、莳萝；鱼肉面抹上蒜盐和莳萝。
-        </p>
-        <p style="color: coral">
-          Choose salmon steak with skin. On the skin side, sprinkle garlic salt, pepper and dill. On the flesh side, sprinkle garlic salt and dill.
-        </p>
-        <p>
-          先用中高火将鱼皮面煎脆。然后转小火，盖锅盖，慢煎至熟。可以用锅铲切开中间来加速。
-        </p>
-        <p style="color: coral;">
-          First pan-fry the skin till crispy with medium high flame. Then cover with lid and turn to small flame, slowly grill salmon till fully-cooked. To accelerate the process, cut the steak from the middle with spatula.
-        </p>
-        <p>
-          撒柠檬汁出锅。剩下的鱼油可以用来炒一点蔬菜~
-        </p>
-        <p style="color: coral;">
-          Add lemon juice and serve. Use the remaining fish oil to cook some veggies!
-        </p>
-      </td></tr></table>
-    </div> 
+            <div class="columns-for-dishes">
+                <!----------------------------->
+                <h3>主食 Carbs</h3>
+                <div class="dish-list">
+                    <div class="cards">
+                        <p>皮蛋瘦肉粥 Porridge with Thousand-Year Egg</p>
+                        <span style="display: none">thousand-eg pork rice</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('salmon_rice')"> 
+                    <p>三文鱼蘑菇饭 Salmon Mushroom Rice</p>
+                    <span style="display:none;">fish salmon mushroom rice</span>
+                    </div>
+                    <div class="cards clickable" onclick="show_recipe('seafood_porridge')"> 
+                        <p>海鲜粥 Seafood Porridge</p>
+                        <span style="display:none;">rice shrimp scallop mushroom bokchoy</span>
+                    </div>
+                    <div class="cards">
+                        <p>红薯饭（粥） Sweet Potato Rice</p>
+                        <span style="display: none">sweet-po rice</span>
+                    </div>
+                    <div class="cards">
+                        <p>紫米饭 Black Rice</p>
+                        <span style="display: none">rice</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--------------- recipes ---------------->
+        <div id="tomato_pork" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+            1. 买肋排或带点肥的猪肉，煎至金黄（不用放油），放盐、酱油、酒，煎好盛出备用
+            </p>
+            <p style="color: coral;">
+            1. Choose baby ribs or pork chops with some fat. Pan fry pork till golden (no need for oil). Put salt, soy sauce and rice wine. Remove from pan after ready.
+            </p>
+            <p>
+            2. 同一个锅下番茄炒软出汁（加盐），加开水，加猪肉煮开，焖10分钟
+            </p>
+            <p style="color: coral;">
+            2. In the same pan, pan fry tomatos till it's soft and juicy (put salt). Add boiling water and pork. Let it boil with small fire for 10 minutes.
+            </p>
+    
+            <p>
+            3. 尝盐度，补足盐后加白菜（不然白菜没味道），再焖5分钟直到白菜变软
+            </p>
+            <p style="color: coral;">
+            3. Taste and add salt as needed, then add napa cabbage (add salt first or napa may not have enough taste). Boil with small fire for 5 more minutes till napa gets soft.
+            </p>
+            <p>
+            4. 可以加面条一起吃
+            </p>
+            <p style="color: coral;">
+            4. Optionally add noodles
+            </p>
 
-    <!----------------------------->
-    <div id="steak" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          选择薄切的牛排，两面抹上蒜盐、胡椒、莳萝。高火将两面煎熟，以保证中间的肉不老。
-        </p>
-        <p style="color: coral">
-          Choose thin-sliced steak. Add garlic salt, pepper and dill to both sides. Grill both sides with high flame and make sure the middle remains tender.
-        </p>
-      </td></tr></table>
-    </div> 
-
-    <!----------------------------->
-    <div id="tofu" style="display: none;" class="disp">    
-      <table style='width:100%;' class="table_for_display" ><tr><td>
-        <p>
-          肉沫加盐，中火炒出油脂后加蒜瓣、豆瓣酱，翻炒均匀。
-        </p>
-        <p style="color: coral">
-          Pan fry ground pork (with salt) till oil comes out. Then add garlic, bean paste and mix together.
-        </p>
-        <p>
-          加水下豆腐。加盐、酱油、油泼辣子焖煮。
-        </p>
-        <p style="color: coral">
-          Add water and tofu. Add salt, soy sauce, chili oil. Simmer with lid.
-        </p>
-        <p>
-          开盖收汁。收得差不多了加点醋，勾芡，洒葱，出锅。
-        </p>
-        <p style="color: coral">
-          Open the lid and evaporate excess water. When almost ready, add a bit of vinegar, thicken the soup with starch, sprinkle green onions, and serve.
-        </p>
-      </td></tr></table>
-    </div> 
-
-
-    <div style="text-align: center; width: 100%; font-size: small;">
-      <hr>
-      <a href="../index.html">回主页 Back to Main Page</a>
+        </div>
+        <!----------------------------->
+        <div id="russian_beef" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <img src="russian_beef.jpg" class="center" style="width: 100%">
+        </div>
+        <!----------------------------->
+        <div id="daal" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <img src="DAAL.jpg" class="center" style="width: 100%">
+        </div>
+        <!----------------------------->
+        <div id="steamed_eggs" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <img src="silky_egg.jpg" class="center" style="width: 100%">
+        </div>
+        <!----------------------------->
+        <div id="salmon_rice" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+              1. 蘑菇与米放进电饭锅一起煮，煮完加盐
+            </p>
+            <p style="color: coral;">
+              1. Cook rice and mushroom together in the rice cooker. Add salt when finished
+            </p>
+            <p>
+              2. 煮饭的同时煎三文鱼：先把鱼皮煎到脆，然后可以捣碎了煎。调料用蒜盐、莳萝、一点柠檬汁。
+            </p>
+            <p style="color: coral;">
+              2. While rice is getting cooked, pan fry salmon: First the skin side till crispy, then break into small pieces. Use garlic salt, dill and a sprinkle of lemon juice.
+            </p>
+            <p>
+              3. 组装三文鱼、蘑菇饭、足量葱花。三文鱼煎出的油恰好能使米饭颗粒分明。
+            </p>
+            <p style="color: coral;">
+              3. Stir together salmon, mushroom rice, and enough chopped green onions. The oil produced while pan-frying the salmon can make rice grains separate from each other.
+            </p>
+        </div>
+        <!----------------------------->
+        <div id="butter_fish" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+              1. 鱼两面撒上蒜盐
+            </p>
+            <p style="color: coral;">
+              1. Sprinkle garlic salt to both sides of the fish
+            </p>
+            <p>
+              2. 热锅内放食用油、黄油、蒜泥，下鱼，两面充分混合，煎至金黄。如果中间还没熟，再用小火焖一会儿
+            </p>
+            <p style="color: coral;">
+              2. In a hot pan, put oil, butter, chopped garlic, put in fish, mix both sides properly, pan-fry till golden. If the inside is still raw, put on small flame and close lid for a while.
+            </p>
+            <p>
+              3. 撒柠檬汁，盛出，撒葱
+            </p>
+            <p style="color: coral;">
+              3. Sprinkle lemon juice and green onions
+            </p>
+          </td></tr></table>
+        </div>
+        <!----------------------------->
+        <div id="tofu_fish" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+              1. 鲶鱼两面加盐和胡椒，中火慢煎出油脂。（由于鲶鱼较肥，锅里不用放油）
+            </p>
+            <p style="color: coral;">
+              1. Add some salt & pepper to both sides of catfish. Use medium fire, slowly pan fry till the oil comes out. (No need to put oil in the pan)
+            </p>
+            <p>
+              2. 盛出鲶鱼，锅里放入切块的豆腐。稍煎一会后，再次放入鱼，加水炖煮。稍加盐。
+            </p>
+            <p style="color: coral;">
+              2. Get the fish out, put in soft tofu and just pan fry for a little bit. Put fish back in, add water and bring to boil. Add some salt. 
+            </p>
+            <p>
+              3. 在空碗里放葱花、香菜、胡椒、盐等，盛汤享用。
+            </p>
+            <p style="color: coral;">
+              3. Get an empty bowl and add green onions, cilantro, pepper, salt, etc. Pour the soup in and enjoy!
+            </p>
+          </td></tr></table>
+        </div>
+        <!----------------------------->
+        <div id="mushroom_chicken" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+              青椒+蘑菇+鸡肉+八角+香叶+老抽，加水炖后收汁
+            </p>
+            <p style="color: coral">
+              Green peppers + mushroom + chicken pieces + star anise + bay leaf + dark soy sauce, 
+              add water to just cover the ingredients, simmer for some time, then evaporate excess water.
+          
+            </p>
+        </div>
+        <!----------------------------->
+        <div id="seafood_porridge" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+              虾或scallop等海鲜，加蘑菇和青菜炖粥，加一勺花生酱，加盐和胡椒
+            </p>
+            <p style="color: coral">
+              Use shrimp or scallop, + mushroom and chopped baby bok-choy to make a porridge with rice. Also add one spoon of peanut butter, then salt and pepper.
+            </p>
+          
+        </div> 
+        <!----------------------------->
+        <div id="potato_chicken" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">  
+            <h3>做法一 Method 1</h3>
+            <p>
+              鸡块进行基本调味（料酒、蚝油、蒜粉、辣椒粉、盐、胡椒粉）之后下锅炒变色捞出。
+            </p>
+            <p style="color: coral">
+              Marinate chicken with basic spices (rice wine, oyster sauce, garlic powder, chili powder, salt and pepper).
+              Pan fry till color change, then put it aside for later use.
+            </p>
+            <p>
+              炒土豆，放盐和辣椒粉，随意加点香料（dill, rosemary之类的），加水煮软
+            </p>
+            <p style="color: coral">
+              Pan fry potatos with salt, chili powder and optional dill/rosemary. Add water and boil till soft.
+            </p>
+            <p>
+              放入鸡块焖熟收汁
+            </p>
+            <p style="color: coral">
+              Add chicken and simmer until chicken is fully cooked. Then evaporate excess water.
+            </p>
+            <p>
+              (土豆的主要作用是提供淀粉，让鸡块更嫩)
+            </p>
+            <p style="color: coral">
+              (The main idea is to use the starch from the potatoes to make the chicken taste more tender)
+            </p>
+            
+            <h3>做法二 Method 2</h3>
+            <p>
+                鸡块洗净，与土豆块、胡萝卜块一同放入锅中。选用带脂肪的鸡腿肉，增添汤汁中的胶质。
+              </p>
+              <p style="color: coral">
+                Put chopped chicken, potatos and carrots into the same pot. Use fatty meat from chicken legs to increase the stickiness of the soup.
+              </p>
+              <p>
+                加少量水、料酒、老抽、八角、盐，炖煮1小时左右
+              </p>
+              <p style="color: coral;">
+                Add a little water, rice wine, dark soy sauce, star anise and salt. Cook with lid for around 1 hour.
+              </p>
+              <p>
+                收汁后完成。
+              </p>
+              <p style="color: coral;">
+                Evaporate excessive water and serve.
+              </p>
+        </div>   
+        <!----------------------------->
+        <div id="airfry_wings" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">  
+            <p>
+              腌料：酱油、辣椒粉、蚝油、酒、蜂蜜、蒜粉、胡椒
+            </p>
+            <p style="color: coral">
+              Marinate chicken wings with soy sauce, chili powder, oyster sauce, rice wine, honey, garlic powder and pepper (and optionally salt).
+            </p>
+            <p>
+              放入空气炸锅360度烤20分钟
+            </p>
+            <p style="color: coral;">
+              Air-fry with 360 degrees for 20 minutes
+            </p>
+        </div> 
+        <!----------------------------->
+        <div id="original_curry_chicken" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+              鸡肉尽量切小块，用酱油、淀粉、酒、盐腌一下。（淀粉重要，作用等于嫩肉粉）
+            </p>
+            <p style="color: coral">
+              Cut chicken into small pieces, marinate with soy sauce, starch, rice wine and salt.
+              Starch is important because it can make the meat tender.
+            </p>
+            <p>
+              切出大蒜碎、洋葱碎、番茄碎
+            </p>
+            <p style="color: coral;">
+              Prepare chopped garlic, onions and tomatoes
+            </p>
+            <p>
+              起锅先炒大蒜洋葱，随后鸡肉。基本炒熟后加入番茄。再加入牛奶、希腊酸奶、咖喱粉、辣椒粉、盐。煮好之后撒上柠檬汁出锅。
+            </p>
+            <p style="color: coral;">
+              Pan fry garlic and onions, then add chicken.
+              When chicken is almost fully cooked, add tomatoes, and then milk, yogurt, curry powder, chili powder and salt.
+              Once ready, sprinkle lemon juice as the last step.
+            </p>
+        </div>   
+        <!----------------------------->
+        <div id="mysterious" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')"> 
+            <p>
+              鸡肉加料酒、酒酿、盐腌一腌
+            </p>
+            <p style="color: coral">
+              Marinate chicken with rice wine, fermented rice and salt
+            </p>
+            <p>
+              蒜片+盐和酱油炒白萝卜，随后另起一锅加水煮。
+            </p>
+            <p style="color: coral;">
+              Pan fry radish with salt and soy sauce. Then transfer to another pot and boil with water.
+            </p>
+            <p>
+              炒鸡肉（放盐）和腊肠，然后加入锅中一起煮，放入鹌鹑蛋
+            </p>
+            <p style="color: coral;">
+              Pan fry chicken (with salt) and Chinese sweet sausage. Then add to the radish soup and boil together. 
+              Add boiled and peeled quail eggs too.
+            </p>
+            <p>
+              收汁，调整盐度，加入香菜碎出锅。
+            </p>
+            <p style="color: coral">
+              Evaporate excess water. Adjust the salt level. Add cilantro and serve.
+            </p>
+            <p>
+              注：原型为腌笃鲜。鲜肉->鸡肉。咸肉->腊肠。春笋->白萝卜。
+            </p>
+        </div>     
+        <!----------------------------->
+        <div id="fish_salad" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
+            <p>
+              沙拉以power greens为底，加上蒜盐、柠檬汁、油、蒸鱼豉油，用手揉搓均匀。
+            </p>
+            <p style="color: coral">
+              Use hand to press and mix power greens, garlic salt, lemon juice, oil, and seasoned soy sauce for seafood.
+            </p>
+            <p>
+              再加入切成小块的番茄、少量洋葱丝，以及些许芝士碎，一起摇晃均匀。
+            </p>
+            <p style="color: coral;">
+              Add tomatos cut into small cubes, some shredded onion and shredded cheese. Shake and mix well.
+            </p>
+            <p>
+              取龙利鱼，撒上适量蒜盐，用黄油两面煎熟。
+            </p>
+            <p style="color: coral;">
+              Sprinkle garlic salt onto flonder fillets. Pan fry both sides with butter.
+            </p>
+            <p>
+              把煎好的鱼放在沙拉上即完成~
+            </p>
+            <p style="color: coral">
+              Put cooked fish on top of salad and enjoy~
+            </p>
+        </div> 
+        <!----------------------------->
+        <div id="tomato_fish" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
+            <p>
+              番茄切小块，翻炒出汁后加水、少量酒、少量老干妈豆瓣酱、少量蒸鱼豉油，煮开。
+            </p>
+            <p style="color: coral">
+              Stir fry finely chopped tomatoes until juicy. Add water, a little rice wine, a little bean paste, a little seasoned soy sauce for seafood. Bring to boil. 
+            </p>
+            <p>
+              放入切好片的龙利鱼，焖煮一段时间。最后撒葱出锅。
+            </p>
+            <p style="color: coral;">
+              Add flounder fillets, boil with lid for some time. Once done, add spring onions and serve.
+            </p>
+        </div> 
+        <!----------------------------->
+        <div id="vinegar_napa" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
+            <p>
+              白菜切好后放入热锅翻炒，撒适量蒜盐。
+            </p>
+            <p style="color: coral">
+              Stir fry chopped napa cabbage with garlic salt
+            </p>
+            <p>
+              炒熟后，出锅前放适量醋，翻炒均匀
+            </p>
+            <p style="color: coral;">
+              Once cooked, add the right amount of vinegar, mix well, and serve.
+            </p>
+        </div> 
+        <!----------------------------->
+        <div id="salmon" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
+            <p>
+              选择带皮的厚三文鱼排。鱼皮面抹上蒜盐、胡椒、莳萝；鱼肉面抹上蒜盐和莳萝。
+            </p>
+            <p style="color: coral">
+              Choose salmon steak with skin. On the skin side, sprinkle garlic salt, pepper and dill. On the flesh side, sprinkle garlic salt and dill.
+            </p>
+            <p>
+              先用中高火将鱼皮面煎脆。然后转小火，盖锅盖，慢煎至熟。可以用锅铲切开中间来加速。
+            </p>
+            <p style="color: coral;">
+              First pan-fry the skin till crispy with medium high flame. Then cover with lid and turn to small flame, slowly grill salmon till fully-cooked. To accelerate the process, cut the steak from the middle with spatula.
+            </p>
+            <p>
+              撒柠檬汁出锅。剩下的鱼油可以用来炒一点蔬菜~
+            </p>
+            <p style="color: coral;">
+              Add lemon juice and serve. Use the remaining fish oil to cook some veggies!
+            </p>
+        </div> 
+    
+        <!----------------------------->
+        <div id="steak" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
+            <p>
+              选择薄切的牛排，两面抹上蒜盐、胡椒、莳萝。高火将两面煎熟，以保证中间的肉不老。
+            </p>
+            <p style="color: coral">
+              Choose thin-sliced steak. Add garlic salt, pepper and dill to both sides. Grill both sides with high flame and make sure the middle remains tender.
+            </p>
+        </div> 
+    
+        <!----------------------------->
+        <div id="tofu" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
+            <p>
+              肉沫加盐，中火炒出油脂后加蒜瓣、豆瓣酱，翻炒均匀。
+            </p>
+            <p style="color: coral">
+              Pan fry ground pork (with salt) till oil comes out. Then add garlic, bean paste and mix together.
+            </p>
+            <p>
+              加水下豆腐。加盐、酱油、油泼辣子焖煮。
+            </p>
+            <p style="color: coral">
+              Add water and tofu. Add salt, soy sauce, chili oil. Simmer with lid.
+            </p>
+            <p>
+              开盖收汁。收得差不多了加点醋，勾芡，洒葱，出锅。
+            </p>
+            <p style="color: coral">
+              Open the lid and evaporate excess water. When almost ready, add a bit of vinegar, thicken the soup with starch, sprinkle green onions, and serve.
+            </p>
+        </div> 
     </div>
 
-    <!--------------------->
-    <!--     scripts     -->
-    <!--------------------->
-    <script>
-        /* toggle display */
+	
+    
 
 
-        function display(id){
+
+	<!-- linking javascript -->
+	<script>
+
+        // Highlight active button
+        var btns = document.getElementById("myMenu").getElementsByClassName("ingred");
+        for (var i=0; i<btns.length; i++){
+            btns[i].addEventListener("click", function(){
+                // if the current button is active, just deactivate it
+                if (this.className === "ingred active"){
+                    this.className = "ingred";
+                }
+                // otherwise, need to activate current button and deactivate active button
+                else{
+                    for (var j=0; j<btns.length; j++){
+                        btns[j].className = "ingred";
+                    }
+                    // Active the new button
+                    this.className = "ingred active";
+                }
+            });
+        }
+
+
+        // Functions
+
+        function filter_ingredients() {
+            var input, filter, menu, li, a, i;
+            input = document.getElementById("mySearch");
+            filter = input.value.toUpperCase();
+            menu = document.getElementById("myMenu");
+            li = menu.getElementsByClassName("ingred");
+
+            // Hide group names during searching
+            grp = menu.getElementsByTagName("h4");
+            if(filter){
+                for (i=0; i<grp.length; i++){
+                    grp[i].style.display = "none";
+                }
+            }
+            // Recover afterwards
+            else{
+                for (i=0; i<grp.length; i++){
+                    grp[i].style.display = "";
+                }
+            }
+
+            // Filter results
+            for (i = 0; i < li.length; i++) {
+                if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        function filter_dishes(key, me){
+            var filter, cards;
+            cards = document.getElementsByClassName('cards');
+            filter = key.toLowerCase();
+            // When deselecting, recover all cards
+            if(me.className == "ingred active"){
+                for (i=0; i<cards.length; i++){
+                    cards[i].style.display = "";
+                }
+            }
+            else{
+                for (i=0; i<cards.length; i++){
+                    if (cards[i].textContent.includes(filter)){
+                        cards[i].style.display = "";
+                    }
+                    else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+
+        }
+
+        function show_recipe(id){
           var all_disp = document.getElementsByClassName("disp");
           for (var i=0; i<all_disp.length; i++){
               if(all_disp[i].id != id){
@@ -600,46 +804,56 @@
               }
           }
           var to_disp = document.getElementById(id);
-          // if (to_disp.style.display==="none"){
-              to_disp.style.display = "block";
-          // }
-          // else{
-          //     to_disp.style.display = "none";
-          // }
+          to_disp.style.display = "block";
+
+          
         }
 
 
-        /* Highlight active button */
-        var btns = document.getElementById("myHeader").getElementsByClassName("btn");
+        function shuffle(){
+            var dish_lists = document.getElementsByClassName('dish-list');
+            for(l=0; l< dish_lists.length; l++){
+                var list = dish_lists[l];
+                for (var i = list.children.length; i >= 0; i--) {
+                    list.appendChild(list.children[Math.random() * i | 0]);
+                }
+            }
+        }
 
-        for (var i=0; i<btns.length; i++){
-            btns[i].addEventListener("click", function(){
-
-
-                // if the current button is active, just deactivate it
-                // if (this.className === "btn active"){
-                //     this.className = "btn";
-                // }
-                // otherwise, need to activate current button and deactivate active button
-                // else{
-
-                    for (var j=0; j<btns.length; j++){
-                        btns[j].className = "btn";
+        function get_todays_dish(){
+            var dish_lists = document.getElementsByClassName('dish-list');
+            for(l=0; l< dish_lists.length; l++){
+                var list = dish_lists[l];
+                var dish_no = Math.floor(Math.random() * (list.children.length));
+                for (var i=0; i<list.children.length; i++) {
+                    if (i==dish_no){
+                        list.children[i].style.display = "";
                     }
-                    // Change the current active button to not-active, if any
-                    // var current = document.getElementsByClassName("active");
-                    // current[0].className = "btn";
-                
-                    // Active the new button
-                    this.className = "btn active";
-                // }
-
-
-            });
+                    else{
+                        list.children[i].style.display = "none";
+                    }
+                }
+            }
         }
+
+        function reset(){
+            // deactivate all buttons
+            for (var i=0; i<btns.length; i++){
+                btns[i].className = "ingred";
+            }
+            // display all dishes
+            var dish_lists = document.getElementsByClassName('dish-list');
+            for(l=0; l< dish_lists.length; l++){
+                var list = dish_lists[l];
+                for (var i=0; i<list.children.length; i++) {
+                    list.children[i].style.display = "";
+                }
+            }
+        }
+
+
+
     </script>
-
-
-  </body>
+</body>
 
 </html>
