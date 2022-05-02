@@ -25,6 +25,9 @@
         .right {
             flex: 75%;
             padding: 15px;
+            /* background-color:blanchedalmond;
+            border-radius: 8px;
+            margin: 4px; */
         }
         /* Style the search box */
         #mySearch {
@@ -62,7 +65,8 @@
             border: none;
             outline: none;
             padding: 1px 8px;
-            margin: 2px;
+            margin: auto;
+            margin-block: 2px;
             background-color: #f1f1f1;
             font-size: 15px;
             text-align: center;
@@ -75,20 +79,30 @@
         }
 
         .columns-for-dishes {
-            width: 33%;
+            width: 30%;
             float: left;
+            margin: 1%;
+            text-align: center;
+            
         }
 
         .disp {
             width: 100%;
             height: 100%;
         }
-/* 
-        .table_for_display * {
-            width: 100%; 
-            height: 100%;
-            vertical-align: top;
-        } */
+
+        button {
+          display: inline-block; 
+          margin-inline: 10px;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          padding: 8px 8px;
+          text-align: center;
+          background-color: coral;
+          cursor: pointer;
+        }
+
 
     </style>
 	<title>
@@ -103,7 +117,7 @@
     <div class="row">
         <div class="left" style="background-color:#f1f1f1;">
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style -->
-        <input type="text" id="mySearch" onkeyup="filter_ingredients()" placeholder="选择原料 Search for ingredent.." title="Type in a category">
+        <input type="text" id="mySearch" onkeyup="filter_ingredients()" placeholder="选择原料 Filter ingredents.." title="Type in a category">
         <div id="myMenu">
             <h4 style="width: 100%; display: block;">主食 Carbs</h4>
             <div class="ingred" onclick="filter_dishes('rice',this)">
@@ -190,6 +204,12 @@
             <div class="ingred" onclick="filter_dishes('thousand-eg',this)">
                 皮蛋 Thousand-Year Eggs
             </div>
+            <div class="ingred" onclick="filter_dishes('fruits',this)">
+                水果 Fruits
+            </div>
+            <div class="ingred" onclick="filter_dishes('pita',this)">
+                皮塔饼 Pita
+            </div>
         </div>
     </div>
     
@@ -197,43 +217,43 @@
         <!--------------- filtered results ---------------->
         <div id="filtered_dishes" class="disp">
             <div style="display: block;">
-                <button onclick="shuffle()" style="display: inline-block; margin-inline: 10px;">翻滚吧！Shuffle!</button>
-                <button onclick="get_todays_dish()" style="display: inline-block; margin-inline: 10px;">今日随缘菜谱 Random menu for today ^^</button>
-                <button onclick="reset()" style="display: inline-block; margin-inline: 10px;">重置 Reset</button>
+                <button onclick="shuffle()">翻滚吧！Scramble!</button>
+                <button onclick="get_todays_dish()">今日随缘菜谱 Random menu for today ^^</button>
+                <button onclick="reset()">重置 Reset</button>
             </div>
             <div class="columns-for-dishes">
                 <!----------------------------->
                 <h3>蛋白类 Protein Dishes</h3>
                 <div class="dish-list">
-                    <div class="cards clickable" onclick="show_recipe('russian_beef')" >
+                    <div class="cards clickable protein" onclick="show_recipe('russian_beef')" >
                         <p>俄式炖牛肉 Russian-Style Beef Stew</p>
                         <span style="display: none">beef carrot onion potato</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('steak')" >
+                    <div class="cards clickable protein" onclick="show_recipe('steak')" >
                         <p>简易牛排 Simple Steak</p>
                         <span style="display: none">beef</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('tomato_pork')">
+                    <div class="cards clickable protein veggies" onclick="show_recipe('tomato_pork')">
                         <p>番茄白菜猪肉 Tomato Napa Pork</p>
                         <span style="display: none">tomato napa pork</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein">
                         <p>粉蒸肉 Steamed Pork</p>
                         <span style="display: none">pork potato sweet-po</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('mushroom_chicken')"> 
+                    <div class="cards clickable protein veggies" onclick="show_recipe('mushroom_chicken')"> 
                         <p>卤味蘑菇炖鸡 Mushroom Chicken</p>
                         <span style="display:none;">mushroom pepper chicken</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('potato_chicken')"> 
+                    <div class="cards clickable protein veggies" onclick="show_recipe('potato_chicken')"> 
                         <p>土豆胡萝卜鸡块 Potato Chicken</p>
                         <span style="display:none;">potato carrot chicken</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('airfry_wings')"> 
+                    <div class="cards clickable protein" onclick="show_recipe('airfry_wings')"> 
                         <p>空气炸锅烤鸡翅 Air-Fried Chicken Wings</p>
                         <span style="display:none;">chicken</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('original_curry_chicken')"> 
+                    <div class="cards clickable protein" onclick="show_recipe('original_curry_chicken')"> 
                         <p>原创咖喱鸡 Original Curry Chicken</p>
                         <span style="display:none;">chicken onion tomato potato carrot</span>
                     </div>
@@ -241,63 +261,63 @@
                         <p>迷之菜谱 Mysterious Dish</p>
                         <span style="display:none;"></span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('salmon')"> 
+                    <div class="cards clickable protein" onclick="show_recipe('salmon')"> 
                         <p>香煎三文鱼 Grilled Salmon</p>
                         <span style="display:none;">fish salmon</span>
                     </div>      
-                    <div class="cards clickable" onclick="show_recipe('butter_fish')"> 
+                    <div class="cards clickable protein" onclick="show_recipe('butter_fish')"> 
                         <p>蒜香黄油煎鱼 Butter Garlic Fish</p>
                         <span style="display:none;">fish</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('tomato_fish')"> 
+                    <div class="cards clickable protein veggies" onclick="show_recipe('tomato_fish')"> 
                         <p>番茄龙利鱼 Tomato Fish</p>
                         <span style="display:none;">tomato fish</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('fish_salad')"> 
+                    <div class="cards clickable protein veggies" onclick="show_recipe('fish_salad')"> 
                         <p>煎鱼沙拉 Fish Salad</p>
                         <span style="display:none;">fish greens tomato onion</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('tofu_fish')"> 
+                    <div class="cards clickable protein" onclick="show_recipe('tofu_fish')"> 
                         <p>鲶鱼豆腐汤 Tofu Fish Soup</p>
                         <span style="display:none;">fish tofu</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein">
                         <p>酸菜鱼 Fish with Pickled Cabbage</p>
                         <span style="display: none">fish</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein">
                         <p>料酒蒸鱼 Steamed Fish</p>
                         <span style="display: none">fish</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein">
                         <p>红烧鱼 Braised Fish</p>
                         <span style="display: none">fish</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('daal')"> 
+                    <div class="cards clickable protein veggies" onclick="show_recipe('daal')"> 
                         <p>印度豆子汤 Daal</p>
                         <span style="display:none;">daal tomato onion</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('tofu')"> 
+                    <div class="cards clickable protein" onclick="show_recipe('tofu')"> 
                         <p>肉沫豆腐 Silky Tofu</p>
                         <span style="display:none;">pork tofu</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('steamed_eggs')"> 
+                    <div class="cards clickable protein" onclick="show_recipe('steamed_eggs')"> 
                     <p>水蒸蛋 Steamed Eggs</p>
                     <span style="display:none;">pork beef egg</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein">
                         <p>皮蛋拌豆腐 Thousand-Year Egg and Tofu</p>
                         <span style="display: none">thousand-eg tofu</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein">
                         <p>红烧羊肉 Braised Lamb</p>
                         <span style="display: none">lamb carrot</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein veggies">
                         <p>青椒虾仁滑蛋 Green Pepper Shrimp Egg</p>
                         <span style="display: none">pepper shrimp egg</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards protein">
                         <p>山药排骨汤 Chinese Yam and Pork Soup</p>
                         <span style="display: none">chi-ya pork</span>
                     </div>
@@ -308,21 +328,29 @@
                 <!----------------------------->
                 <h3>蔬菜类 Veggies</h3>
                 <div class="dish-list">
-                    <div class="cards">
+                    <div class="cards veggies">
                         <p>清炒时蔬 Pan-Fried Veggies</p>
                         <span style="display: none">greens bokchoy napa</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('vinegar_napa')">
+                    <div class="cards clickable veggies" onclick="show_recipe('vinegar_napa')">
                         <p>醋溜白菜 Napa with Vinegar</p>
                         <span style="display: none">napa</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards veggies">
                         <p>青椒土豆丝 Green Pepper and Potatoes</p>
                         <span style="display: none">pepper potato</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards veggies">
                         <p>蚝油青菜 Bok-Choy with Oyster Sauce</p>
                         <span style="display: none">bokchoy mushroom</span>
+                    </div>
+                    <div class="cards veggies">
+                        <p>新鲜水果 Fresh Fruits</p>
+                        <span style="display: none">fruits</span>
+                    </div>
+                    <div class="cards veggies">
+                        <p>酸奶水果色拉 Yogurt Fruit Salad</p>
+                        <span style="display: none">fruits</span>
                     </div>
                 </div>
             </div>
@@ -331,25 +359,41 @@
                 <!----------------------------->
                 <h3>主食 Carbs</h3>
                 <div class="dish-list">
-                    <div class="cards">
+                    <div class="cards carbs">
+                        <p>白饭 Plain Rice</p>
+                        <span style="display: none">rice</span>
+                    </div>
+                    <div class="cards carbs">
+                        <p>皮塔饼 Pita</p>
+                        <span style="display: none">pita</span>
+                    </div>
+                    <div class="cards carbs">
                         <p>皮蛋瘦肉粥 Porridge with Thousand-Year Egg</p>
                         <span style="display: none">thousand-eg pork rice</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('salmon_rice')"> 
-                    <p>三文鱼蘑菇饭 Salmon Mushroom Rice</p>
-                    <span style="display:none;">fish salmon mushroom rice</span>
+                    <div class="cards clickable carbs protein" onclick="show_recipe('salmon_rice')"> 
+                        <p>三文鱼蘑菇饭 Salmon Mushroom Rice</p>
+                        <span style="display:none;">fish salmon mushroom rice</span>
                     </div>
-                    <div class="cards clickable" onclick="show_recipe('seafood_porridge')"> 
+                    <div class="cards clickable carbs protein" onclick="show_recipe('seafood_porridge')"> 
                         <p>海鲜粥 Seafood Porridge</p>
                         <span style="display:none;">rice shrimp scallop mushroom bokchoy</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards carbs">
                         <p>红薯饭（粥） Sweet Potato Rice</p>
                         <span style="display: none">sweet-po rice</span>
                     </div>
-                    <div class="cards">
+                    <div class="cards carbs">
                         <p>紫米饭 Black Rice</p>
                         <span style="display: none">rice</span>
+                    </div>
+                    <div class="cards carbs protein veggies">
+                        <p>番茄鸡蛋面 Tomato Egg Noodles</p>
+                        <span style="display: none">noodle tomato egg shrimp scallop</span>
+                    </div>
+                    <div class="cards carbs protein veggies">
+                        <p>番茄牛肉米粉 Tomato Beef Rice-Noodles</p>
+                        <span style="display: none">ri-no tomato beef</span>
                     </div>
                 </div>
             </div>
@@ -785,7 +829,7 @@
             }
             else{
                 for (i=0; i<cards.length; i++){
-                    if (cards[i].textContent.includes(filter)){
+                    if (cards[i].getElementsByTagName('span')[0].innerHTML.includes(filter)){
                         cards[i].style.display = "";
                     }
                     else {
@@ -821,19 +865,50 @@
         }
 
         function get_todays_dish(){
-            var dish_lists = document.getElementsByClassName('dish-list');
-            for(l=0; l< dish_lists.length; l++){
-                var list = dish_lists[l];
-                var dish_no = Math.floor(Math.random() * (list.children.length));
-                for (var i=0; i<list.children.length; i++) {
-                    if (i==dish_no){
-                        list.children[i].style.display = "";
-                    }
-                    else{
-                        list.children[i].style.display = "none";
-                    }
-                }
+            var cards = document.getElementsByClassName('cards');
+            var p=0, v=0, c=0;
+            var chosen_dishes=[];
+
+            // Keep getting dishes until we satisfy protein, veggies & carbs requirements
+            while (!((p>0) && (v>0) && (c>0))){
+              var dish_no = Math.floor(Math.random() * (cards.length));
+              var has_p = cards[dish_no].classList.contains("protein");
+              var has_v = cards[dish_no].classList.contains("veggies");
+              var has_c = cards[dish_no].classList.contains("carbs");
+
+              // If some dishes don't have any labels, skip them
+              if ((!has_p) && (!has_v) && (!has_c)){
+                continue;
+              }
+
+              // Ctrl Shift J to open console in Chrome
+              // console.log(cards[dish_no]);
+
+              if (has_p){
+                if (p>0) {continue;}  // If already satisfied, don't add the dish
+                p++;
+              }
+              if (has_v){
+                if (v>0) {continue;}  // If already satisfied, don't add the dish
+                v++;
+              }
+              if (has_c){
+                if (c>0) {continue;}  // If already satisfied, don't add the dish
+                c++;
+              }
+
+              // Add the dish to the queue
+              chosen_dishes.push(dish_no);
             }
+
+            // Display the chosen dishes
+            for (i=0; i<cards.length; i++){
+              cards[i].style.display = "none";
+            }
+            for (i=0; i<chosen_dishes.length; i++){
+              cards[chosen_dishes[i]].style.display = "";
+            }
+
         }
 
         function reset(){
