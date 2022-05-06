@@ -117,7 +117,7 @@
     <div class="row">
         <div class="left" style="background-color:#f1f1f1;">
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style -->
-        <input type="text" id="mySearch" onkeyup="filter_ingredients()" placeholder="选择原料 Filter ingredents.." title="Type in a category">
+        <input type="text" id="mySearch" onkeyup="filter_ingredients()" placeholder="筛选原料 Filter ingredents.." title="Type in a category">
         <div id="myMenu">
             <h4 style="width: 100%; display: block;">主食 Carbs</h4>
             <div class="ingred" onclick="filter_dishes('rice',this)">
@@ -128,6 +128,9 @@
             </div>
             <div class="ingred" onclick="filter_dishes('ri-no',this)">
                 米粉 Rice Noodle
+            </div>
+            <div class="ingred" onclick="filter_dishes('flour',this)">
+                面制品 Flour
             </div>
 
             <h4 style="width: 100%; display: block;">蛋白质来源 Protein</h4>
@@ -196,6 +199,12 @@
             <div class="ingred" onclick="filter_dishes('mushroom',this)">
                 蘑菇 Mushroom
             </div>
+            <div class="ingred" onclick="filter_dishes('pea',this)">
+                青豆 Peas
+            </div>
+            <div class="ingred" onclick="filter_dishes('okra',this)">
+                秋葵 Okra
+            </div>
 
             <h4 style="width: 100%; display: block;">稀有食材 Misc</h4>
             <div class="ingred" onclick="filter_dishes('scallop',this)">
@@ -209,6 +218,9 @@
             </div>
             <div class="ingred" onclick="filter_dishes('pita',this)">
                 皮塔饼 Pita
+            </div>
+            <div class="ingred" onclick="filter_dishes('glass',this)">
+                粉丝 Glass Noodles
             </div>
         </div>
     </div>
@@ -241,7 +253,7 @@
                         <p>粉蒸肉 Steamed Pork</p>
                         <span style="display: none">pork potato sweet-po</span>
                     </div>
-                    <div class="cards clickable protein veggies" onclick="show_recipe('mushroom_chicken')"> 
+                    <div class="cards clickable protein veggies" title="青椒+蘑菇+鸡肉+八角+香叶+老抽，加水炖后收汁&#013;Green peppers + mushroom + chicken + star anise + bay leaf + dark soy sauce, simmer then evaporate excess water."> 
                         <p>卤味蘑菇炖鸡 Mushroom Chicken</p>
                         <span style="display:none;">mushroom pepper chicken</span>
                     </div>
@@ -249,12 +261,16 @@
                         <p>土豆胡萝卜鸡块 Potato Chicken</p>
                         <span style="display:none;">potato carrot chicken</span>
                     </div>
-                    <div class="cards clickable protein" onclick="show_recipe('airfry_wings')"> 
+                    <div class="cards clickable protein" title="腌料：酱油、辣椒粉、蚝油、酒、蜂蜜、蒜粉、胡椒。放入空气炸锅360度烤20分钟。&#013;Marinate chicken wings with soy sauce, chili powder, oyster sauce, rice wine, honey, garlic powder and pepper (and optionally salt). Air-fry with 360 degrees for 20 minutes."> 
                         <p>空气炸锅烤鸡翅 Air-Fried Chicken Wings</p>
                         <span style="display:none;">chicken</span>
                     </div>
                     <div class="cards clickable protein" onclick="show_recipe('original_curry_chicken')"> 
                         <p>原创咖喱鸡 Original Curry Chicken</p>
+                        <span style="display:none;">chicken onion tomato potato carrot</span>
+                    </div>
+                    <div class="cards protein"> 
+                        <p>咖喱鸡（咖喱块版）Japanese Curry Chicken</p>
                         <span style="display:none;">chicken onion tomato potato carrot</span>
                     </div>
                     <div class="cards clickable" onclick="show_recipe('mysterious')"> 
@@ -264,7 +280,11 @@
                     <div class="cards clickable protein" onclick="show_recipe('salmon')"> 
                         <p>香煎三文鱼 Grilled Salmon</p>
                         <span style="display:none;">fish salmon</span>
-                    </div>      
+                    </div>     
+                    <div class="cards clickable protein" onclick="show_recipe('lohikeitto')"> 
+                        <p>芬兰三文鱼汤 Lohikeitto</p>
+                        <span style="display:none;">fish salmon carrot potato onion</span>
+                    </div>    
                     <div class="cards clickable protein" onclick="show_recipe('butter_fish')"> 
                         <p>蒜香黄油煎鱼 Butter Garlic Fish</p>
                         <span style="display:none;">fish</span>
@@ -302,8 +322,8 @@
                         <span style="display:none;">pork tofu</span>
                     </div>
                     <div class="cards clickable protein" onclick="show_recipe('steamed_eggs')"> 
-                    <p>水蒸蛋 Steamed Eggs</p>
-                    <span style="display:none;">pork beef egg</span>
+                        <p>水蒸蛋 Steamed Eggs</p>
+                        <span style="display:none;">pork beef egg</span>
                     </div>
                     <div class="cards protein">
                         <p>皮蛋拌豆腐 Thousand-Year Egg and Tofu</p>
@@ -321,6 +341,18 @@
                         <p>山药排骨汤 Chinese Yam and Pork Soup</p>
                         <span style="display: none">chi-ya pork</span>
                     </div>
+                    <div class="cards protein">
+                        <p>咖喱牛肉粉丝汤 Turmeric Beef Glass-Noodle Soup</p>
+                        <span style="display: none">glass beef</span>
+                    </div>
+                    <div class="cards protein">
+                        <p>清炒虾仁 Simple Pan-Fried Shrimp</p>
+                        <span style="display: none">shrimp</span>
+                    </div>
+                    <div class="cards clickable protein" onclick="show_recipe('fried_tofu')">
+                        <p>煎豆腐 Fried Tofu</p>
+                        <span style="display: none">tofu</span>
+                    </div>
                 </div>
             </div>
 
@@ -332,7 +364,7 @@
                         <p>清炒时蔬 Pan-Fried Veggies</p>
                         <span style="display: none">greens bokchoy napa</span>
                     </div>
-                    <div class="cards clickable veggies" onclick="show_recipe('vinegar_napa')">
+                    <div class="cards clickable veggies" title="加蒜盐翻炒。出锅前撒适量醋，翻炒均匀。&#013;Pan-fry with garlic salt. Add vinegar when it is almost ready. Mix well and serve.">
                         <p>醋溜白菜 Napa with Vinegar</p>
                         <span style="display: none">napa</span>
                     </div>
@@ -352,6 +384,10 @@
                         <p>酸奶水果色拉 Yogurt Fruit Salad</p>
                         <span style="display: none">fruits</span>
                     </div>
+                    <div class="cards clickable veggies" title="注意秋葵要先用水煮，然后再切片与蘑菇肉丝一起炒。&#013;Note: Boil the okra before cutting it and pan-frying it with mushroom and ground pork.">
+                        <p>秋葵蘑菇炒肉丝 Okra Mushroom Dish</p>
+                        <span style="display: none">okra mushroom pork</span>
+                    </div>
                 </div>
             </div>
 
@@ -362,6 +398,10 @@
                     <div class="cards carbs">
                         <p>白饭 Plain Rice</p>
                         <span style="display: none">rice</span>
+                    </div>
+                    <div class="cards carbs protein">
+                        <p>蛋炒饭 Egg Fried Rice</p>
+                        <span style="display: none">egg rice mushroom pea</span>
                     </div>
                     <div class="cards carbs">
                         <p>皮塔饼 Pita</p>
@@ -375,12 +415,12 @@
                         <p>三文鱼蘑菇饭 Salmon Mushroom Rice</p>
                         <span style="display:none;">fish salmon mushroom rice</span>
                     </div>
-                    <div class="cards clickable carbs protein" onclick="show_recipe('seafood_porridge')"> 
+                    <div class="cards clickable carbs protein" title="虾或鲜贝等海鲜，加蘑菇和青菜炖粥，加一勺花生酱，加盐和胡椒&#013;Shrimp, scallop, mushroom and bok-choy in porridge. Add peanut butter, salt and pepper."> 
                         <p>海鲜粥 Seafood Porridge</p>
                         <span style="display:none;">rice shrimp scallop mushroom bokchoy</span>
                     </div>
                     <div class="cards carbs">
-                        <p>红薯饭（粥） Sweet Potato Rice</p>
+                        <p>红薯饭/粥 Sweet Potato Rice/Porridge</p>
                         <span style="display: none">sweet-po rice</span>
                     </div>
                     <div class="cards carbs">
@@ -394,6 +434,14 @@
                     <div class="cards carbs protein veggies">
                         <p>番茄牛肉米粉 Tomato Beef Rice-Noodles</p>
                         <span style="display: none">ri-no tomato beef</span>
+                    </div>
+                    <div class="cards carbs">
+                        <p>自制鸡蛋饼 Homemade Egg Pancake</p>
+                        <span style="display: none">egg flour</span>
+                    </div>
+                    <div class="cards clickable carbs" onclick="show_recipe('lemon_rice')">
+                        <p>柠檬饭 Lemon Rice</p>
+                        <span style="display: none">rice fruits</span>
                     </div>
                 </div>
             </div>
@@ -504,27 +552,7 @@
             </p>
           </td></tr></table>
         </div>
-        <!----------------------------->
-        <div id="mushroom_chicken" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
-            <p>
-              青椒+蘑菇+鸡肉+八角+香叶+老抽，加水炖后收汁
-            </p>
-            <p style="color: coral">
-              Green peppers + mushroom + chicken pieces + star anise + bay leaf + dark soy sauce, 
-              add water to just cover the ingredients, simmer for some time, then evaporate excess water.
-          
-            </p>
-        </div>
-        <!----------------------------->
-        <div id="seafood_porridge" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
-            <p>
-              虾或scallop等海鲜，加蘑菇和青菜炖粥，加一勺花生酱，加盐和胡椒
-            </p>
-            <p style="color: coral">
-              Use shrimp or scallop, + mushroom and chopped baby bok-choy to make a porridge with rice. Also add one spoon of peanut butter, then salt and pepper.
-            </p>
-          
-        </div> 
+
         <!----------------------------->
         <div id="potato_chicken" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">  
             <h3>做法一 Method 1</h3>
@@ -574,21 +602,7 @@
                 Evaporate excessive water and serve.
               </p>
         </div>   
-        <!----------------------------->
-        <div id="airfry_wings" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">  
-            <p>
-              腌料：酱油、辣椒粉、蚝油、酒、蜂蜜、蒜粉、胡椒
-            </p>
-            <p style="color: coral">
-              Marinate chicken wings with soy sauce, chili powder, oyster sauce, rice wine, honey, garlic powder and pepper (and optionally salt).
-            </p>
-            <p>
-              放入空气炸锅360度烤20分钟
-            </p>
-            <p style="color: coral;">
-              Air-fry with 360 degrees for 20 minutes
-            </p>
-        </div> 
+
         <!----------------------------->
         <div id="original_curry_chicken" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
             <p>
@@ -687,21 +701,6 @@
             </p>
         </div> 
         <!----------------------------->
-        <div id="vinegar_napa" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
-            <p>
-              白菜切好后放入热锅翻炒，撒适量蒜盐。
-            </p>
-            <p style="color: coral">
-              Stir fry chopped napa cabbage with garlic salt
-            </p>
-            <p>
-              炒熟后，出锅前放适量醋，翻炒均匀
-            </p>
-            <p style="color: coral;">
-              Once cooked, add the right amount of vinegar, mix well, and serve.
-            </p>
-        </div> 
-        <!----------------------------->
         <div id="salmon" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
             <p>
               选择带皮的厚三文鱼排。鱼皮面抹上蒜盐、胡椒、莳萝；鱼肉面抹上蒜盐和莳萝。
@@ -754,6 +753,57 @@
               Open the lid and evaporate excess water. When almost ready, add a bit of vinegar, thicken the soup with starch, sprinkle green onions, and serve.
             </p>
         </div> 
+        
+        <!----------------------------->
+        <div id="lohikeitto" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">    
+          <p>
+            黄油、胡萝卜、土豆、洋葱或大葱，入锅翻炒
+          </p>
+          <p style="color: coral">
+            Pan fry butter, carrots, potatos, and onions (or leek) 
+          </p>
+          <p>
+            加入牛奶焖煮（替代水和淡奶油），煮软后加三文鱼块
+          </p>
+          <p style="color: coral">
+            Add milk (as replacement of water + cream) and simmer. When ingredients become soft enough, add salmon.
+          </p>
+          <p>
+            最后加入盐、胡椒和莳萝上桌~
+          </p>
+          <p style="color: coral">
+            Add salt, pepper and dill. Serve!
+          </p>
+        </div>         
+        <div id="lemon_rice" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+            1. 先用刨子刨一些柠檬皮到米饭里。然后将柠檬去蒂切成4块放进电饭煲。放芥菜籽、小豆蔻、足够的盐。开始煮饭。
+            </p>
+            <p style="color: coral;">
+            1. Peel some lemon skin into the rice. Then cut the lemon into 4 pieces and put into the rice cooker. Also put mustard seeds, cardamom and enough salt. Start to cook the rice.
+            </p>
+            <p>
+            2. 饭煮好后倒入炒锅中炒一段时间，用高温去除柠檬和芥菜籽的苦味。同时撒上姜黄粉上色。可以尝一尝柠檬皮，直到没有苦味即可盛出。
+            </p>
+            <p style="color: coral;">
+            2. Once rice is cooked, pour into a frying pan. Use the high temperature to remove the bitterness of lemon and mustard seeds. At the same time, add tumeric powder to color the rice. Taste the lemon skin - once it is no longer bitter, food is ready to serve.
+            </p>
+
+        </div>
+        <div id="fried_tofu" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+            <p>
+            1. 豆腐切片放入锅中，中小火煎至两面金黄。
+            </p>
+            <p style="color: coral;">
+            1. Pan-fry tofu with medium flame until both sides turn golden.
+            </p>
+            <p>
+            2. 放入葱段，倒入酱汁（酱油、蚝油、黑胡椒、盐加水调开）煮一下，即可出锅。
+            </p>
+            <p style="color: coral;">
+            2. Add spring onions. Add sauce made from soy sauce, oyster sauce, pepper, salt and water. Boil the tofu and then serve.
+            </p>
+        </div>
     </div>
 
 	
