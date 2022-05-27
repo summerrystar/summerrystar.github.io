@@ -205,10 +205,16 @@
             <div class="ingred" onclick="filter_dishes('okra',this)">
                 秋葵 Okra
             </div>
+            <div class="ingred" onclick="filter_dishes('celery',this)">
+                芹菜 Celery
+            </div>
 
             <h4 style="width: 100%; display: block;">稀有食材 Misc</h4>
             <div class="ingred" onclick="filter_dishes('scallop',this)">
                 鲜贝 Scallop
+            </div>
+            <div class="ingred" onclick="filter_dishes('mussel',this)">
+                贻贝 Mussel
             </div>
             <div class="ingred" onclick="filter_dishes('thousand-eg',this)">
                 皮蛋 Thousand-Year Eggs
@@ -388,6 +394,10 @@
                         <p>秋葵蘑菇炒肉丝 Okra Mushroom Dish</p>
                         <span style="display: none">okra mushroom pork</span>
                     </div>
+                    <div class="cards clickable veggies" onclick="show_recipe('celery_pork')">
+                        <p>芹菜肉丝 Celery and Ground Pork</p>
+                        <span style="display: none">celery pork</span>
+                    </div>
                 </div>
             </div>
 
@@ -442,6 +452,10 @@
                     <div class="cards clickable carbs" onclick="show_recipe('lemon_rice')">
                         <p>柠檬饭 Lemon Rice</p>
                         <span style="display: none">rice fruits</span>
+                    </div>
+                    <div class="cards clickable carbs protein veggies" onclick="show_recipe('seafood_udon')">
+                        <p>海鲜乌冬 Seafood Udon</p>
+                        <span style="display: none">noodle fish shrimp scallop mussel onion tomato</span>
                     </div>
                 </div>
             </div>
@@ -804,9 +818,49 @@
             2. Add spring onions. Add sauce made from soy sauce, oyster sauce, pepper, salt and water. Boil the tofu and then serve.
             </p>
         </div>
+        
+        <div id="seafood_udon" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+          <p>
+            <b>汤面做法</b> 
+            番茄为汤底，加入洋葱、海鲜和乌冬面。
+          </p>
+
+          <p style="color: coral;">
+            <b>Method with Soup</b> 
+            Use tomato as soup base, cook with onions, seafood and udon noodles.
+          </p>
+
+          <p>
+            <b>拌面做法</b> 
+            乌冬面用麻酱拌好。海鲜、煎蛋、蔬菜为浇头。
+          </p>
+
+          <p style="color: coral;">
+            <b>Method without Soup</b> 
+            Mix sesame paste to udon noodles. Serve with seafood, fried egg and veggies on top.
+          </p>
+        </div>
+        <div id="celery_pork" style="display: none;" class="disp" onclick="show_recipe('filtered_dishes')">
+          <p>
+            肉糜中加入一点酱油、酒、盐拌匀。与蒜末一起炒至变色出油后盛出。
+          </p>
+
+          <p style="color: coral;">
+            Mix ground pork with a bit of soy sauce, rice wine and salt. Pan-fry with minced garlic until the color changes. Remove from pan.
+          </p>
+
+          <p>
+            用剩下的油炒芹菜，加一点豆豉酱。加一点水略微焖一下后，和肉沫混合均匀。
+          </p>
+
+          <p style="color: coral;">
+            Pan-fry celery with the oil remaining in pan. Add a bit bean paste. Add some water to thoroughly cook the celery. Then mix well with ground pork.
+          </p>
+        </div>
     </div>
 
-	
+
+  </div>
     
 
 
