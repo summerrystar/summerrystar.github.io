@@ -192,6 +192,7 @@
             <div class="ingred" onclick="filter_dishes('pea',this)">青豆 Peas</div>
             <div class="ingred" onclick="filter_dishes('okra',this)">秋葵 Okra</div>
             <div class="ingred" onclick="filter_dishes('celery',this)">芹菜 Celery</div>
+            <div class="ingred" onclick="filter_dishes('eggplant',this)">茄子 Eggplant</div>
 
             <h4 style="width: 100%; display: block;">稀有食材 Misc</h4>
             <div class="ingred" onclick="filter_dishes('scallop',this)">鲜贝 Scallop</div>
@@ -312,7 +313,7 @@
               <a class="protein" href='#modal_tofu'> 
                 <div style="float: right; color: coral;">&#128712;</div>
                   <p>肉沫豆腐 Silky Tofu</p>
-                  <span style="display:none;">pork tofu</span>
+                  <span style="display:none;">pork tofu bokchoy</span>
               </a>
               <a class="protein" href='#modal_steamed_eggs'> 
                   <div style="float: right; color: coral;">&#128712;</div>
@@ -388,6 +389,11 @@
                     <p>芹菜肉丝 Celery and Ground Pork</p>
                     <span style="display: none">celery pork</span>
                 </a>
+                <a class="veggies protein" href='#modal_eggplant_pork'>
+                    <div style="float: right; color: coral;">&#128712;</div>
+                    <p>茄子肉沫 Eggplant and Ground Pork</p>
+                    <span style="display: none">eggplant pork</span>
+                </a>
             </div>
         </div>
 
@@ -446,9 +452,14 @@
                     <span style="display: none">rice fruits</span>
                 </a>
                 <a class="carbs protein veggies" href='#modal_seafood_udon'>
-                    <div style="float: right; color: coral;">&#128712;</div>
+                    <div style="float: right; color: coral;">&#128269;</div>
                     <p>海鲜乌冬 Seafood Udon</p>
                     <span style="display: none">noodle fish shrimp scallop mussel onion tomato</span>
+                </a>
+                <a class="carbs protein veggies" href='#modal_seafood_pasta'>
+                    <div style="float: right; color: coral;">&#128269;</div>
+                    <p>奶油蘑菇海鲜意面 Creamy Mushroom Seafood Pasta</p>
+                    <span style="display: none">noodle fish salmon mussel mushroom</span>
                 </a>
             </div>
         </div>
@@ -822,7 +833,7 @@
     <a class="modal_close" href="#">
       <span>&times;</span>
     </a>
-    <div class="modal_content">  
+    <div class="modal_content">
       <p>
         肉沫加盐，中火炒出油脂后加蒜瓣、豆瓣酱，翻炒均匀。
       </p>
@@ -840,6 +851,14 @@
       </p>
       <p style="color: coral">
         Open the lid and evaporate excess water. When almost ready, add a bit of vinegar, thicken the soup with starch, sprinkle green onions, and serve.
+      </p>
+      
+      <h3>加青菜的做法 Method with Bok-Choy:</h3>
+      <p>
+        加青菜，不放油泼辣子和醋，不勾芡就行。
+      </p>
+      <p style="color: coral">
+        +(bok-choy) -(chili oil, vinegar, starch)
       </p>
     </div>
   </div> 
@@ -1018,159 +1037,205 @@
     </div>
   </div>
 
+  <div id="modal_eggplant_pork">
+    <a class="modal_close" href="#">
+      <span>&times;</span>
+    </a>
+    <div class="modal_content">
+      <p>
+        注意茄子加水煮软，加蒜蓉、豆瓣酱，加一点醋。
+      </p>
+
+      <p style="color: coral;">
+        Remember to add water to boil the eggplants till soft. Add minced garlic and bean paste. Hint with vinegar.
+      </p>
+
+    </div>
+  </div>
+
+  <div id="modal_seafood_pasta">
+    <a class="modal_close" href="#">
+      <span>&times;</span>
+    </a>
+    <div class="modal_content">
+      <p>
+        先煎三文鱼至皮脆，捣碎后加入切成薄片的蘑菇和贻贝肉。
+      </p>
+      <p style="color: coral;">
+        Pan fry salmon till the skin gets crispy. Crush the salmon steak, add thin-sliced mushroom and mussel meat.
+      </p>
+
+      <p>
+        加入牛奶，开盖煮沸至汤汁变得黏稠。
+      </p>
+      <p style="color: coral;">
+        Add some milk and boil till the base gets thickened.
+      </p>
+
+
+      <p>
+        和煮好的意面混合，点缀葱花或其他香料。
+      </p>
+      <p style="color: coral;">
+        Mix with boiled pasta (I used Angel Hair). Decorate with minced green onion or other spices.
+      </p>
+
+    </div>
+  </div>
+
 
   <!----------------------------------------------------------->
 	<!-------------------- linking javascript ------------------->
   <!----------------------------------------------------------->
 	<script>
 
-        // Highlight active button
-        var btns = document.getElementById("myMenu").getElementsByClassName("ingred");
-        for (var i=0; i<btns.length; i++){
-            btns[i].addEventListener("click", function(){
-                // if the current button is active, just deactivate it
-                if (this.className === "ingred active"){
-                    this.className = "ingred";
-                }
-                // otherwise, need to activate current button and deactivate active button
-                else{
-                    for (var j=0; j<btns.length; j++){
-                        btns[j].className = "ingred";
-                    }
-                    // Active the new button
-                    this.className = "ingred active";
-                }
-            });
-        }
-
-
-        // Ingredient filter search bar
-        function filter_ingredients() {
-            var input, filter, menu, li, a, i;
-            input = document.getElementById("mySearch");
-            filter = input.value.toUpperCase();
-            menu = document.getElementById("myMenu");
-            li = menu.getElementsByClassName("ingred");
-
-            // Hide group names during searching
-            grp = menu.getElementsByTagName("h4");
-            if(filter){
-                for (i=0; i<grp.length; i++){
-                    grp[i].style.display = "none";
-                }
-            }
-            // Recover afterwards
-            else{
-                for (i=0; i<grp.length; i++){
-                    grp[i].style.display = "";
-                }
-            }
-
-            // Filter results
-            for (i = 0; i < li.length; i++) {
-                if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
-
-        // Filter dishes by selected ingredient
-        function filter_dishes(key, me){
-            var filter, cards;
-            cards = document.getElementsByTagName('a');
-            filter = key.toLowerCase();
-            // When deselecting, recover all cards
-            if(me.className == "ingred active"){
-                for (i=0; i<cards.length; i++){
-                    cards[i].style.display = "";
-                }
-            }
-            else{
-                for (i=0; i<cards.length; i++){
-                    if (cards[i].getElementsByTagName('span')[0].innerHTML.includes(filter)){
-                        cards[i].style.display = "";
-                    }
-                    else {
-                        cards[i].style.display = "none";
-                    }
-                }
-            }
-
-        }
-
-        function shuffle(){
-            var dish_lists = document.getElementsByClassName('dish-list');
-            for(l=0; l< dish_lists.length; l++){
-                var list = dish_lists[l];
-                for (var i = list.children.length; i >= 0; i--) {
-                    list.appendChild(list.children[Math.random() * i | 0]);
-                }
-            }
-        }
-
-        function get_todays_dish(){
-            var cards = document.getElementsByTagName('a');
-            var p=0, v=0, c=0;
-            var chosen_dishes=[];
-
-            // Keep getting dishes until we satisfy protein, veggies & carbs requirements
-            while (!((p>0) && (v>0) && (c>0))){
-              var dish_no = Math.floor(Math.random() * (cards.length));
-              var has_p = cards[dish_no].classList.contains("protein");
-              var has_v = cards[dish_no].classList.contains("veggies");
-              var has_c = cards[dish_no].classList.contains("carbs");
-
-              // If some dishes don't have any labels, skip them
-              if ((!has_p) && (!has_v) && (!has_c)){
-                continue;
+      // Highlight active button
+      var btns = document.getElementById("myMenu").getElementsByClassName("ingred");
+      for (var i=0; i<btns.length; i++){
+          btns[i].addEventListener("click", function(){
+              // if the current button is active, just deactivate it
+              if (this.className === "ingred active"){
+                  this.className = "ingred";
               }
-
-              // Debug: Ctrl Shift J to open console in Chrome
-              // console.log(cards[dish_no]);
-
-              if (has_p){
-                if (p>0) {continue;}  // If already satisfied, don't add the dish
-                p++;
+              // otherwise, need to activate current button and deactivate active button
+              else{
+                  for (var j=0; j<btns.length; j++){
+                      btns[j].className = "ingred";
+                  }
+                  // Active the new button
+                  this.className = "ingred active";
               }
-              if (has_v){
-                if (v>0) {continue;}  // If already satisfied, don't add the dish
-                v++;
+          });
+      }
+
+
+      // Ingredient filter search bar
+      function filter_ingredients() {
+          var input, filter, menu, li, a, i;
+          input = document.getElementById("mySearch");
+          filter = input.value.toUpperCase();
+          menu = document.getElementById("myMenu");
+          li = menu.getElementsByClassName("ingred");
+
+          // Hide group names during searching
+          grp = menu.getElementsByTagName("h4");
+          if(filter){
+              for (i=0; i<grp.length; i++){
+                  grp[i].style.display = "none";
               }
-              if (has_c){
-                if (c>0) {continue;}  // If already satisfied, don't add the dish
-                c++;
+          }
+          // Recover afterwards
+          else{
+              for (i=0; i<grp.length; i++){
+                  grp[i].style.display = "";
               }
+          }
 
-              // Add the dish to the queue
-              chosen_dishes.push(dish_no);
+          // Filter results
+          for (i = 0; i < li.length; i++) {
+              if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+              } else {
+                  li[i].style.display = "none";
+              }
+          }
+      }
+
+      // Filter dishes by selected ingredient
+      function filter_dishes(key, me){
+          var filter, cards;
+          cards = document.getElementsByClassName('right')[0].getElementsByTagName('a');
+          filter = key.toLowerCase();
+          // When deselecting, recover all cards
+          if(me.className == "ingred active"){
+              for (i=0; i<cards.length; i++){
+                  cards[i].style.display = "";
+              }
+          }
+          else{
+              for (i=0; i<cards.length; i++){
+                  if (cards[i].getElementsByTagName('span')[0].innerHTML.includes(filter)){
+                      cards[i].style.display = "";
+                  }
+                  else {
+                      cards[i].style.display = "none";
+                  }
+              }
+          }
+
+      }
+
+      function shuffle(){
+          var dish_lists = document.getElementsByClassName('dish-list');
+          for(l=0; l< dish_lists.length; l++){
+              var list = dish_lists[l];
+              for (var i = list.children.length; i >= 0; i--) {
+                  list.appendChild(list.children[Math.random() * i | 0]);
+              }
+          }
+      }
+
+      function get_todays_dish(){
+          var cards = document.getElementsByTagName('a');
+          var p=0, v=0, c=0;
+          var chosen_dishes=[];
+
+          // Keep getting dishes until we satisfy protein, veggies & carbs requirements
+          while (!((p>0) && (v>0) && (c>0))){
+            var dish_no = Math.floor(Math.random() * (cards.length));
+            var has_p = cards[dish_no].classList.contains("protein");
+            var has_v = cards[dish_no].classList.contains("veggies");
+            var has_c = cards[dish_no].classList.contains("carbs");
+
+            // If some dishes don't have any labels, skip them
+            if ((!has_p) && (!has_v) && (!has_c)){
+              continue;
             }
 
-            // Display the chosen dishes
-            for (i=0; i<cards.length; i++){
-              cards[i].style.display = "none";
+            // Debug: Ctrl Shift J to open console in Chrome
+            // console.log(cards[dish_no]);
+
+            if (has_p){
+              if (p>0) {continue;}  // If already satisfied, don't add the dish
+              p++;
             }
-            for (i=0; i<chosen_dishes.length; i++){
-              cards[chosen_dishes[i]].style.display = "";
+            if (has_v){
+              if (v>0) {continue;}  // If already satisfied, don't add the dish
+              v++;
+            }
+            if (has_c){
+              if (c>0) {continue;}  // If already satisfied, don't add the dish
+              c++;
             }
 
-        }
+            // Add the dish to the queue
+            chosen_dishes.push(dish_no);
+          }
 
-        function reset(){
-            // deactivate all buttons
-            for (var i=0; i<btns.length; i++){
-                btns[i].className = "ingred";
-            }
-            // display all dishes
-            var dish_lists = document.getElementsByClassName('dish-list');
-            for(l=0; l< dish_lists.length; l++){
-                var list = dish_lists[l];
-                for (var i=0; i<list.children.length; i++) {
-                    list.children[i].style.display = "";
-                }
-            }
-        }
+          // Display the chosen dishes
+          for (i=0; i<cards.length; i++){
+            cards[i].style.display = "none";
+          }
+          for (i=0; i<chosen_dishes.length; i++){
+            cards[chosen_dishes[i]].style.display = "";
+          }
+
+      }
+
+      function reset(){
+          // deactivate all buttons
+          for (var i=0; i<btns.length; i++){
+              btns[i].className = "ingred";
+          }
+          // display all dishes
+          var dish_lists = document.getElementsByClassName('dish-list');
+          for(l=0; l< dish_lists.length; l++){
+              var list = dish_lists[l];
+              for (var i=0; i<list.children.length; i++) {
+                  list.children[i].style.display = "";
+              }
+          }
+      }
 
 
 
