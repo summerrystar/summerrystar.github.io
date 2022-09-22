@@ -176,13 +176,14 @@
             <div class="ingred" onclick="filter_dishes('egg',this)">鸡蛋 Eggs</div>
             <div class="ingred" onclick="filter_dishes('tofu',this)">豆腐 Tofu</div>
             <div class="ingred" onclick="filter_dishes('daal',this)">印度豆子 Daal</div>
+            <div class="ingred" onclick="filter_dishes('turkey',this)">火鸡肉 Turkey</div>
 
             <h4 style="width: 100%; display: block;">蔬菜 Veggies</h4>
             <div class="ingred" onclick="filter_dishes('bokchoy',this)">青菜 Bok-Choy</div>
             <div class="ingred" onclick="filter_dishes('napa',this)">白菜 Napa</div>
             <div class="ingred" onclick="filter_dishes('greens',this)">绿叶菜 Greens</div>
             <div class="ingred" onclick="filter_dishes('tomato',this)">番茄 Tomatoes</div>
-            <div class="ingred" onclick="filter_dishes('pepper',this)">青椒 Green Pepper</div>
+            <div class="ingred" onclick="filter_dishes('pepper',this)">青椒/彩椒 Bell Pepper</div>
             <div class="ingred" onclick="filter_dishes('onion',this)">洋葱 Onions</div>
             <div class="ingred" onclick="filter_dishes('potato',this)">土豆 Potatoes</div>
             <div class="ingred" onclick="filter_dishes('chi-ya',this)">山药 Chinese Yam</div>
@@ -199,8 +200,9 @@
             <div class="ingred" onclick="filter_dishes('scallop',this)">鲜贝 Scallop</div>
             <div class="ingred" onclick="filter_dishes('mussel',this)">贻贝 Mussel</div>
             <div class="ingred" onclick="filter_dishes('thousand-eg',this)">皮蛋 Thousand-Year Eggs</div>
+            <div class="ingred" onclick="filter_dishes('salt-eg',this)">咸蛋 Salted Eggs</div>
             <div class="ingred" onclick="filter_dishes('fruits',this)">水果 Fruits</div>
-            <div class="ingred" onclick="filter_dishes('pita',ttitlehis)">皮塔饼 Pita</div>
+            <div class="ingred" onclick="filter_dishes('pita',this)">皮塔饼 Pita</div>
             <div class="ingred" onclick="filter_dishes('glass',this)">粉丝 Glass Noodles</div>
         </div>
       </div>
@@ -362,6 +364,15 @@
               <a class="protein">
                   <p>香菜柠檬虾 Coriander Lemon Shrimp</p>
                   <span style="display: none">shrimp</span>
+              </a>
+              <a class="protein">
+                  <p>咸蛋黄豆腐 Salted Egg Tofu</p>
+                  <span style="display: none">salt-eg tofu</span>
+              </a>
+              <a class="protein veggies" href="#modal_thai_curry">
+                  <div style="float: right; color: coral;">&#128269;</div>
+                  <p>HelloFresh 火鸡泰式咖喱 Thai Coconut Curry Turkey Soup</p>
+                  <span style="display: none">pepper sweet-po turkey onion</span>
               </a>
           </div>
         </div>
@@ -1178,6 +1189,15 @@
         Tear up shiitake mushroom, mix with chicken and rice in the pressure cooker. Add some salt, ginger powder and tumeric powder. Cook and serve.
       </p>
 
+    </div>
+  </div>
+  
+  <div id="modal_thai_curry">
+    <a class="modal_close" href="#">
+      <span>&times;</span>
+    </a>
+    <div class="modal_content">
+      <img src="hellofresh_coconut_curry.png" style="width: 80%; margin-left: auto; margin-right: auto; display: block;">
     </div>
   </div>
 
