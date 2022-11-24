@@ -514,6 +514,11 @@
                     <p>土豆泥 Mashed Potatoes</p>
                     <span style="display: none">potato</span>
                 </a>
+                <a class="carbs protein veggies" href='#modal_eggplant_pasta'>
+                    <div style="float: right; color: coral;">&#128269;</div>
+                    <p>茄汁意面 Tomato Eggplant Pasta</p>
+                    <span style="display: none">noodle beef eggplant pea</span>
+                </a>
             </div>
         </div>
     </div>
@@ -1221,6 +1226,32 @@
     </div>
   </div>
 
+  <div id="modal_eggplant_pasta">
+    <a class="modal_close" href="#">
+      <span>&times;</span>
+    </a>
+    <div class="modal_content">
+      <p>
+        茄子用盐稍腌一下。开水煮意面。牛肉粒打入一个鸡蛋拌匀，下锅炒到变色后盛出备用。
+      </p>
+      <p style="color: coral;">
+        Marinate eggplants with salt. Boil the pasta. Stir one egg into the ground beef. Pan-fry until color turns. Get the beef out in a bowl for later use.
+      </p>
+      <p>
+        放入蒜片和茄子翻炒，加酱油，加水焖一会儿。放入青豆。
+      </p>
+      <p style="color: coral;">
+        Pan-fry garlic slices and eggplants. Add soy sauce. Add water and simmer for some time. Add peas.
+      </p>
+      <p>
+        放入牛肉粒和番茄膏拌匀。可勾一下芡。意面盛出后把茄汁酱浇在上面即可。
+      </p>
+      <p style="color: coral;">
+        Add back the ground beef. Stir in tomato paste. Optionally thicken with starch. Pour it onto pasta and serve.
+      </p>
+
+    </div>
+  </div>
 
   <!----------------------------------------------------------->
 	<!-------------------- linking javascript ------------------->
@@ -1314,7 +1345,7 @@
       }
 
       function get_todays_dish(){
-          var cards = document.getElementsByTagName('a');
+          var cards = document.getElementsByClassName('right')[0].getElementsByTagName('a');
           var p=0, v=0, c=0;
           var chosen_dishes=[];
 
