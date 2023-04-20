@@ -1,10 +1,7 @@
 <html>
     <style>
         table {
-            border: 1px solid coral;
-        }
-        td {
-          text-align:center;
+            width : 100%;
         }
     </style>
     <head>
@@ -12,9 +9,12 @@
             /* Create a column section */
             .column {
                 float:  left;
-                width:  33%;
+                width:  30%;
             }
-            
+            .vocab_table{
+                float:  left;
+                width:  70%;
+            }
         </style>
         <title>Reading 读书</title>
     </head>
@@ -33,32 +33,103 @@
                 <li><a href="aesthetics_notes.html">《给孩子》系列</a></li>
                 <li><a href="hulan_river_notes.html">呼兰河传</a></li>
             </ul>
-        </div>
-        <div class="column">
+
+            <br>
+
             <h3><a href="https://library.austintexas.gov/">Austin Public Library</a></h3>
             
             <h4>Central</h4>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.9929065173665!2d-97.75412178540093!3d30.265783315038526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b50fdcb160bd%3A0x6a1f19008170521c!2sAustin%20Central%20Library%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787252203!5m2!1sen!2sus" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.9929065173665!2d-97.75412178540093!3d30.265783315038526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b50fdcb160bd%3A0x6a1f19008170521c!2sAustin%20Central%20Library%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787252203!5m2!1sen!2sus" width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             
             <h4>Old Quarry Branch</h4>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13771.699094970727!2d-97.77203151422484!3d30.353087766019918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cb1a57c5a673%3A0x36ef8d903249cfbb!2sOld%20Quarry%20Branch%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787069637!5m2!1sen!2sus" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13771.699094970727!2d-97.77203151422484!3d30.353087766019918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cb1a57c5a673%3A0x36ef8d903249cfbb!2sOld%20Quarry%20Branch%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787069637!5m2!1sen!2sus" width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             
             <h4>North Village Branch</h4>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.60541610277!2d-97.7326665853985!3d30.362162110449486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cbb031c1a13d%3A0xc84a4c73d202f5f8!2sNorth%20Village%20Branch%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787187276!5m2!1sen!2sus" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.60541610277!2d-97.7326665853985!3d30.362162110449486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cbb031c1a13d%3A0xc84a4c73d202f5f8!2sNorth%20Village%20Branch%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787187276!5m2!1sen!2sus" width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+
+
+        </div>
+        <div class="vocab_table">
+            <h3>单词表</h3>
+
+            <!-- Reference: https://www.w3schools.com/howto/howto_js_sort_table.asp -->
+            <button onclick="sortTable(0)">Alphabetic Sort</button>
+            
+            <button onclick="sortTable(3)">Sort by Source</button>
+
+            <table id="myTable">
+                <tr>
+                    <th>单词</th>
+                    <th>中文</th>
+                    <th>例句</th>
+                    <th>出处</th>
+                </tr>
+                <tr>
+                    <td>arsenal</td>
+                    <td>军火库</td>
+                    <td>Toulon was the primary naval <i>arsenal</i> of the French Republic.</td>
+                    <td>Seeing What Others Don't</td>
+                </tr>
+                <tr>
+                    <td>insurrection</td>
+                    <td>暴动</td>
+                    <td><i>Insurrections</i> broke out in a number of French cities, including Toulon.</td>
+                    <td>Seeing What Others Don't</td>
+                </tr>
+            </table>
+
         </div> 
-        <div class="column">
+        <!-- <div class="column">
             <h3>Online Resources</h3>
             <ul>
                 <li><a href="https://www.99csw.com/book/824/index.htm">悲观主义的花朵</a> 廖一梅</li>
                 <li><a href="https://www.99csw.com/book/8834/index.htm">白痴</a> 陀思妥耶夫斯基</li>
                 <li>寻找家园 高尔泰 <span style="color: coral;">Local Resource</span></li>
             </ul>
-
-
-        </div>
-
-
-
+        </div> -->
 
     </body>
+
+
+
+    
+    <script>
+        function sortTable(col_idx) {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("myTable");
+        switching = true;
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[col_idx];
+            y = rows[i + 1].getElementsByTagName("TD")[col_idx];
+            //check if the two rows should switch place:
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+            }
+            }
+            if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            }
+        }
+        }
+    </script>
+
+
 </html>
