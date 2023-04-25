@@ -9,11 +9,11 @@
             /* Create a column section */
             .column {
                 float:  left;
-                width:  30%;
+                width:  20%;
             }
             .vocab_table{
                 float:  left;
-                width:  70%;
+                width:  80%;
             }
         </style>
         <title>Reading 读书</title>
@@ -34,7 +34,7 @@
                 <li><a href="hulan_river_notes.html">呼兰河传</a></li>
             </ul>
 
-            <br>
+            <!-- <br>
 
             <h3><a href="https://library.austintexas.gov/">Austin Public Library</a></h3>
             
@@ -45,7 +45,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13771.699094970727!2d-97.77203151422484!3d30.353087766019918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cb1a57c5a673%3A0x36ef8d903249cfbb!2sOld%20Quarry%20Branch%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787069637!5m2!1sen!2sus" width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             
             <h4>North Village Branch</h4>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.60541610277!2d-97.7326665853985!3d30.362162110449486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cbb031c1a13d%3A0xc84a4c73d202f5f8!2sNorth%20Village%20Branch%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787187276!5m2!1sen!2sus" width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.60541610277!2d-97.7326665853985!3d30.362162110449486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cbb031c1a13d%3A0xc84a4c73d202f5f8!2sNorth%20Village%20Branch%2C%20Austin%20Public%20Library!5e0!3m2!1sen!2sus!4v1675787187276!5m2!1sen!2sus" width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
         
 
 
@@ -59,24 +59,47 @@
             <button onclick="sortTable(3)">Sort by Source</button>
 
             <table id="myTable">
-                <tr>
-                    <th>单词</th>
-                    <th>中文</th>
-                    <th>例句</th>
-                    <th>出处</th>
-                </tr>
-                <tr>
-                    <td>arsenal</td>
-                    <td>军火库</td>
-                    <td>Toulon was the primary naval <i>arsenal</i> of the French Republic.</td>
-                    <td>Seeing What Others Don't</td>
-                </tr>
-                <tr>
-                    <td>insurrection</td>
-                    <td>暴动</td>
-                    <td><i>Insurrections</i> broke out in a number of French cities, including Toulon.</td>
-                    <td>Seeing What Others Don't</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>单词</th>
+                        <th>中文</th>
+                        <th>例句</th>
+                        <th>出处</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- To be filled by vocabulary.json & JavaScript -->
+                    <!-- <tr>
+                        <td>arsenal</td>
+                        <td>军火库</td>
+                        <td>Toulon was the primary naval <i>arsenal</i> of the French Republic.</td>
+                        <td>Seeing What Others Don't</td>
+                    </tr>
+                    <tr>
+                        <td>insurrection</td>
+                        <td>暴动</td>
+                        <td><i>Insurrections</i> broke out in a number of French cities, including Toulon.</td>
+                        <td>Seeing What Others Don't</td>
+                    </tr>
+                    <tr>
+                        <td>mainstay</td>
+                        <td>支柱；中流砥柱</td>
+                        <td>Unlike the combersome heavy cannons that were the <i>mainstay</i> of artillery power, light artillery was much easier to transport.</td>
+                        <td>Seeing What Others Don't</td>
+                    </tr>
+                    <tr>
+                        <td>siege</td>
+                        <td>包围</td>
+                        <td>To lift the <i>siege</i> of Boston in 1776, Henry Knox dragged light cannons up Dorchester Heights.</td>
+                        <td>Seeing What Others Don't</td>
+                    </tr>
+                    <tr>
+                        <td>besieged</td>
+                        <td>被包围的</td>
+                        <td>Napoleon knew that the <i>besieged</i> British troops at Toulou would worry about getting separated from their naval resupply.</td>
+                        <td>Seeing What Others Don't</td>
+                    </tr> -->
+                </tbody>
             </table>
 
         </div> 
@@ -95,6 +118,45 @@
 
     
     <script>
+
+        // Reference: https://www.youtube.com/watch?v=12tjh_6xL2M
+        // To enter the browser developer mode, try below:
+        //      Click on window -> type run and hit enter -> in the command window copy:
+        //          chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+        //      This will open a new "Chrome" window where you can work easily. 
+        //      This is a temporary solution. Every time you will have to work with this chrome window.
+        const tableBody = document.querySelector("#myTable > tbody");
+
+        function loadData(){
+            const request = new XMLHttpRequest();
+            request.open("get", "vocabulary.json");
+            request.onload = () => {
+                const json = JSON.parse(request.responseText);
+                populateTable(json);
+            }
+            request.send();
+        }
+
+        function populateTable(json){
+            // Clears out existing table content
+            while(tableBody.firstChild){
+              tableBody.removeChild(tableBody.firstChild);  
+            }
+
+            // Populate table
+            json.forEach((row) => {
+                const tr = document.createElement("tr");
+                row.forEach((cell) => {
+                    const td = document.createElement("td");
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                })
+                tableBody.appendChild(tr);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {loadData();});
+
         function sortTable(col_idx) {
         var table, rows, switching, i, x, y, shouldSwitch;
         table = document.getElementById("myTable");
