@@ -55,8 +55,10 @@
 
             <!-- Reference: https://www.w3schools.com/howto/howto_js_sort_table.asp -->
             <button onclick="sortTable(0)">Alphabetic Sort</button>
-            
             <button onclick="sortTable(3)">Sort by Source</button>
+
+            <!-- Reference: https://www.w3schools.com/howto/howto_js_filter_table.asp -->
+            <input type="text" id="myInput" onkeyup="mySearch()" placeholder="Search for words.." title="Type in a name">
 
             <table id="myTable">
                 <thead>
@@ -69,36 +71,6 @@
                 </thead>
                 <tbody>
                     <!-- To be filled by vocabulary.json & JavaScript -->
-                    <!-- <tr>
-                        <td>arsenal</td>
-                        <td>军火库</td>
-                        <td>Toulon was the primary naval <i>arsenal</i> of the French Republic.</td>
-                        <td>Seeing What Others Don't</td>
-                    </tr>
-                    <tr>
-                        <td>insurrection</td>
-                        <td>暴动</td>
-                        <td><i>Insurrections</i> broke out in a number of French cities, including Toulon.</td>
-                        <td>Seeing What Others Don't</td>
-                    </tr>
-                    <tr>
-                        <td>mainstay</td>
-                        <td>支柱；中流砥柱</td>
-                        <td>Unlike the combersome heavy cannons that were the <i>mainstay</i> of artillery power, light artillery was much easier to transport.</td>
-                        <td>Seeing What Others Don't</td>
-                    </tr>
-                    <tr>
-                        <td>siege</td>
-                        <td>包围</td>
-                        <td>To lift the <i>siege</i> of Boston in 1776, Henry Knox dragged light cannons up Dorchester Heights.</td>
-                        <td>Seeing What Others Don't</td>
-                    </tr>
-                    <tr>
-                        <td>besieged</td>
-                        <td>被包围的</td>
-                        <td>Napoleon knew that the <i>besieged</i> British troops at Toulou would worry about getting separated from their naval resupply.</td>
-                        <td>Seeing What Others Don't</td>
-                    </tr> -->
                 </tbody>
             </table>
 
@@ -158,38 +130,57 @@
         document.addEventListener("DOMContentLoaded", () => {loadData();});
 
         function sortTable(col_idx) {
-        var table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("myTable");
-        switching = true;
-        /*Make a loop that will continue until
-        no switching has been done:*/
-        while (switching) {
-            //start by saying: no switching is done:
-            switching = false;
-            rows = table.rows;
-            /*Loop through all table rows (except the
-            first, which contains table headers):*/
-            for (i = 1; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
-            shouldSwitch = false;
-            /*Get the two elements you want to compare,
-            one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("TD")[col_idx];
-            y = rows[i + 1].getElementsByTagName("TD")[col_idx];
-            //check if the two rows should switch place:
-            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
-            }
-            }
-            if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("myTable");
             switching = true;
-            }
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[col_idx];
+                    y = rows[i + 1].getElementsByTagName("TD")[col_idx];
+                    //check if the two rows should switch place:
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }   
         }
+
+        function mySearch() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
         }
     </script>
 
