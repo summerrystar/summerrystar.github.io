@@ -1,10 +1,32 @@
 <html>
     <head>
         <style>
-            /* Create a column section */
-            .column {
-                float:  left;
-                width:  50%;
+            .header {
+                text-align: center;
+            }
+            /* Style the buttons */
+            .btn {
+                border: none;
+                outline: none;
+                padding: 10px 16px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }
+            
+            .disp{
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
             }
         </style>
         <title>Encyclopedia 百科全书</title>
@@ -13,13 +35,88 @@
         
         <h1 style="text-align:center;">Encyclopedia 百科全书</h1>
 
-        <div class="column">
+        <!--------------------->
+        <!-- button section --->
+        <!--------------------->
+        <div class="header", id="myHeader">                           
+            <button class="btn active" onclick="display('general')">General 综合</button>
+            <button class="btn" onclick="display('usa_life')">Living in US 美国生活</button>  
+        </div>   
+
+
+        <!------------------------------>
+        <!-- contents for each button -->
+        <!------------------------------>
+
+        <div id="general" style="display: block;" class="disp">
             <ul>
-                <li><a href="Car_Engine.html">Car Engine Basics 汽车引擎基本结构</a></li>
+                <li><a href="general/Car_Engine.html">Car Engine Basics 汽车引擎基本结构</a></li>
             </ul>
+        </div>
 
-        </div>  
+        <div id="usa_life" style="display: none;" class="disp">
+            <ul>
+                <li><a href= "usa_life/Car_Insurance.html">Car Insurance 汽车保险</a></li>
+                <li><a href="usa_life/Tax.html">Taxes 报税</a></li>
+            </ul>
+        </div>
 
+
+
+
+        <!--------------------->
+        <!--     scripts     -->
+        <!--------------------->
+        <script>
+            /* toggle display */
+            function display(id){
+                var all_disp = document.getElementsByClassName("disp");
+                for (var i=0; i<all_disp.length; i++){
+                    if(all_disp[i].id != id){
+                        all_disp[i].style.display = "none";
+                    }
+                }
+                var to_disp = document.getElementById(id);
+                if (to_disp.style.display==="none"){
+                    to_disp.style.display = "block";
+                }
+                else{
+                    to_disp.style.display = "none";
+                }
+            }
+
+
+            /* Highlight active button */
+            var btns = document.getElementById("myHeader").getElementsByClassName("btn");
+
+            for (var i=0; i<btns.length; i++){
+                btns[i].addEventListener("click", function(){
+
+
+                    // if the current button is active, just deactivate it
+                    if (this.className === "btn active"){
+                        this.className = "btn";
+                    }
+                    // otherwise, need to activate current button and deactivate active button
+                    else{
+
+                        for (var j=0; j<btns.length; j++){
+                            btns[j].className = "btn";
+                        }
+                        // Change the current active button to not-active, if any
+                        // var current = document.getElementsByClassName("active");
+                        // current[0].className = "btn";
+                    
+                        // Active the new button
+                        this.className = "btn active";
+                    }
+
+
+                });
+            }
+
+        </script>
+        
     </body>
 
 
