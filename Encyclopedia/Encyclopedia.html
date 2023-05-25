@@ -28,6 +28,11 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+
+            h3{
+                color:coral;
+            }
+
         </style>
         <title>Encyclopedia 百科全书</title>
     </head>
@@ -41,6 +46,7 @@
         <div class="header", id="myHeader">                           
             <button class="btn active" onclick="display('general')">General 综合</button>
             <button class="btn" onclick="display('usa_life')">Living in US 美国生活</button>  
+            <button class="btn" onclick="display('major_related')">EE Topics 专业相关</button>  
         </div>   
 
 
@@ -58,6 +64,33 @@
             <ul>
                 <li><a href= "usa_life/Car_Insurance.html">Car Insurance 汽车保险</a></li>
                 <li><a href="usa_life/Tax.html">Taxes 报税</a></li>
+            </ul>
+        </div>
+
+        <div id="major_related" style="display: none;" class="disp">
+ 
+            <h3>High-Speed PCB Design 高速电路设计</h3>
+            <p>改一个现有的PCB设计。为什么schematic里面有很多“莫名其妙”的R/C/L？</p>
+            <ul>
+                <li><a href="major_related/termination.html">Transmission Line, Reflection, Termination 端接</a></li>
+                <li>Power Filtering</li>
+                <li>Supply Capacitors</li>
+                <li>Stub</li>
+            </ul>
+            <h3>Lab Validation 芯片验证</h3>
+            <p>进实验室测一个刚tape out的chip。为何scope上出现的不是完美的方波，而是歪歪扭扭？随手碰了一下板子为何突然冒火花？</p>
+            <ul>
+                <li>ESD Safety</li>
+                <li>Balun</li>
+                <li>Signal Integrity</li>
+            </ul>
+            <h3>PG Flow</h3>
+            <p>（注：PG = Pattern Generation，即ASIC生成最后的photomask和manufacturing database。）</p>
+            <p>关于流片过程，很多术语开会时听到都会直接放空。Fab刚拿回的芯片原来不能直接测试，中间还有很多步骤？</p>
+            <ul>
+                <li>Trimming</li>
+                <li>Packaging</li>
+                <li>Continuity Test</li>
             </ul>
         </div>
 
