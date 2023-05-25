@@ -95,7 +95,7 @@
 
 
             <h3>Termination</h3>
-            <p>Termination的作用就是match impedance，防止reflection。在TX and/or RX端加termination resistor，来保证他们的impedance是50Ω。以下是两种最基础的设计。</p>
+            <p>Termination的作用就是match impedance，防止reflection。在TX and/or RX端加termination resistor，来保证他们的impedance是50Ω。以下是两种最基础的设计。平时最常用的是RX的parallel termination。</p>
 
             <div style="width: 50%; float: left;">
                 Series termination @ TX:
@@ -106,16 +106,33 @@
                 <iframe onload="resizeIframe(this)" src="pcb_figures-Page-4.drawio.html"></iframe>
             </div>
 
-            <p>最常用的是RX的parallel termination。关于只terminate TX的情况：</p>
+            <p>如果只terminate TX：</p>
             <ul>
-                <li>虽然RX端依然会产生reflection，但当reflected信号传回TX端，却会见到matched impedance而被terminate。也就是说，依然会有一次reflection，线路的长短决定了这一次reflection多久能settle到steady state（one round trip cable delay）。</li>
+                <li>虽然RX端依然会产生reflection，但当reflected信号传回TX端，却会见到matched impedance而被terminate。</li>
+                <li>也就是说，依然会有一次reflection，线路的长短决定了这一次reflection多久能settle到steady state（one round trip cable delay）。</li>
                 <li>只适用于Point-to-point。如果同一个TX drive多个RX的话，到每一个RX的路径不同，noise margin会变</li>
             </ul>
             
+
+
+            <button class="collapsible">从波形快速判断问题</button>
+            <div class="content">
+                <p>以series termination为例：</p>
+                <p>TODO</p>
+            </div>
+
             <p>更多topology及优缺点：</p>
             <button class="collapsible">Single-Ended Examples</button>
             <div class="content">
-                TODO
+                <p><b>Series Termination</b> (TX)</p>
+                TODO: 插图
+                <ul>
+                    <li>好处：low power dissipation, good noise reduction, low cost, space saving</li>
+                    <li>坏处：会reduce rise time, hard to define resistance value, cannot use in daisy-chain topologies</li>
+                </ul>
+                <p><b>Parallel Termination</b> (RX)</p>
+                <p><b>Thevenin's Termination</b> (RX)</p>
+                <p><b>Diode Termination</b> (RX)</p>
             </div>
 
             <br>
