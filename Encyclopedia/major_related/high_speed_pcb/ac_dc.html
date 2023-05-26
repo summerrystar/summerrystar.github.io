@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <style>
+            .column {
+                float:  center;
+                margin-left:  10%;
+                margin-right: 10%
+            }
+            iframe{
+                border: none;
+                width: 100%;
+                display: block;
+            }
+        </style>
+        <title>AC/DC Coupling</title>
+    </head>
+    <body>
+        
+        <h1 style="text-align:center;">AC/DC Coupling</h1>
+
+        <div class="column">
+            <ul>
+                <li>AC coupling: allows only AC signals to pass (Notice the caps in the schematic)</li>
+                <li>DC coupling: allows both AC and DC signals to pass</li>
+            </ul>
+
+            <iframe onload="resizeIframe(this)" src="pcb_figures-Page-10.drawio.html"></iframe>
+
+            <p>
+                如何决定C的大小：
+            </p>
+            <p>
+                相当于一个high-pass filter。因此选择多大的cap取决于想要过滤掉多少low-frequency的内容。比如上图中的0.1uF，在50Ω的情况下cutoff frequency f=1/(2πRC) 是32kHz，也就是说32kHz以下无法通过，32kHz以上则能通过。因此high-speed transceivers多用0.1uF或0.01uF这样的数字。
+            </p>
+        </div>
+
+
+
+
+
+        <script>
+            
+            function resizeIframe(iframe) {
+                var scroll_height = Number(iframe.contentWindow.document.body.scrollHeight);
+                scroll_height = scroll_height * 1.2;    // Scale a bit larger to make sure no scroll bar shows
+                iframe.height = scroll_height + "px";
+            }
+        </script>
+    </body>
+</html>
