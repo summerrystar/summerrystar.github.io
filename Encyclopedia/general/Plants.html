@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <style>
+            .column {
+                float:  center;
+                margin-left:  5%;
+                margin-right: 5%
+            }
+            
+            .collapsible {
+                background-color: #f1f1f1;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .collapsible.active, .collapsible:hover {
+                background-color: #dfdfdf;
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+            .collapsible.active:after {
+                content: "\2212";
+            }
+
+            .content {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: #f1f1f1;
+            }
+
+        </style>
+        <title>About Plants 关于植物</title>
+    </head>
+    <body>
+        
+        <h1 style="text-align:center;">About Plants 关于植物</h1>
+
+
+        <div class="column">
+            
+            <button class="collapsible"><b>Taxology 分类学</b></button>
+            <div class="content">
+                <div style="width: 50%; float: left">
+                    <img src="venation.jpg" style="width:70%;">
+                </div>
+                <div style="width: 50%; float: left">
+                    <img src="phyllotaxis.jpg" style="width: 60%;">
+                </div>
+            </div>
+
+            <br>
+
+            <button class="collapsible"><b>德州品种记录</b></button>
+            <div class="content">
+                <table style='width:80%;margin-left: auto;margin-right: auto;'>
+                    <tr>
+                        <td>
+                            Mescal Bean
+                        </td>
+                        <td>
+                            树上开紫色花，结红豆种子
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mexican Buckeye
+                        </td>
+                        <td>
+                            树，粉红小花，黑豆种子
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pink Evening Primrose（樱草）
+                        </td>
+                        <td>
+                            粉色单薄小野花
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Spiderwort（紫鸭拓草）
+                        </td>
+                        <td>
+                            叶子像竹叶，有一簇簇类似凤仙花的种荚
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pecan Tree
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Bald Cypress
+                        </td>
+                        <td>
+    
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <p><b>种植技巧</b></p>
+            <p>关于服盆期</p>
+            <ul>
+                <li>服盆期的表现</li>
+                <ul>
+                    <li>植物底部的老叶会萎缩干枯：来自根系的营养不足，植物会从最底层开始消耗叶片。</li>
+                    <li>出现缺水的症状：叶片变软，多肉叶子变红等等。</li>
+                </ul>
+
+                <li>常见错误</li>
+                <ul>
+                    <li><b>浇水</b> - 虽然服盆期间植物会看起来缺水，但这时不应该浇水，因为植物的根还很少，即使浇水了也没法吸水，而且移植时在根系上会有伤口，浇水太多反而会引起烂根。</li>
+                    <li><b>晒太阳</b> - 健康的植物的确喜欢阳光，但服盆期间，植物需要集中所有营养和水分用于维持生命以及发根。而阳光会加速植物的蒸腾作用，消耗宝贵的水分——不像健康时，蒸腾作用与根部吸收的水分能形成平衡的循环。</li>
+                    <li><b>经常拔出来看、经常晃动或搬动花盆</b> - 植物生根需要安静和黑暗的环境，需要给它充分的时间，自己适应新环境。一般应该在判断大致已经服盆后，才晃动花盆，确认植物的根已经抓牢土壤了。</li>
+                </ul>
+
+                <li>怎么判断已经服盆</li>
+                <ul>
+                    <li>等到叶片逐渐变得饱满精神，就表示根系开始吸收水分了。</li>
+                </ul>
+
+                <li>建议</li>
+                <ul>
+                    <li>尽量在植物旺盛生长期移植，不要在休眠期。</li>
+                    <li>服盆期间放在通风阴凉处，温度20度左右为佳。</li>
+                    <li>服盆之后，也不要立刻暴晒，慢慢地把植物移到阳光下。</li>
+                </ul>
+
+
+            </ul>
+        </div>
+
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+            }
+        </script>
+
+    </body>
+</html>
