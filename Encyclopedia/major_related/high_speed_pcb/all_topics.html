@@ -1,0 +1,588 @@
+<html>
+    <head>
+        <style>
+            .column {
+                float:  center;
+                margin-left:  10%;
+                margin-right: 10%
+            }
+
+            .collapsible {
+                background-color: #f1f1f1;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .collapsible.active, .collapsible:hover {
+                background-color: #dfdfdf;
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+            .collapsible.active:after {
+                content: "\2212";
+            }
+
+            .content {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: #f1f1f1;
+            }
+
+            iframe{
+                border: none;
+                width: 90%;
+            }
+
+            #fixed_box{
+                bottom: 1%;
+                right: 1%;
+                text-align: center;
+                position: fixed;
+            }
+            .btn_exp_coll {
+                display: inline-block;
+                background-color:cadetblue;
+                border-radius: 10px;
+                border: 4px double #cccccc;
+                color: #ffffff;
+                text-align: center;
+                padding: 15px;
+                width: 200px;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+                font-weight: bold;
+            }
+            .btn_exp_coll span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+            .btn_exp_coll span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            .btn_exp_coll:hover {
+                background-color:tan
+            }
+            .btn_exp_coll:hover span {
+                padding-right: 25px;
+            }
+            .btn_exp_coll:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+            /* Side Navigation Bar*/
+            .sidebar {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: cadetblue;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+            }
+
+            .sidebar a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                /* font-size: 25px; */
+                color: #ffffff;
+                display: block;
+                transition: 0.3s;
+            }
+
+            .sidebar a:hover {
+                /* color: #f1f1f1; */
+                background-color: tan;
+            }
+
+            #main {
+                transition: .5s;
+                margin-left: 0;
+                padding: 16px;
+            }
+
+            .side_btn {
+                position: fixed;
+                border: none;
+                height: 40px;
+                width: 40px;
+                border-radius: 5%;
+                box-shadow: 0px 1px 4px 1px rgba(0 ,0, 0, .3);
+                background-color: cadetblue;
+                left: 0;
+                top: 5px;
+                color: #ffffff;
+                transform: translateX(-50%);
+                cursor: pointer;
+                text-align: center;
+                padding: 3px 3px;
+                z-index: 99;
+                transition: 0.5s;
+                display: inline-block;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
+        <title>High-Speed PCB Design</title>
+    </head>
+
+    <body>
+        <!------------------------>
+        <!--    Side Nav Bar    -->
+        <!------------------------>
+        <div class="side_btn" id="mySideBtn" onclick="toggleNav()">&#9776;</div>
+        <div class="sidebar" id="mySidebar">
+            <a href="#topic_tl">TL/Reflection</a>
+            <a href="#topic_term">Termination 端接</a>
+            <a href="#topic_stub">Stubs 桩线</a>
+            <a href="#topic_acdc">AC/DC Coupling</a>
+            <a href="#topic_powflt">Power Filtering</a>
+            <a href="#topic_supcap">Supply Capacitors</a>
+        </div>
+          
+        <!------------------------>
+        <!--  Main Body Starts  -->
+        <!------------------------>
+        <div id="main">
+
+            <h1 style="text-align: center;" id="topic1">High-Speed PCB Design</h1>
+            
+            <div class="column">
+
+                <!------------------------------------>
+                <!--  "Expand/Collapse All" Button  -->
+                <!------------------------------------>
+                <div id="fixed_box">
+                    <button class="btn_exp_coll" onclick="expandCollapse()"><span>Expand/Collapse All</span></button>
+                </div>
+
+                
+                <button class="collapsible"><b>Overview</b></button>
+                <div class="content">
+                    <iframe onload="resizeIframe(this)" src="pcb_figures-Page-1.drawio.html"></iframe>
+                </div>
+                
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_tl">Transmission Line & Reflection</h2>
+                <p>现代电路的两个特点：信号的rise/fall time越来越快；wire连接越来越长。此时如果driver, transmission line和receiver的impedance不match，有discontinuity，就会产生reflection，导致各种undershoot和overshoot。</p>
+                
+                
+                <button class="collapsible">Water analogy</button>
+                <div class="content">
+                    <ul>
+                        <li>水流动时如果受到均匀的阻力，就能比较平稳地到达对岸。但如果不均匀，就会产生反射的水波。</li>
+                        <li>    
+                            <iframe onload="resizeIframe(this)" src="pcb_figures-Page-2.drawio.html"></iframe>
+                        </li>
+                        <li>考虑上图的情况，信号从driver出发，先流过一段长通道，每一小段unit length的阻力都是50Ω，于是信号平稳流过。</li>
+                        <li>然而到达RX端时，突然遇到1MΩ的"brick wall"，产生反射信号。这一反射信号再次从Z<sub>0</sub>流回TX端。</li>
+                        <li>图中TX端看进去的impedance是50Ω，因此反射信号不会再次产生reflection。但如果TX端的impedance与transmission line不match，则会再次产生反射信号。这些信号将在TX和RX之间震荡，直到最终damp out。</li>
+
+                    </ul>
+                    
+                    <p>
+                    以上可以解释为何trace impedance只和width有关，而和length无关。因为信号是逐步流过每一段unit length。Length会影响的是delay：如果delay短的话，the ringing will damp out faster，信号能更快settle。
+                    </p>
+                </div>
+                
+                <br>
+
+                <button class="collapsible">Reflection coefficient的计算</button>
+                <div class="content">
+
+                    <p>Reflection coefficient的计算是根据driver impedance (R<sub>D</sub>)和transmission line impedance Z<sub>0</sub>：</p>
+                    <p style="text-align: center;">ρ = (R<sub>D</sub>-Z<sub>0</sub>) / (R<sub>D</sub>+Z<sub>0</sub>)</p>
+                    <p>这个coefficient会在-1到1之间。理解以下3种情况：
+                        <ul>
+                            <li>ρ=-1：说明R<sub>D</sub> = 0，表示short circuit</li>
+                            <li>ρ=1：说明R<sub>D</sub> = ∞，表示open circuit</li>
+                            <li>ρ=0：No reflection – ideal situation。</li>
+                        </ul>
+                        
+                    </p>
+                </div>
+
+
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_term">Termination</h2>
+                <p>Termination的作用就是match impedance，防止reflection。在TX and/or RX端加termination resistor，来保证他们的impedance是50Ω。以下是两种最基础的设计。平时最常用的是RX的parallel termination。如果只有TX termination，有两大问题：依然会有一次reflection，以及只适用于point-to-point。详见Differential Example中的解释。</p>
+
+                <div style="width: 50%; float: left;">
+                    Series termination @ TX:
+                    <iframe onload="resizeIframe(this)" src="pcb_figures-Page-3.drawio.html"></iframe>
+                </div>
+                <div style="width: 50%; float: left;">
+                    Parallel termination @ RX:
+                    <iframe onload="resizeIframe(this)" src="pcb_figures-Page-4.drawio.html"></iframe>
+                </div>
+                
+
+                <button class="collapsible">从波形快速判断问题</button>
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td>以series termination为例：</td>
+                            <td><iframe onload="resizeIframe(this)" src="pcb_figures-Page-6.drawio.html"></iframe></td>
+                        </tr>
+                    </table>
+                    
+                    <iframe style="display: block; margin-left: auto; margin-right: auto;" onload="resizeIframe(this)" src="pcb_figures-Page-5.drawio.html"></iframe>
+
+                </div>
+
+                <p>更多topology及优缺点：</p>
+                <button class="collapsible">Single-Ended Examples</button>
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td>
+                                <b>Series Termination</b> (TX)
+                                <iframe onload="resizeIframe(this)" src="pcb_figures-Page-3.drawio.html"></iframe>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>好处：low power dissipation, good noise reduction, low cost, space saving</li>
+                                    <li>坏处：会reduce rise time, hard to define resistance value, cannot use in daisy-chain topologies</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Parallel Termination</b> (RX)
+                                <iframe onload="resizeIframe(this)" src="pcb_figures-Page-7.drawio.html"></iframe>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>好处：不加delay、不影响rise time，low cost, good for distributive loads (daisy-chain topology)</li>
+                                    <li>坏处：more power dissipation</li>
+                                </ul>       
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Thevenin's Termination</b> (RX)
+                                <iframe onload="resizeIframe(this)" src="pcb_figures-Page-8.drawio.html"></iframe>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>好处：no delay, good reflection attenuation, <mark>level adaptation</mark> is possible（比如说3.3V LVPECL和2.5V LVPECL用不同的R<sub>TH</sub>/R<sub>TL</sub>数值组合）</li>
+                                    <li>坏处：takes more space (needs 2 resistors), high cost, additional power dissipation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Diode Termination</b> (RX)
+                                <iframe onload="resizeIframe(this)" src="pcb_figures-Page-9.drawio.html"></iframe>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>称作”clamping diodes”。原先出来的signal会有overshoot和undershoot，用diode把它们clamp掉</li>
+                                    <li>这个技巧用得很少</li>
+                                    <li>好处：no additional power dissipation, easy placement of clamping diodes</li>
+                                    <li>坏处：switching time of diode should be equal to rise/fall time of signal – hard to find suitable part in the market</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <br>
+
+                <button class="collapsible">Differential Examples</button>
+                <div class="content">
+                    (<a href="https://www.ti.com/lit/an/snla034b/snla034b.pdf">Reference</a>)
+                    <table>
+                        <tr>
+                            <td style="width:50%">
+                                <b>Unterminated</b>
+                            </td>
+                            <td>
+                                <img style="width: 70%;" src="diff_term_1.png"></img>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul>
+                                    <li>这种情况通常twisted pair是50Ω，是否有reflection完全取决于TX和RX的impedance。信号先从50Ω传到RX，如果RX的impedance高的话，就会将signal reflect back。而这个reflected signal到达TX会看到TX的impedance，如果mismatch则会再次reflect。（</li>
+                                    <li>如果data rate低，能保证这些reflection有足够的时间settle到steady state（在下一个transition前）。如果cable短，则能保证back and forth reflection settle down的时间很短。这两个条件满足的话，可以使用unterminated。</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Series Termination</b>
+                            </td>
+                            <td>
+                                <img style="width: 70%;" src="diff_term_2.png"></img>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul>
+                                    <li>RX端没有termination，依然会产生reflection，但当reflected信号传回TX端，却会见到matched impedance而被terminate</li>
+                                    <li>也就是说，依然会有一次reflection，时间为one round trip cable delay</li>
+                                    <li>这个termination的几个问题：</li>
+                                    <ul>
+                                        <li>由于有process variation，TX的output impedance可能会vary，然后designer不得不根据这个impedance来设计transmission line。假如一块板子上TX元件坏了，换了另一个，而impedance变了，就不得不对这个板的trace进行rework</li>
+                                        <li>只适用于Point-to-point。如果同一个TX drive多个RX的话，到每一个RX的路径不同，noise margin会变</li>
+                                    </ul>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Parallel Termination</b>
+                                
+                            </td>
+                            <td><img style="width: 60%;" src="diff_term_3.png"></img></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul><li>基本是最常用的。可以支持multidrop applications，但是要注意stub length。另外driver的output swing会减少，导致noise margin压缩。</li></ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>AC termination, Power termination</b>
+                            </td>
+                            <td>
+                                <img style="width: 45%; float: left;" src="diff_term_4.png"></img>
+                                <img style="width: 45%; float: left;" src="diff_term_5.png"></img>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul><li>这两种parallel termination的variation各自解决了parallel本身的一些问题。此处略过，详见Reference。</li></ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Bidirectional termination</b>
+                            </td>
+                            <td>
+                                <img style="width: 70%;" src="diff_term_6.png"></img></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul>
+                                    <li>由于两边都有TX和RX，所以两边都要用parallel termination</li>
+                                    <li>优缺点详见Reference。</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <b>进阶：split termination</b> (<a href="https://community.silabs.com/s/share/a5U1M000000ko0gUAA/timing-101-the-case-of-the-split-termination?language=en_US">Reference 1</a>, <a href="http://www.sigcon.com/Pubs/edn/DifferentialTermination.htm">Reference 2</a>)
+                    <img style="width: 90%; display: block; margin-left: auto; margin-right: auto;" src="diff_term_7.png"></img>
+                    <p>
+                        左边的termination理论上能用，但实际上大家都会用右边。这是因为现实中的信号有nonideality。理论上，differential signal应该完美相反。但考虑common mode的存在，即短时间内两根线上的voltage相等而不是相反。当common mode信号到达termination resistor的两端时，由于resistor上不会产生电流，相当于碰到了open circuit，于是所有common mode noise全部被reflect，而且会在TX和RX之间不停震荡叠加。这时，右边电路中加上的电容相当于enforced a practical AC GND at the center-tap。当CM 信号到达，能产生电流，相当于CM信号也能见到某种意义上的matching impedance（impedance大小由cap决定）。
+                        
+                    </p>
+                    <p>
+                        产生CM noise的原因很多，其中之一就是differential的两根线delay并不完全相同，正信号和负信号之间有一个小的delta。如果是这个原因，那么在选择cap的size的时候，只要能够在这个delta时间内hold the charge steady，那么大小就足够了。或者可以从频域的角度来看，将这个termination看作一个low-pass filter，计算他的corner frequency，公式为f<sub>c</sub> = 1/(2π<sup>R</sup>&frasl;<sub>2</sub>C)。只要选择corner frequency低到能过滤掉大部分CM noise即可。（比如R = 50Ω, C = 0.1uF的话，corner freq = 64kHz，就是一个不错的数字）
+                    </p>
+                    
+                </div>
+                    
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_stub">Stubs 桩线</h2>
+                <p>定义：从driver到最远的load之间最长的path是一个transmission line的main line，而any branch off the main line则被称作stub。</p>
+                <p><img style="width: 100%;" src="stub.png"></p>
+                <p>上左图中main line是RED到YELLOW，右图则是RED到BLUE。由于右图将所有branch的长度控制得很短，所以认为移除了stub。</p>
+                <p>当stub的另一端是open end，由于没有absorber和termination，全部信号都会被reflect。这种情况对于波长为4倍stub length的信号来说由为严重，因为经过round trip之后reflected wave正好是反相的，会直接cancel掉原信号。也就是说This shorting of the signal will occur at all frequencies at which the stub is an odd multiple of a quarter wave.（对于RF Engineer，有时会利用这个特性来设计band stop filter，移掉特定的frequency。但对于digital信号的方波，则要避免这种stub。因为方波包含了所有的frequency，如果其中一些被去掉了会影响rise/fall time）</p>
+    
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_acdc">AC/DC Coupling</h2>
+                <ul>
+                    <li>AC coupling: allows only AC signals to pass (Notice the caps in the schematic)</li>
+                    <li>DC coupling: allows both AC and DC signals to pass</li>
+                </ul>
+    
+                <iframe onload="resizeIframe(this)" src="pcb_figures-Page-10.drawio.html"></iframe>
+    
+                <p>
+                    如何决定C的大小：
+                </p>
+                <p>
+                    相当于一个high-pass filter。因此选择多大的cap取决于想要过滤掉多少low-frequency的内容。比如上图中的0.1uF，在50Ω的情况下cutoff frequency f=1/(2πRC) 是32kHz，也就是说32kHz以下无法通过，32kHz以上则能通过。因此high-speed transceivers多用0.1uF或0.01uF这样的数字。
+                </p>
+
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_powflt">Power Filtering</h2>
+                <h3>RF Choke</h3>
+                <p>
+                    最基本的就是一个inductance。目的是choking off or suppressing high-frequency AC signals, and allowing the passage of low-frequency and DC signals。事实上理想是只pass DC，reject其他所有frequency。越高的frequency会遇到越强的resistance (impedance)。选择合适的L值 - the choke (or the inductor) must have a high impedance over the range of frequencies it is designed to suppress.
+                </p>
+    
+    
+                <h3>Ferrite Beads</h3>
+                <p>
+                    FB是RF choke的一种。（得名原因：Chokes are normally built with a coil of insulated wires wounded on a magnetic core or a circular-shaped “bead” of ferrite material strung on a wire. They are often wound in complex patterns in order to reduce their self-capacitance.）
+                </p>
+                <p>Simplified circuit model:</p>
+                <img src="fb.png" style="height: 200px;">
+                <p>更多细节详见<a href="https://www.analog.com/en/analog-dialogue/articles/ferrite-beads-demystified.html">这里</a>。</p>
+
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_supcap">Supply Capacitors</h2>
+                <iframe onload="resizeIframe(this)" src="pcb_figures-Page-11.drawio.html"></iframe>
+                <p>上图中有3个cap，分别是47uF, 4.7uF和0.47uF。每个cap的作用略有不同：</p>
+                <ul>
+                    <li>Need one bulk cap (47uF) as the <b>charge bucket</b>, so that the processor can always pull enough charge from it without causing a voltage drop.</li>
+                    <li>Smaller caps (4.7uF & 0.47uF) <b>react to transients</b>. </li>    
+                    <li>注意：A 10.1uF cap is not equivalent to 10uF + 0.1uF in parallel. Say we ask for charges every 100ps. The 0.47uF responds to these immediate requests. Then, they are charged by the 47uF at a slower rate. (And 4.7uF is something intermediate.)</li>
+                </ul>
+                <p>注意这些cap在layout中的placement：</p>
+                <ul>
+                    <li>If placed near the chip: reacts to transients.</li>
+                    <li>If placed near the outline: more a bucket.</li>
+                </ul>
+            </div> <!-- column -->
+        </div> <!-- main -->
+
+        <!------------------------>
+        <!--   Main Body Ends   -->
+        <!------------------------>
+        
+
+
+        
+        <!-------------------------->
+        <!--    Page-End Break    -->
+        <!-------------------------->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <!------------------->
+        <!--    Scripts    -->
+        <!------------------->
+        <script>
+            
+            /*------------------ Collapsibles ------------------*/
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+            }
+            
+            function expandAll(){
+                for (i = 0; i < coll.length; i++) {   
+                    if (!coll[i].classList.contains("active")){
+                        coll[i].classList.add("active")
+                    }
+                    var content = coll[i].nextElementSibling;
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            }
+            function collapseAll(){
+                for (i = 0; i < coll.length; i++) {   
+                    if (coll[i].classList.contains("active")){
+                        coll[i].classList.remove("active")
+                    }
+                    var content = coll[i].nextElementSibling;
+                    content.style.maxHeight = null;
+                }
+            }
+
+            function expandCollapse(){
+                var coll_exist = 0;
+                for (i = 0; i < coll.length; i++) {   
+                    if (!coll[i].classList.contains("active")){
+                        coll_exist = 1;
+                        break;
+                    }
+                }
+                if (coll_exist)     expandAll();
+                else                collapseAll();
+            }
+
+            /*------------------ IFrame auto height resize ------------------*/
+            function resizeIframe(iframe) {
+                var scroll_height = Number(iframe.contentWindow.document.body.scrollHeight);
+                scroll_height = scroll_height * 1.2;    // Scale a bit larger to make sure no scroll bar shows
+                iframe.height = scroll_height + "px";
+            }
+
+            /*------------------ Side Navigation Bar ------------------*/
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.getElementById("mySideBtn").style.left = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+                document.getElementById("mySideBtn").style.left = "0";
+            }
+            function toggleNav() {
+                var side_bar = document.getElementById("mySidebar");
+                if (side_bar.classList.contains("active")){
+                    side_bar.classList.remove("active");
+                    closeNav();
+                }
+                else {
+                    side_bar.classList.add("active");
+                    openNav();
+                }
+            }
+        </script>
+    </body>
+</html>
