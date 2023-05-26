@@ -1,0 +1,379 @@
+<html>
+    <head>
+        <style>
+            .column {
+                float:  center;
+                margin-left:  10%;
+                margin-right: 10%
+            }
+
+            .collapsible {
+                background-color: #f1f1f1;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .collapsible.active, .collapsible:hover {
+                background-color: #dfdfdf;
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+            .collapsible.active:after {
+                content: "\2212";
+            }
+
+            .content {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: #f1f1f1;
+            }
+
+            iframe{
+                border: none;
+                width: 90%;
+            }
+
+            #fixed_box{
+                bottom: 1%;
+                right: 1%;
+                text-align: center;
+                position: fixed;
+            }
+            .btn_exp_coll {
+                display: inline-block;
+                background-color:cadetblue;
+                border-radius: 10px;
+                border: 4px double #cccccc;
+                color: #ffffff;
+                text-align: center;
+                padding: 15px;
+                width: 200px;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+                font-weight: bold;
+            }
+            .btn_exp_coll span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+            .btn_exp_coll span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            .btn_exp_coll:hover {
+                background-color:tan
+            }
+            .btn_exp_coll:hover span {
+                padding-right: 25px;
+            }
+            .btn_exp_coll:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+            /* Side Navigation Bar*/
+            .sidebar {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: cadetblue;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+            }
+
+            .sidebar a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                color: #ffffff;
+                display: block;
+                transition: 0.3s;
+            }
+
+            .sidebar a:hover {
+                background-color: tan;
+            }
+
+            #main {
+                transition: .5s;
+                margin-left: 0;
+                padding: 16px;
+            }
+
+            .side_btn {
+                position: fixed;
+                border: none;
+                height: 40px;
+                width: 40px;
+                border-radius: 5%;
+                box-shadow: 0px 1px 4px 1px rgba(0 ,0, 0, .3);
+                background-color: cadetblue;
+                left: 0;
+                top: 5px;
+                color: #ffffff;
+                transform: translateX(-50%);
+                cursor: pointer;
+                text-align: center;
+                padding: 3px 3px;
+                z-index: 99;
+                transition: 0.5s;
+                display: inline-block;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            h2{
+                color:cadetblue
+            }
+        </style>
+        <title>Lab Validation</title>
+    </head>
+
+    <body>
+        <!------------------------>
+        <!--    Side Nav Bar    -->
+        <!------------------------>
+        <div class="side_btn" id="mySideBtn" onclick="toggleNav()">&#9776;</div>
+        <div class="sidebar" id="mySidebar">
+            <a href="#topic_esd">ESD Safety</a>
+            <!-- <a href="#topic_balun">Balun</a> -->
+            <a href="#topic_si">Signal Integrity</a>
+        </div>
+          
+        <!------------------------>
+        <!--  Main Body Starts  -->
+        <!------------------------>
+        <div id="main">
+
+            <h1 style="text-align: center;" id="topic1">Lab Validation</h1>
+            
+            <div class="column">
+
+                <!------------------------------------>
+                <!--  "Expand/Collapse All" Button  -->
+                <!------------------------------------>
+                <div id="fixed_box">
+                    <button class="btn_exp_coll" onclick="expandCollapse()"><span>Expand/Collapse All</span></button>
+                </div>
+
+                
+                
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_esd">ESD Safety</h2>
+                <p><b>关于ESD</b></p>
+                <p>Static electricity是指任何dielectric（绝缘） material表面储存的charge。当positively and negatively charged objects产生接触或靠得足够近，电荷被discharge，就会产生ESD (electrostatic discharge)。例如人走过地毯或脱下毛衣时，在自己身上储存了charge，然后触碰电子设备，有可能导致几千伏的ESD。</p>
+                <p>由于半导体元件越来越小，会导致物理上insulator film（多为SiO<sub>2</sub>）的thickness变薄，其dielectric strength也会变弱。同时，以前的电子设备大多固定在某个场所，而现代设备经常需要插线拔线、充电等等，也就是说”charge objects are brought into contact or close”的情况更频繁了。两个因素综合，导致ESD protection越来越重要。</p>
+                <p><b>实验室如何防止ESD</b></p>
+                <ul>
+                    <li>Only move the boards inside anti-static bags</li>
+                    <li>Once in the lab, or handling the boards, make sure to touch ground before removing the board（例如碰一下电路板上的金属cage）</li>
+                </ul>
+
+                <p>（注：与lab test较无关，关于ESD Diodes，请跳转<a href="../pg_flow/all_topics.html#topic_esd_diode">这里</a>。）</p>
+                
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <!-- <h2 id="topic_balun">Balun</h2>
+                <p>TODO</p> -->
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_si">Signal Integrity</h2>
+                <p>诊断scope上出现的各类distortion。</p>
+                <p>
+                    <b>The case of balun:</b>
+                    <img style="width:20%" src="balun_v.png">
+                </p>
+                <table>
+                    <tr>
+                        <td  style="width: 60%;">
+                            对于低频的方波来说，电感只会在信号transition的那一刻产生磁场，在信号稳定期间则secondary inductance没有能量来源，会很快demagnetize。（例：10kHz）</td>
+                        <td>
+                            <img style="width: 90%;" src="scope1.png">
+          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>对于低中频之间的方波来说，会变得可以接受，但质量不好。（例：1MHz）</td>
+                        <td><img style="width: 90%;" src="scope2.png"></td>
+                    </tr>
+                    <tr>
+                        <td>对于中频的方波来说，上述问题不存在，但是电感本身的速度限制开始显现。（例：5MHz）</td>
+                        <td><img style="width: 90%;" src="scope3.png"></td>
+                    </tr>
+                    <tr>
+                        <td>对于越来越高频的信号，速度问题越来越严重，最终会让amplitude也开始drop</td>
+                        <td>
+                            <img style="width: 90%;" src="scope4.png"><br>
+                            <img style="width: 90%;" src="scope5.png">
+                        </td>
+                    </tr>
+                </table>
+
+                <p>
+                    <b>The case of AC coupling cap:</b>
+                    <iframe onload="resizeIframe(this)" src="../high_speed_pcb/pcb_figures-Page-12.drawio.html"></iframe>
+                </p>
+                
+                <table>
+                    <tr>
+                        <td style="width: 60%;">
+                            如果AC coupling cap太小，也会出现右图同样的情况。两种解释：
+                            <ul>
+                                <li>时域的角度，这个cap hold的charge不够，在这么长的steady state中，很快就discharge到了0。</li>
+                                <li>频域的角度，根据<a href="../high_speed_pcb/all_topics.html#topic_acdc">公式</a>，cap越小，过滤掉的低频内容就越多。图中就是只pass high-frequency components的结果。</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <img style="width: 90%;" src="scope1.png">
+          
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    可以尝试以下解决方法：
+                    <ul>
+                        <li>Increase the signal frequency</li>
+                        <li>Change to a bigger cap（把signal frequency代入公式中算一下，就能知道大概数量级）</li>
+                    </ul>
+                </p>
+                <p>
+                    <b>The case of reflection:</b>
+
+                </p>
+                <iframe onload="resizeIframe(this)" src="../high_speed_pcb/pcb_figures-Page-6.drawio.html"></iframe>
+                <iframe onload="resizeIframe(this)" src="../high_speed_pcb/pcb_figures-Page-5.drawio.html"></iframe>
+                <p>详情跳转<a href="../high_speed_pcb/all_topics.html#topic_term">这里</a>。</p>
+            </div> <!-- column -->
+        </div> <!-- main -->
+
+        <!------------------------>
+        <!--   Main Body Ends   -->
+        <!------------------------>
+        
+
+
+        
+        <!-------------------------->
+        <!--    Page-End Break    -->
+        <!-------------------------->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <!------------------->
+        <!--    Scripts    -->
+        <!------------------->
+        <script>
+            
+            /*------------------ Collapsibles ------------------*/
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+            }
+            
+            function expandAll(){
+                for (i = 0; i < coll.length; i++) {   
+                    if (!coll[i].classList.contains("active")){
+                        coll[i].classList.add("active")
+                    }
+                    var content = coll[i].nextElementSibling;
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            }
+            function collapseAll(){
+                for (i = 0; i < coll.length; i++) {   
+                    if (coll[i].classList.contains("active")){
+                        coll[i].classList.remove("active")
+                    }
+                    var content = coll[i].nextElementSibling;
+                    content.style.maxHeight = null;
+                }
+            }
+
+            function expandCollapse(){
+                var coll_exist = 0;
+                for (i = 0; i < coll.length; i++) {   
+                    if (!coll[i].classList.contains("active")){
+                        coll_exist = 1;
+                        break;
+                    }
+                }
+                if (coll_exist)     expandAll();
+                else                collapseAll();
+            }
+
+            /*------------------ IFrame auto height resize ------------------*/
+            function resizeIframe(iframe) {
+                var scroll_height = Number(iframe.contentWindow.document.body.scrollHeight);
+                scroll_height = scroll_height * 1.2;    // Scale a bit larger to make sure no scroll bar shows
+                iframe.height = scroll_height + "px";
+            }
+
+            /*------------------ Side Navigation Bar ------------------*/
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.getElementById("mySideBtn").style.left = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+                document.getElementById("mySideBtn").style.left = "0";
+            }
+            function toggleNav() {
+                var side_bar = document.getElementById("mySidebar");
+                if (side_bar.classList.contains("active")){
+                    side_bar.classList.remove("active");
+                    closeNav();
+                }
+                else {
+                    side_bar.classList.add("active");
+                    openNav();
+                }
+            }
+        </script>
+    </body>
+</html>

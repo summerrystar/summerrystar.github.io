@@ -1,0 +1,303 @@
+<html>
+    <head>
+        <style>
+            .column {
+                float:  center;
+                margin-left:  10%;
+                margin-right: 10%
+            }
+
+            .collapsible {
+                background-color: #f1f1f1;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .collapsible.active, .collapsible:hover {
+                background-color: #dfdfdf;
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+            .collapsible.active:after {
+                content: "\2212";
+            }
+
+            .content {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: #f1f1f1;
+            }
+
+            iframe{
+                border: none;
+                width: 90%;
+            }
+
+            #fixed_box{
+                bottom: 1%;
+                right: 1%;
+                text-align: center;
+                position: fixed;
+            }
+            .btn_exp_coll {
+                display: inline-block;
+                background-color:cadetblue;
+                border-radius: 10px;
+                border: 4px double #cccccc;
+                color: #ffffff;
+                text-align: center;
+                padding: 15px;
+                width: 200px;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+                font-weight: bold;
+            }
+            .btn_exp_coll span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+            .btn_exp_coll span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            .btn_exp_coll:hover {
+                background-color:tan
+            }
+            .btn_exp_coll:hover span {
+                padding-right: 25px;
+            }
+            .btn_exp_coll:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+            /* Side Navigation Bar*/
+            .sidebar {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: cadetblue;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+            }
+
+            .sidebar a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                color: #ffffff;
+                display: block;
+                transition: 0.3s;
+            }
+
+            .sidebar a:hover {
+                background-color: tan;
+            }
+
+            #main {
+                transition: .5s;
+                margin-left: 0;
+                padding: 16px;
+            }
+
+            .side_btn {
+                position: fixed;
+                border: none;
+                height: 40px;
+                width: 40px;
+                border-radius: 5%;
+                box-shadow: 0px 1px 4px 1px rgba(0 ,0, 0, .3);
+                background-color: cadetblue;
+                left: 0;
+                top: 5px;
+                color: #ffffff;
+                transform: translateX(-50%);
+                cursor: pointer;
+                text-align: center;
+                padding: 3px 3px;
+                z-index: 99;
+                transition: 0.5s;
+                display: inline-block;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            h2{
+                color: cadetblue;
+            }
+        </style>
+        <title>High-Speed PCB Design</title>
+    </head>
+
+    <body>
+        <!------------------------>
+        <!--    Side Nav Bar    -->
+        <!------------------------>
+        <div class="side_btn" id="mySideBtn" onclick="toggleNav()">&#9776;</div>
+        <div class="sidebar" id="mySidebar">
+            <a href="#topic_tl">TL/Reflection</a>
+            <a href="#topic_term">Termination 端接</a>
+            <a href="#topic_stub">Stubs 桩线</a>
+            <a href="#topic_acdc">AC/DC Coupling</a>
+            <a href="#topic_powflt">Power Filtering</a>
+            <a href="#topic_supcap">Supply Capacitors</a>
+        </div>
+          
+        <!------------------------>
+        <!--  Main Body Starts  -->
+        <!------------------------>
+        <div id="main">
+
+            <h1 style="text-align: center;" id="topic1">High-Speed PCB Design</h1>
+            
+            <div class="column">
+
+                <!------------------------------------>
+                <!--  "Expand/Collapse All" Button  -->
+                <!------------------------------------>
+                <div id="fixed_box">
+                    <button class="btn_exp_coll" onclick="expandCollapse()"><span>Expand/Collapse All</span></button>
+                </div>
+
+                
+                <button class="collapsible"><b>Overview</b></button>
+                <div class="content">
+                    <iframe onload="resizeIframe(this)" src="pcb_figures-Page-1.drawio.html"></iframe>
+                </div>
+                
+
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_tl">Transmission Line & Reflection</h2>
+                <p>现代电路的两个特点：信号的rise/fall time越来越快；wire连接越来越长。此时如果driver, transmission line和receiver的impedance不match，有discontinuity，就会产生reflection，导致各种undershoot和overshoot。</p>
+                
+
+            </div> <!-- column -->
+        </div> <!-- main -->
+
+        <!------------------------>
+        <!--   Main Body Ends   -->
+        <!------------------------>
+        
+
+
+        
+        <!-------------------------->
+        <!--    Page-End Break    -->
+        <!-------------------------->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <!------------------->
+        <!--    Scripts    -->
+        <!------------------->
+        <script>
+            
+            /*------------------ Collapsibles ------------------*/
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+            }
+            
+            function expandAll(){
+                for (i = 0; i < coll.length; i++) {   
+                    if (!coll[i].classList.contains("active")){
+                        coll[i].classList.add("active")
+                    }
+                    var content = coll[i].nextElementSibling;
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            }
+            function collapseAll(){
+                for (i = 0; i < coll.length; i++) {   
+                    if (coll[i].classList.contains("active")){
+                        coll[i].classList.remove("active")
+                    }
+                    var content = coll[i].nextElementSibling;
+                    content.style.maxHeight = null;
+                }
+            }
+
+            function expandCollapse(){
+                var coll_exist = 0;
+                for (i = 0; i < coll.length; i++) {   
+                    if (!coll[i].classList.contains("active")){
+                        coll_exist = 1;
+                        break;
+                    }
+                }
+                if (coll_exist)     expandAll();
+                else                collapseAll();
+            }
+
+            /*------------------ IFrame auto height resize ------------------*/
+            function resizeIframe(iframe) {
+                var scroll_height = Number(iframe.contentWindow.document.body.scrollHeight);
+                scroll_height = scroll_height * 1.2;    // Scale a bit larger to make sure no scroll bar shows
+                iframe.height = scroll_height + "px";
+            }
+
+            /*------------------ Side Navigation Bar ------------------*/
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.getElementById("mySideBtn").style.left = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+                document.getElementById("mySideBtn").style.left = "0";
+            }
+            function toggleNav() {
+                var side_bar = document.getElementById("mySidebar");
+                if (side_bar.classList.contains("active")){
+                    side_bar.classList.remove("active");
+                    closeNav();
+                }
+                else {
+                    side_bar.classList.add("active");
+                    openNav();
+                }
+            }
+        </script>
+    </body>
+</html>
