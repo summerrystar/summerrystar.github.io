@@ -158,11 +158,11 @@
         <!------------------------>
         <div class="side_btn" id="mySideBtn" onclick="toggleNav()">&#9776;</div>
         <div class="sidebar" id="mySidebar">
-            <a href="#topic_trim">Trimming</a>
             <a href="#topic_die">In the Die</a>
             <a href="#topic_esd_diode">&nbsp;&nbsp;&nbsp;&nbsp;- ESD Diodes</a>
             <a href="#topic_pkg">To the Package</a>
             <a href="#topic_cont">Continuity Test</a>
+            <a href="#topic_trim">Trimming</a>
         </div>
           
         <!------------------------>
@@ -177,9 +177,9 @@
                 <!------------------------------------>
                 <!--  "Expand/Collapse All" Button  -->
                 <!------------------------------------>
-                <div id="fixed_box">
+                <!-- <div id="fixed_box">
                     <button class="btn_exp_coll" onclick="expandCollapse()"><span>Expand/Collapse All</span></button>
-                </div>
+                </div> -->
 
                 
                 <!-- <button class="collapsible"><b>Overview</b></button>
@@ -190,12 +190,6 @@
                 <p>PG = Pattern Generation，即ASIC生成最后的photomask和manufacturing database。</p>
                 
 
-                <!-------------------------->
-                <!--     Topic Divider    -->
-                <!-------------------------->
-                <h2 id="topic_trim">Trimming</h2>
-                
-                <p>TODO</p>
 
                 <!-------------------------->
                 <!--     Topic Divider    -->
@@ -238,7 +232,48 @@
                 <!--     Topic Divider    -->
                 <!-------------------------->
                 <h2 id="topic_pkg">To the Package</h2>
-                <p>TODO</p>
+                <table>
+                    <tr>
+                        <td style="width: 70%">
+                            <p>Packaging的两大作用：</p>
+                            <ul>
+                                <li>提供物理保护</li>
+                                <li>提供连通外界的connectivity</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <img src="pkg_1.png" style="width:90%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>内部结构：</p>
+                            <ul>
+                                <li>substrate --- bond wire --- die cut from wafer</li>
+                                <li>连好bond wire以后加上resin保护，然后在package外放上solder ball，之后与其他电路连接。</li>
+                            </ul>
+                        </td>
+                        <td>
+                            
+                            <img src="pkg_2.png" style="width:60%">
+                            <img src="pkg_3.png" style="width:30%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Package的一些不同种类：</p>
+                            <ul>
+                                <li>BGA (Ball Grid Array): contact是小球形</li>
+                                <li>LGA (Land Grid Array): contact是平面</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <img src="pkg_4.png" style="width:90%">
+                        </td>
+                    </tr>
+                </table>
+
+                
 
                 <!-------------------------->
                 <!--     Topic Divider    -->
@@ -246,6 +281,12 @@
                 <h2 id="topic_cont">Continuity Test</h2>
                 <p>TODO</p>
 
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_trim">Trimming</h2>
+                
+                <p>TODO</p>
 
 
             </div> <!-- column -->
