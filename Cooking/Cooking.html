@@ -173,8 +173,10 @@
             <div class="ingred" onclick="filter_dishes('fish',this)">鱼 Fish</div>
             <div class="ingred" onclick="filter_dishes('salmon',this)">三文鱼 Salmon</div>
             <div class="ingred" onclick="filter_dishes('shrimp',this)">虾 Shrimp</div>
+            <div class="ingred" onclick="filter_dishes('seafood',this)">海鲜 Seafood</div>
             <div class="ingred" onclick="filter_dishes('egg',this)">鸡蛋 Eggs</div>
             <div class="ingred" onclick="filter_dishes('tofu',this)">豆腐 Tofu</div>
+            <div class="ingred" onclick="filter_dishes('bean-prod',this)">豆制品 Bean Products</div>
             <div class="ingred" onclick="filter_dishes('daal',this)">印度豆子 Daal</div>
             <div class="ingred" onclick="filter_dishes('turkey',this)">火鸡肉 Turkey</div>
 
@@ -198,10 +200,9 @@
             <div class="ingred" onclick="filter_dishes('chive',this)">韭菜/韭黄 Chinese Chives</div>
             <div class="ingred" onclick="filter_dishes('cucumber',this)">黄瓜 Cucumber</div>
             <div class="ingred" onclick="filter_dishes('winter',this)">冬瓜 Winter Melon</div>
+            <div class="ingred" onclick="filter_dishes('edamame',this)">毛豆 Edamame</div>
 
             <h4 style="width: 100%; display: block;">稀有食材 Misc</h4>
-            <div class="ingred" onclick="filter_dishes('scallop',this)">鲜贝 Scallop</div>
-            <div class="ingred" onclick="filter_dishes('mussel',this)">贻贝 Mussel</div>
             <div class="ingred" onclick="filter_dishes('thousand-eg',this)">皮蛋 Thousand-Year Eggs</div>
             <div class="ingred" onclick="filter_dishes('salt-eg',this)">咸蛋 Salted Eggs</div>
             <div class="ingred" onclick="filter_dishes('fruits',this)">水果 Fruits</div>
@@ -387,7 +388,7 @@
               </a>
               <a class="protein">
                   <p>蒜蓉粉丝蒸扇贝 Steamed Garlic Clams</p>
-                  <span style="display: none">ri-no fish shrimp</span>
+                  <span style="display: none">ri-no seafood</span>
               </a>
               <a class="protein veggies" href="#modal_braised_chicken">
                   <div style="float: right; color: coral;">&#128269;</div>
@@ -411,6 +412,10 @@
               <a class="protein">
                   <p>烤羊排 Oven-Roasted Lamb Chops</p>
                   <span style="display: none">lamb</span>
+              </a>
+              <a class="protein">
+                  <p>百叶包肉 Steamed Ground Pork in Tofu Wraps</p>
+                  <span style="display: none">pork bean-prod</span>
               </a>
           </div>
         </div>
@@ -478,6 +483,14 @@
                     <p>红烧冬瓜 Braised Winter Melon</p>
                     <span style="display: none">winter</span>
                 </a>
+                <a class="veggies">
+                    <p>糟毛豆 Edamame in Pickle Sauce</p>
+                    <span style="display: none">edamame</span>
+                </a>
+                <a class="veggies protein">
+                    <p>大煮干丝 Boiled Bean Curds</p>
+                    <span style="display: none">bean-prod bokchoy mushroom shrimp seafood</span>
+                </a>
             </div>
         </div>
 
@@ -508,7 +521,7 @@
                 <a class="carbs protein" href="#modal_seafood_porridge"> 
                   <div style="float: right; color: coral;">&#128269;</div>
                     <p>海鲜粥 Seafood Porridge</p>
-                    <span style="display:none;">rice shrimp scallop mushroom bokchoy</span>
+                    <span style="display:none;">rice shrimp seafood fish mushroom bokchoy</span>
                 </a>
                 <a class="carbs">
                     <p>红薯饭/粥 Sweet Potato Rice/Porridge</p>
@@ -520,7 +533,7 @@
                 </a>
                 <a class="carbs protein veggies">
                     <p>番茄鸡蛋面 Tomato Egg Noodles</p>
-                    <span style="display: none">noodle tomato egg shrimp scallop</span>
+                    <span style="display: none">noodle tomato egg shrimp seafood</span>
                 </a>
                 <a class="carbs protein veggies">
                     <p>番茄牛肉米粉 Tomato Beef Rice-Noodles</p>
@@ -538,12 +551,12 @@
                 <a class="carbs protein veggies" href='#modal_seafood_udon'>
                     <div style="float: right; color: coral;">&#128269;</div>
                     <p>海鲜乌冬 Seafood Udon</p>
-                    <span style="display: none">noodle fish shrimp scallop mussel onion tomato</span>
+                    <span style="display: none">noodle shrimp seafood onion tomato</span>
                 </a>
                 <a class="carbs protein veggies" href='#modal_seafood_pasta'>
                     <div style="float: right; color: coral;">&#128269;</div>
                     <p>奶油蘑菇海鲜意面 Creamy Mushroom Seafood Pasta</p>
-                    <span style="display: none">noodle fish salmon mussel mushroom</span>
+                    <span style="display: none">noodle fish salmon shrimp seafood mushroom</span>
                 </a>
                 <a class="carbs protein" href='#modal_chicken_rice'>
                     <div style="float: right; color: coral;">&#128269;</div>
@@ -574,6 +587,10 @@
                     <div style="float: right; color: coral;">&#128269;</div>
                     <p>简易臊子面 Easy Saozi Noodles</p>
                     <span style="display: none">pork carrot greens</span>
+                </a>
+                <a class="carbs">
+                    <p>玛德琳蛋糕 Madeleine</p>
+                    <span style="display: none">egg flour</span>
                 </a>
             </div>
         </div>
@@ -1178,17 +1195,18 @@
     </a>
     <div class="modal_content">
       <p>
-        先煎三文鱼至皮脆，捣碎后加入切成薄片的蘑菇和贻贝肉。
+        先煎三文鱼至皮脆，捣碎后加入切成薄片的蘑菇和贻贝肉。也可以用其他海鲜和蒜蓉。
       </p>
       <p style="color: coral;">
         Pan fry salmon till the skin gets crispy. Crush the salmon steak, add thin-sliced mushroom and mussel meat.
+        Or use other types of seafood with ground garlic.
       </p>
 
       <p>
-        加入牛奶，开盖煮沸至汤汁变得黏稠。
+        加入牛奶，开盖煮沸至汤汁变得黏稠。加一点面粉帮助成型。
       </p>
       <p style="color: coral;">
-        Add some milk and boil till the base gets thickened.
+        Add some milk and boil till the base gets thickened. Add some flour to help.
       </p>
 
 
