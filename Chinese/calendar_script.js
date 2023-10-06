@@ -53,7 +53,8 @@ var attendance = [
   new Date(2023, 1, 13),
   new Date(2023, 2, 5),
   new Date(2023, 2, 26),
-  new Date(2023, 8, 23)
+  new Date(2023, 8, 23),
+  new Date(2023, 9, 5)
 ];
 
 const renderCalendar = () => {
