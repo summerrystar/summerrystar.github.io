@@ -25,14 +25,22 @@
         color: white;
       }
 
-
       .disp{
         width: 90%;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
       }
-
+      .gallery_block {
+        float: left;
+        padding: 5px;
+        height: 25%;
+      }
+      .gallery_block2 {
+        float: left;
+        padding: 5px;
+        height: 35%;
+      }
     </style>
     <title>Painting 画廊</title>
   </head>
@@ -54,15 +62,87 @@
     <!-- source images -->
     <div class="disp" id="general" style="display:block;">
       <!--Copied from https://flickrembed.com/-->
-      <!-- <iframe scrolling = "yes" style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720298525711&sort=0&by=album&theme=tiles_nested&scale=fill&speed=1000&limit=50&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.foned.co.uk/sim-only-deals">Sim Only</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script> -->
-      <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720298525711&sort=0&by=album&theme=tiles_justified&scale=fill&speed=3000&limit=50&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.foned.co.uk/sim-only-deals">Sim Only</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script>
+      <!-- <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720298525711&sort=0&by=album&theme=tiles_justified&scale=fill&speed=3000&limit=50&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.foned.co.uk/sim-only-deals">Sim Only</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script> -->
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52040750828/in/album-72177720298525711/" title="caroline_sxsw_color5"><img src="https://live.staticflickr.com/65535/52040750828_9c9b862c3c_b.jpg" height="100%" alt="caroline_sxsw_color5"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/53275489340/in/dateposted/" title="sstretch"><img src="https://live.staticflickr.com/65535/53275489340_db7aa1055d_b.jpg" height="100%" alt="sstretch"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>  
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52039674812/in/album-72177720298525711/" title="icon2"><img src="https://live.staticflickr.com/65535/52039674812_a09f40883a_z.jpg" height="100%" alt="icon2"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52041107444/in/album-72177720298525711/" title="色组047"><img src="https://live.staticflickr.com/65535/52041107444_bd11615227_z.jpg" height="100%" alt="色组047"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52041213205/in/album-72177720298525711/" title="yu_icon2_1c"><img src="https://live.staticflickr.com/65535/52041213205_ff7171303b_b.jpg" height="100%" alt="yu_icon2_1c"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52040763133/in/album-72177720298525711/" title="Nikki"><img src="https://live.staticflickr.com/65535/52040763133_2384dd4e3e_b.jpg" height="100%" alt="Nikki"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">  
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52040971444/in/album-72177720298525711/" title="mokudai"><img src="https://live.staticflickr.com/65535/52040971444_c3457462dd_z.jpg" height="100%" alt="mokudai"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52039672372/in/album-72177720298525711/" title="Performer"><img src="https://live.staticflickr.com/65535/52039672372_c886b0f445_b.jpg" height="100%" alt="Performer"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52039674782/in/album-72177720298525711/" title="wind"><img src="https://live.staticflickr.com/65535/52039674782_201db393a6_z.jpg" height="100%" alt="wind"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52039681392/in/album-72177720298525711/" title="screen"><img src="https://live.staticflickr.com/65535/52039681392_ed483ef3aa_z.jpg"height="100%" alt="screen"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52048412795/in/album-72177720298525711/" title="happy_graduation"><img src="https://live.staticflickr.com/65535/52048412795_d8d0ebc6ee_z.jpg" height="100%" alt="happy_graduation"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52039672492/in/album-72177720298525711/" title="Frodo"><img src="https://live.staticflickr.com/65535/52039672492_904fe5e0eb_b.jpg" height="100%" alt="Frodo"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+
     </div>
 
     <div class="disp" id="p1" style="display: none;">
-      <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720298788706&sort=0&by=album&theme=tiles&scale=fill&speed=3000&limit=10&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.foned.co.uk/sim-only-deals">Sim Only</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script>
+      <!-- <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720298788706&sort=0&by=album&theme=tiles&scale=fill&speed=3000&limit=10&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.foned.co.uk/sim-only-deals">Sim Only</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script> -->
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52039685682/in/album-72177720298788706/" title="10张 (3)"><img src="https://live.staticflickr.com/65535/52039685682_2265b42802_z.jpg" height="100%" alt="10张 (3)"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52040978994/in/album-72177720298788706/" title="15张"><img src="https://live.staticflickr.com/65535/52040978994_d4c37e5f27_z.jpg" height="100%" alt="15张"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52039685642/in/album-72177720298788706/" title="14张 (2)"><img src="https://live.staticflickr.com/65535/52039685642_5737c2bc86_z.jpg" height="100%" alt="14张 (2)"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52041223765/in/album-72177720298788706/" title="Her"><img src="https://live.staticflickr.com/65535/52041223765_c1bb1f1b73_z.jpg" height="100%" alt="Her"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52063228470/in/album-72177720298788706/" title="Hitagi middle school"><img src="https://live.staticflickr.com/65535/52063228470_644e6c9e19_z.jpg" height="100%" alt="Hitagi middle school"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
     </div>
     <div class="disp" id="p2" style="display: none;">
-      <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720298790000&sort=0&by=album&theme=tiles&scale=fill&speed=3000&limit=10&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.foned.co.uk/sim-only-deals">Sim Only</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script>
+      <!-- <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720298790000&sort=0&by=album&theme=tiles&scale=fill&speed=3000&limit=10&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"><p><a rel="nofollow" href="https://www.foned.co.uk/sim-only-deals">Sim Only</a></p><small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small></iframe><script type="text/javascript">function showpics(){var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})}</script> -->
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52062729241/in/album-72177720298790000/" title="fate2"><img src="https://live.staticflickr.com/65535/52062729241_1334d55851_z.jpg" height="100%" alt="fate2"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52062960949/in/album-72177720298790000/" title="window2"><img src="https://live.staticflickr.com/65535/52062960949_da4199c0da_z.jpg" height="100%" alt="window2"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52062727331/in/album-72177720298790000/" title="ten_meitu_1"><img src="https://live.staticflickr.com/65535/52062727331_1191fb897e_z.jpg" height="100%" alt="ten_meitu_1"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52061689302/in/album-72177720298790000/" title="done_2"><img src="https://live.staticflickr.com/65535/52061689302_c542464bc3_z.jpg" height="100%" alt="done_2"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52062961134/in/album-72177720298790000/" title="894"><img src="https://live.staticflickr.com/65535/52062961134_9f0bde7858_z.jpg" height="100%" alt="894"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52040713956/in/album-72177720298790000/" title="zzzo"><img src="https://live.staticflickr.com/65535/52040713956_b6e5e5e08d_z.jpg" height="100%" alt="zzzo"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52061696897/in/album-72177720298790000/" title="spring_v5"><img src="https://live.staticflickr.com/65535/52061696897_57daf391c4_z.jpg" height="100%" alt="spring_v5"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
     </div>
     <div class="disp" id="tshirt" style="display: none; text-align: center;">
       <img src="t1.png" style="width: 25%;float: left;margin-left: 10%;margin-right: 1%;">
@@ -72,18 +152,24 @@
     </div>
 
     <div class="disp" id="karan" style="display:none;">
-      <!--Copied from https://flickrembed.com/-->
-      <iframe style="position: relative; top: 0; left: 0; width: 100%; height: 100%;" src="https://flickrembed.com/cms_embed.php?source=flickr&layout=responsive&input=www.flickr.com/photos/195236109@N04/albums/72177720297455112&sort=0&by=album&theme=tiles&scale=fill&speed=1000&limit=100&skin=default&autoplay=true" scrolling="no" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true">
-        <p>
-          <a rel="nofollow" href="https://www.compareboilercover.co.uk">Compare Boiler Insurance Policies</a>
-        </p>
-        <small>Powered by <a href="https://flickrembed.com">flickr embed</a>.</small>
-      </iframe>
-      <script type="text/javascript">
-        function showpics(){
-          var a=$("#box").val();$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags="+a+"&tagmode=any&format=json&jsoncallback=?",function(a){$("#images").hide().html(a).fadeIn("fast"),$.each(a.items,function(a,e){$("<img/>").attr("src",e.media.m).appendTo("#images")})})
-        }
-      </script>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/51947565405/in/album-72177720297455112/" title="WeChat Image_20220318232300"><img src="https://live.staticflickr.com/65535/51947565405_389d14442f_z.jpg" height="100%" alt="WeChat Image_20220318232300"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/51947031313/in/album-72177720297455112/" title="WeChat Image_20220318232309"><img src="https://live.staticflickr.com/65535/51947031313_8402603207_z.jpg" height="100%" alt="WeChat Image_20220318232309"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/51945975847/in/album-72177720297455112/" title="WeChat Image_20220318232315"><img src="https://live.staticflickr.com/65535/51945975847_2f34f5f4f6_z.jpg" height="100%" alt="WeChat Image_20220318232315"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/51947565385/in/album-72177720297455112/" title="WeChat Image_20220318232342"><img src="https://live.staticflickr.com/65535/51947565385_7c50ff3f74_z.jpg" height="100%" alt="WeChat Image_20220318232342"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52573462511/in/album-72177720297455112/" title="austin_fall"><img src="https://live.staticflickr.com/65535/52573462511_ec9859486f_z.jpg" height="100%" alt="austin_fall"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
+      <div class="gallery_block2">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195236109@N04/52573054892/in/album-72177720297455112/" title="baddy3"><img src="https://live.staticflickr.com/65535/52573054892_9293afaedb_z.jpg" height="100%" alt="baddy3"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+      </div>
     </div>
 
     <div class="disp" id="map" style="display: none;">
