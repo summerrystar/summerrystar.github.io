@@ -147,6 +147,8 @@
             }
             h2, h3{
                 color: cadetblue;
+                /* margin-top: 15px;
+                margin-bottom: 0px; */
             }
         </style>
         <title>PG Flow</title>
@@ -227,13 +229,13 @@
                     
                 </table>
                 <h3 id="topic_esd_diode">ESD Diodes</h3>
-                <p>
+                <div style="text-align: right;">
                     (<a href="https://toshiba.semicon-storage.com/info/application_note_en_20220527_AKX00461.pdf?did=68869">Reference</a>)
-                </p>
+                </div>
 
                 <table>
                     <tr>
-                        <td style="width: 60%;">
+                        <td style="width: 70%;">
                             <p>Diode本身的工作原理见右图。ESD diodes主要利用reverse breakdown这个state突然开始增加的reverse current。</p>
                             <p>在系统中，如下图添加ESD Protection diodes。（DUP = device under protection）在normal operation期间，diode相当于不存在。而在ESD event时，如果voltage超过reverse breakdown voltage，diodes就会开始conduct，将ESD energy shunt到ground，保护剩余系统。</p>
                 
@@ -250,7 +252,7 @@
                 <!--     Topic Divider    -->
                 <!-------------------------->
                 <h2 id="topic_pkg">Packaging</h2>
-                <p>(<a href="https://youtube.com/playlist?list=PLbRMhDVUMngcwN9HHlOALFj1HYs9T64BF&si=vv6xBvzsn8XDsmEr">Reference</a>)</p>
+                <div style="text-align: right;">(<a href="https://youtube.com/playlist?list=PLbRMhDVUMngcwN9HHlOALFj1HYs9T64BF&si=vv6xBvzsn8XDsmEr">Reference</a>)</div>
                 <table>
                     <tr>
                         <td style="width: 70%">
@@ -281,13 +283,12 @@
                             </ul>
                         </td>
                         <td>
-                            
                             <img src="pkg_2.png" style="width:90%">
                         </td>
                     </tr>
                 </table>
 
-                <button class="collapsible"><b>Ceramic v.s. Plastic:</b></button>
+                <button class="collapsible"><b>Ceramic v.s. Plastic</b></button>
                 <div class="content">
                     <ul>
                         <li>Ceramic更贵，属于高端材料，不会用在手机、电脑里，多用于军事等需要极高hermeticity的情况。</li>
@@ -307,16 +308,26 @@
                     </ul>
                 </div>
 
+                <p>比较简单的package：</p>
+                <ul>
+                    <li>
+                        DIP (dual in-line): 平行两排管脚
+                    </li>
+                    <li>
+                        QFN (quad flat no-lead): 四周放管脚
+                    </li>
+                </ul>
+                <p>随着pin count升高，需要用到更现代的package，在接下来的section介绍。</p>
+
 
                 <h3 id="topic_pkg_xga">PGA/BGA/LGA</h3>
 
-                   PGA (Pin Grid Array): 
-                        <ul>
-                            <li>是最古老的。中间chip正下方一般留空，可以放一大块Cu作heat sink，或者放landside capacitors。</li>
-                            <li>整个package的中间是chip，底部是substrate（比如绿色的FR4），顶部是lid。</li>
-                            <li>Substrate底下的pin array插入PCB上对应的socket（插孔）。</li>
-                        </ul>
-            
+                PGA (Pin Grid Array): 
+                    <ul>
+                        <li>是最古老的。中间chip正下方一般留空，可以放一大块Cu作heat sink，或者放landside capacitors。</li>
+                        <li>整个package的中间是chip，底部是substrate（比如绿色的FR4），顶部是lid。</li>
+                        <li>Substrate底下的pin array插入PCB上对应的socket（插孔）。</li>
+                    </ul>
 
                 <table>
                     <tr>
@@ -356,9 +367,13 @@
                         </td>
                     </tr>
                 </table>
-                <p>制作过程（及名字由来）见下图，有些类似于BGA。</p>
-                <p style="text-align: center;">
-                    <img src="flpchp_proc.png" style="width: 70%;"></p>
+                
+                <button class="collapsible"><b>制作图解</b></button>
+                <div class="content">
+                    <p>制作过程（及名字由来）见下图，有些类似于BGA。</p>
+                    <p style="text-align: center;">
+                        <img src="flpchp_proc.png" style="width: 70%;"></p>
+                </div> 
                 
 
                 
@@ -368,14 +383,154 @@
                 <!--     Topic Divider    -->
                 <!-------------------------->
                 <h2 id="topic_cont">Continuity Test</h2>
-                <p>TODO</p>
+                <div style="text-align: right;">(<a href="https://www.edn.com/continuity-testing/">Reference</a>)</div>
+                <p>
+                    Continuity test用来测试package好的chip所有pin的连接是否正常，没有defect。
+                </p>
+                <p>
+                    由于semiconductor package越来越复杂，continuity test也变得更困难。
+                    曾经对于quad flat型的package，只要测pin array中相邻的pin有没有short。
+                    现在用grid array，则变成了一个matrix，中间每个pin都可能和相邻的8个pin short。
+                </p>
+                <p><b>测试open</b></p>
+                <p>利用ESD diode。Force a small current onto the DUT pins, and measure for the presence or absence of a voltage. 
+                    由于diode通电流时的junction voltage是固定的，因此可以预测diode两端的voltage drop应该是多少。
+                    如果DUT pin没有连接好，是open的话，就会没有current flow，测出的voltage就会不对。</p>
+                <p>
+                    只需一次parallel continuity test（对所有pin同时施加电流）就可以screen掉所有open的情况。
+                </p>
+                <p><b>测试short</b></p>
+                <p>测试相邻的pin之间是否有short。有时在parallel test中能测出来（比如pin short to VDD or GND），但大部分情况测不出，需要单独的测试。</p>
+                <table>
+                    <tr>
+                        <td style="width: 90%;">
+                            <p>基本方法：</p>
+                            <ul>
+                                <li>
+                                    为了测试右图中的红点，把所有粉色点force成ground potential，然后测量红点的电压。
+                                    如果红点与任意粉点有short，那么tester就会测到ground voltage而非diode turn-on voltage。
+                                </li>
+                                <li>
+                                    对matrix中每个点都要测一次，brute-force的方法。
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <img src="cont_1.png" style="width: 70%;">
+                        </td>
+                    </tr>
+                </table>
+                
+                <button class="collapsible"><b>优化 - Black & White测试法</b></button>
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td style="width: 75%;">
+                                <ul>
+                                    <li>
+                                        见右图。首先将左边所有黑色pin接地，然后测量白色pin上的电压。这样可以测出所有horizontal和diagonal的shorts
+                                    </li>
+                                    <li>
+                                        然后设置为右边状态，测出所有vertical shorts
+                                    </li>
+                                    <li>这样一来，完整的continuity test flow只需要3个iteration：
+                                        <ul>
+                                            <li>parallel test测所有open</li>
+                                            <li>测horizontal/diagonal shorts</li>
+                                            <li>测vertical shorts</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <img src="cont_2.png" style="width: 70%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>在实际应用中会更复杂，因为一个点阵里会有多个ground & supply pins。考虑以下情况：</p>
+                                <ul>
+                                    <li>1(a)图中显示红色为supply pins，蓝色为ground pins</li>
+                                    <li>首先还是用parallel test来测所有的open</li>
+                                    <li>接下来如1(b)图所示，把ground pins都force到ground potential。这样可以测出任意ground pin到任意adjacent pin（黄点）的short</li>
+                                    <li>现在如2(a)图所示开始进行black and white test，给alternate columns加ground potential。但由于device内部supply间会相连，ground间也会相连，导致effective configuration如2(b)图所示。此时会导致2(c)中所有绿色点的short没法detect。</li>
+                                    <li>接下来如图3(a)所示给horizontal加ground potential。依然由于supply间会相连，同时测试中至少一个device ground会被set to ground potential，导致实际configuration如3(b)所示，于是导致3(c)中所有绿色点的short无法测到。</li>
+                                    <li>综合黄点和两个绿点的结果，可以推断出三个test过后依然有”at least one undetectable short to an adjacent IO pin”的pin有哪些。对这些pin再单独进行continuity test。</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <img src="cont_3.png" style="width: 80%;">
+                                <br>
+                                <br>
+                                <img src="cont_4.png" style="width: 99%;">
+                                <br>
+                                <br>
+                                <img src="cont_5.png" style="width: 99%;">
+
+                            </td>
+                        </tr>
+                    </table>
+                    
+
+                </div>
 
                 <!-------------------------->
                 <!--     Topic Divider    -->
                 <!-------------------------->
                 <h2 id="topic_trim">Trimming</h2>
+                <div style="text-align: right;">(Reference: <i>The Art of Analog Layout</i>)</div>
+                <p>Resistor和capacitor在生产过程中会出现各种nonideality。对于精度要求高、比较敏感的电路部分，需要进行trim。</p>
                 
-                <p>TODO</p>
+                <button class="collapsible"><b>几种（古老的）trim方式</b></button>
+                <div class="content">
+                    <ul>
+                        <li>
+                            Fuses
+                            <ul>
+                                <li>
+                                    Fuse是指用很细的金属或polysilicon将两个bondpads连起来。
+                                </li>
+                                <li>
+                                    Program的方式是用large current between the bondpads来blow掉这个fuse，让材料蒸发。蒸发完毕后就变成open circuit
+                                </li>
+                                <li>
+                                    用来program fuse的管脚被称为trimpad，通常不会连接bond wire，因此可以比普通的bondpad更小，只要大小够让probe needles接触即可
+                                </li>
+                                <li>
+                                    使用binary-weighted resistor segments：
+                                </li>
+                                <li>
+                                    <img src="trim_fuse.png" style="width: 45%;">
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Zener Zaps
+                            <ul>
+                                <li>
+                                    和fuse比较类似的idea，但不用fuse而是用Zener diodes。这种diodes一开始是open，在program期间通过overload可以变成short。这个programming过程称为”zapping”。
+                                </li>
+                                <li>
+                                    电路布局和fuse类似
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Laser Trims 
+                            <li>
+                                这个办法是直接用激光来改thin conducive film的resistance。把芯片放在tester里，一点点移动激光烧掉材料的物理结构，一边移动一边监测我们调试的某个parameter，一旦达到预想效果，就停止trim。
+                            </li>
+                            <li>
+                                相比fuses和Zener，laser是continuous trimming（前两者的最小step由最小的resistor segment决定），所以resolution更高。
+                            </li>
+                        </li>
+                    </ul>
+                </div>
+                <p>
+                    最新的chip一般都是将trim code burn进NVM，用trim code作为可变电阻值的控制信号。
+                </p>
+                
+
 
                 
                 <!-------------------------->
