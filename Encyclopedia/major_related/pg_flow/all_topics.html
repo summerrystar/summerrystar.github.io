@@ -160,9 +160,16 @@
         <div class="sidebar" id="mySidebar">
             <a href="#topic_die">In the Die</a>
             <a href="#topic_esd_diode">&nbsp;&nbsp;&nbsp;&nbsp;- ESD Diodes</a>
-            <a href="#topic_pkg">To the Package</a>
+            <!------------------------------------------------------------------>
+            <a href="#topic_pkg">Packaging</a>
+            <a href="#topic_pkg_xga">&nbsp;&nbsp;&nbsp;&nbsp;- PGA/BGA/LGA</a>
+            <a href="#topic_pkg_flpchp">&nbsp;&nbsp;&nbsp;&nbsp;- Flip Chip</a>
+            <!------------------------------------------------------------------>
             <a href="#topic_cont">Continuity Test</a>
+            <!------------------------------------------------------------------>
             <a href="#topic_trim">Trimming</a>
+            <!------------------------------------------------------------------>
+            <a href="#topic_trivia">Trivia 豆知识</a>
         </div>
           
         <!------------------------>
@@ -177,17 +184,20 @@
                 <!------------------------------------>
                 <!--  "Expand/Collapse All" Button  -->
                 <!------------------------------------>
-                <!-- <div id="fixed_box">
+                <div id="fixed_box">
                     <button class="btn_exp_coll" onclick="expandCollapse()"><span>Expand/Collapse All</span></button>
-                </div> -->
+                </div>
 
-                
                 <!-- <button class="collapsible"><b>Overview</b></button>
                 <div class="content">
                     <iframe onload="resizeIframe(this)" src="pcb_figures-Page-1.drawio.html"></iframe>
                 </div> -->
 
                 <p>PG = Pattern Generation，即ASIC生成最后的photomask和manufacturing database。</p>
+                <p>除了chip本身的设计，还有一些很重要但容易被忽视的topic，比如packaging, thermal management, shock & vibration等。
+                    举例来说，overheating造成了70%的chip failure，可见thermal的重要性。
+                    一个很好的analogy是，chip本身就像汽车的引擎，虽为核心，但如果不配上底盘、轮子和外壳，依然无法使用。
+                    因此，本篇主要cover chip本身以外的各种支持性事物。</p>
                 
 
 
@@ -221,9 +231,17 @@
                     (<a href="https://toshiba.semicon-storage.com/info/application_note_en_20220527_AKX00461.pdf?did=68869">Reference</a>)
                 </p>
 
-                <p>Diode本身的工作原理见下图。ESD diodes主要利用reverse breakdown这个state突然开始增加的reverse current。</p>
-                <img src="esd_diode_1.png">
-                <p>在系统中，如下图添加ESD Protection diodes。（DUP = device under protection）在normal operation期间，diode相当于不存在。而在ESD event时，如果voltage超过reverse breakdown voltage，diodes就会开始conduct，将ESD energy shunt到ground，保护剩余系统。</p>
+                <table>
+                    <tr>
+                        <td style="width: 60%;">
+                            <p>Diode本身的工作原理见右图。ESD diodes主要利用reverse breakdown这个state突然开始增加的reverse current。</p>
+                            <p>在系统中，如下图添加ESD Protection diodes。（DUP = device under protection）在normal operation期间，diode相当于不存在。而在ESD event时，如果voltage超过reverse breakdown voltage，diodes就会开始conduct，将ESD energy shunt到ground，保护剩余系统。</p>
+                
+                        </td>
+                        <td><img src="esd_diode_1.png" style="width: 80%;"></td>
+                    </tr>
+                </table>
+                
                 <img src="esd_diode_2.png">
 
 
@@ -231,15 +249,20 @@
                 <!-------------------------->
                 <!--     Topic Divider    -->
                 <!-------------------------->
-                <h2 id="topic_pkg">To the Package</h2>
+                <h2 id="topic_pkg">Packaging</h2>
+                <p>(<a href="https://youtube.com/playlist?list=PLbRMhDVUMngcwN9HHlOALFj1HYs9T64BF&si=vv6xBvzsn8XDsmEr">Reference</a>)</p>
                 <table>
                     <tr>
                         <td style="width: 70%">
-                            <p>Packaging的两大作用：</p>
+                            <p><b>Packaging的两大作用：</b></p>
                             <ul>
-                                <li>提供物理保护</li>
-                                <li>提供连通外界的connectivity</li>
+                                <li>Protection &mdash; 保护又薄又脆的硅片。</li>
+                                <li>Connection &mdash; 提供连通外界的桥梁，basis for solder joints。</li>
                             </ul>
+                            <p>一个有趣的比喻是，package就像电源插头，内部裹着真正的电路，但必须要封进插头才能用。</p>
+                            <p>另外，由于package是heat flow path的第一步，所以heat dissipation也很重要。</p>
+                            <p><b>Key Features:</b> I/O count, Hermeticity（气密性，防潮）, Heat dissipation</p>
+                            <br>
                         </td>
                         <td>
                             <img src="pkg_1.png" style="width:90%">
@@ -247,24 +270,61 @@
                     </tr>
                     <tr>
                         <td>
-                            <p>内部结构：</p>
+                            <p><b>最基础的结构：</b></p>
                             <ul>
-                                <li>substrate --- bond wire --- die cut from wafer</li>
-                                <li>连好bond wire以后加上resin保护，然后在package外放上solder ball，之后与其他电路连接。</li>
+                                <li>
+                                    <img src="pkg_basic_struct.png" style="width: 90%;">
+                                </li>
+                                <li>Case可以是ceramic, plastic, 或其他材料。</li>
+                                <li>Lead frame（引线框架）即上右图中的平面金属框架结构。</li>
+                                <li>Bond指将chip粘在lead frame上的adhesive material。</li>
                             </ul>
                         </td>
                         <td>
                             
-                            <img src="pkg_2.png" style="width:60%">
-                            <img src="pkg_3.png" style="width:30%">
+                            <img src="pkg_2.png" style="width:90%">
                         </td>
                     </tr>
+                </table>
+
+                <button class="collapsible"><b>Ceramic v.s. Plastic:</b></button>
+                <div class="content">
+                    <ul>
+                        <li>Ceramic更贵，属于高端材料，不会用在手机、电脑里，多用于军事等需要极高hermeticity的情况。</li>
+                        <li>Ceramic的bond一般为eutectic（共熔的） solder of gold and silicon，也很贵，thermal conductivity极好。</li>
+                        <li>Ceramic制造图解（下左图）。图中的Al<sub>2</sub>O<sub>3</sub>即为一种ceramic：</li>
+                        <li>
+                            <img src="ceramic.png" style="width: 70%;">
+                            <img src="plastic.png" style="width: 20%;">
+                        </li>
+                        <li>Plastic的一大区别是，他不像ceramic用lid，而是直接fill-in包住整个chip，称为plastic "encapsulated" microcircuit (PEM)（上右图）。
+                            因此不像ceramic还能打开盖子看到内部电路。
+                        </li>
+                        <li>
+                            Plastic的特征：low power（因为plastic导热性不好），moderate I/O count，lenient hermeticity requirements
+                            （虽然看似包住了整个电路，但plastic的材料容易渗透moisture。适合life span为3-5年，比如更新换代快的手机电脑，不适合20年的应用）。
+                        </li>
+                    </ul>
+                </div>
+
+
+                <h3 id="topic_pkg_xga">PGA/BGA/LGA</h3>
+
+                   PGA (Pin Grid Array): 
+                        <ul>
+                            <li>是最古老的。中间chip正下方一般留空，可以放一大块Cu作heat sink，或者放landside capacitors。</li>
+                            <li>整个package的中间是chip，底部是substrate（比如绿色的FR4），顶部是lid。</li>
+                            <li>Substrate底下的pin array插入PCB上对应的socket（插孔）。</li>
+                        </ul>
+            
+
+                <table>
                     <tr>
-                        <td>
-                            <p>Package的一些不同种类：</p>
+                        <td style="width: 70%;">
+                            BGA (Ball Grid Array): 
                             <ul>
-                                <li>BGA (Ball Grid Array): contact是小球形</li>
-                                <li>LGA (Land Grid Array): contact是平面</li>
+                                <li>Contact是小球形。Substrate里放thermal vias，相比于PGA可以提升thermal performance。</li>
+                                <li>Soldering需要用solder reflow oven。先用机械臂把chip精准地放在motherboard上，然后用oven准确控制加热的温度和时间，让小球融化形成连接。</li>
                             </ul>
                         </td>
                         <td>
@@ -272,7 +332,36 @@
                         </td>
                     </tr>
                 </table>
+                LGA (Land Grid Array): 
+                <ul>
+                    <li>Contact是平面。LGA最大的特点是pins ("lands")在socket里而非在chip上。
+                        Socket会伸出竖S形的pin，与LGA的底面接触。通过在顶面施力来形成contact，去除force则断开连接。</li>
+                </ul>
+                <h3 id="topic_pkg_flpchp">Flip Chip</h3>
+                <table>
+                    <tr>
+                        <td style="width: 70%;">
+                            大约在1960年首次出现，目前正在广泛使用。好处包括：
+                            <ul>
+                                <li>减少wire bond的delay和inductance，适合high speed。</li>
+                                <li>Packaging efficiency (= die size / package size) 可接近100%。旧技术如BGA可能只有30%（因为要wire out的pin太多，排不过来）。</li>
+                                <li>Layout更灵活。普通package需要layout中把pin放在die的边缘区域，方便上bond wire。Flip chip则可以使用整个表面积。</li>
+                                <li>制造时能同时make所有connection，不像bond wire要一根一根连。</li>
+                                <li>可以不用package（右图黑色部分mold cap），因为电路最delicate的connections放在了底部，有epoxy保护。
+                                    顶部则是pure silicon，没有任何的电路。如此一来，top side就可以用作heat dissipation &mdash; silicon的导热性相对还不错。</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <img src="flpchp.png" style="width: 90%;">
+                        </td>
+                    </tr>
+                </table>
+                <p>制作过程（及名字由来）见下图，有些类似于BGA。</p>
+                <p style="text-align: center;">
+                    <img src="flpchp_proc.png" style="width: 70%;"></p>
+                
 
+                
                 
 
                 <!-------------------------->
@@ -287,6 +376,27 @@
                 <h2 id="topic_trim">Trimming</h2>
                 
                 <p>TODO</p>
+
+                
+                <!-------------------------->
+                <!--     Topic Divider    -->
+                <!-------------------------->
+                <h2 id="topic_trivia">Trivia 豆知识</h2>
+                <table>
+                    <tr>
+                        <td style="width: 70%">
+                            <p><b>棉花糖&#127853;：</b>
+                                关于wafer制造的有趣比喻。就像棉花糖，先在棒上沾一点糖（对wafer来说是crystal）作为seed，然后就可以一点点转出来了。</p>
+                            <p><b>Wafer有多大？</b>
+                                见右图。</p>
+                            <p><b>钻石&#128142;：</b>
+                                每个disk上印好电路后，需要用diamond blade给切成一片一片的chip。</p>
+                        </td>
+                        <td>
+                            <img src="wafer_size.png" style="width: 70%;">
+                        </td>
+                    </tr>
+                </table>
 
 
             </div> <!-- column -->
