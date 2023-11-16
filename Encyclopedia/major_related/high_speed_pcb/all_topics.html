@@ -166,7 +166,6 @@
             <a href="#topic_acdc">AC/DC Coupling</a>
             <a href="#topic_powflt">Power Filtering</a>
             <a href="#topic_supcap">Supply Capacitors</a>
-            <a href="#topic_appdx">Appendix: Component Basics</a>
         </div>
           
         <!------------------------>
@@ -233,7 +232,10 @@
                         
                     </p>
                 </div>
-
+                <p>
+                    Rule of thumb：最常见的FR4 + Copper PCB，假设signal rise time是1ns，则track length &lt; 2 inches为safe；超过了就要考虑transmission line effect。
+                </p>
+                
 
 
                 <!-------------------------->
@@ -486,174 +488,6 @@
                     <li>If placed near the outline: more a bucket.</li>
                 </ul>
                 <p>这些capacitor又称作decoupling capacitor。原理就是小电池，处理supply line上瞬时的voltage dip。</p>
-
-
-
-                <!-------------------------->
-                <!--     Topic Divider    -->
-                <!-------------------------->
-                <h2 id="topic_appdx">Appendix: Component Basics</h2>
-
-                <button class="collapsible">Component Basics</button>
-                <div class="content">
-                    <p>
-
-                        点击<a href="https://ece.uwaterloo.ca/~dwharder/Analogy/">这里</a>看Water Analogy。
-                    </p>
-                    
-                    <div style="width: 100%;display: block;clear: both;">
-                        <div style="width: 70%;float: left;">
-
-                            <b>Resistor</b>
-                            <ul>
-                                <li>
-                                    Resistor最大的用处就是控制电流。用Water Analogy，就是控制水流速度在一个平缓的，可接受的范围内。起这个作用的resistor被称为current-limiting resistor。
-                                </li>
-                                <li>
-                                    另一个常见作用是voltage divider，在看电路图的时候如果能认出这个结构，就能猜测其功能。
-                                </li>
-                            </ul>
-                        </div>
-                        <div style="width: 30%;float: left;">
-                            <img src="res.png" width="100%">
-                        </div>
-                    </div>
-                    
-                    <div style="width: 100%; display: block;clear: both;">
-                        <div style="width: 80%;float: left; ">
-                            <b>Capacitor</b>
-                            <ul>
-                                <li>
-                                    Stores energy in an electric field by accumulating electric charges on two closely spaced surfaces that are insulated from each other. 
-                                    两端电压不会突变。由于它可以暂时存charge，可以用来做time delay circuit。
-                                </li>
-
-                                <li>
-                                    DC的情况，uncharged capacitor先会有transient current，直到被完全charge，变为open circuit。
-                                </li>
-                                <li>
-                                    AC的情况，由于supply的polarity不停改变，capacitor会不停charge和discharge，从而允许电流通过。频率越高，电流的通过就越顺利，最终趋近于short circuit。
-                                </li>
-                                <li>Low-pass filter: 
-                                    <img src="low_pass.png" style="height: 100px;">
-                                </li>
-                                <li>
-                                    Breakdown：
-                                    如果两端voltage过高，就会产生一个spark or arc that jump across the insulator（和闪电的原理相同），
-                                    会对元件产生permanent damage。（如果insulator是气体或液体，breakdown一般是recoverable的，比如闪电消失后，
-                                    conducting path也会消失。但对固体来说，很可能会产生一个永久的conducting path。）
-                                </li>
-                            </ul>
-                        </div>
-                        <div style="width: 20%;float: left;">
-                            <img src="capacitor.png" style="height: 200px;">
-                        </div>
-                    </div>  
-                    
-
-                    <div style="width: 100%;display: block;clear: both;">
-
-                        <div style="width: 80%;float: left;">
-                            <b>Inductor</b>
-                            <ul>
-                                <li>
-                                    Stores energy in the form of magnetic energy，电流不会突变。
-                                </li>
-                                <li>
-                                    DC的情况，根据Water Analogy，就是用一个电压去推动水车，让它慢慢开始转动。最终效果为short circuit。
-                                </li>
-                                <li>
-                                    AC的情况，相当于先从正方向推水车，再从反方向推水车。如果频率很快的话，水车的转动就会反应不过来。当频率无限时，正方向和反方向的推动相互抵消，水车将静止，成为open circuit。
-                                </li>
-                                <li>
-                                    不一定要有metal core，只有coil也可以。没有core或是coil的圈数越少，inductor keep current constant的能力就越低，越接近于一根普通导线。（类似于一个很轻，很容易推动的水车，相较于一个很重很难推动的水车。）
-                                </li>
-                                <li>
-                                    LC tank：根据L的电流不突变的原理，L会用电流慢慢charge C。而C被charge之后，会反过来drive L，从而能量在两个元件之间不停转换。
-                                    （类似于钟摆，L对应速度/动能，C对应势能。）
-                                </li>
-                                <li>L一般会出现在：power supplies, oscillators, filters, electromagnets (relays, motors), transformers（变压器）。</li>
-                                <li>
-                                    Breakdown：当电压过高的时候，the insulation between the coils会break，产生arcing。
-                                </li>
-                            </ul>
-                        </div>
-                        <div style="width: 20%; float: left;">
-                            <img src="inductor.png" style="height: 100px;">
-                        </div>
-                    </div>
-
-
-                    <div style="width: 100%;display: block;clear: both;">
-                        <div style="width: 80%;float: left;">
-                            <b>Diode</b>
-                            <ul>
-                                <li>原理：PN junction中间有delpetion region，也就是一个不让电流通过的insulator。通正电压时，depletion region会消失；通负电压时，depletion region则会扩大。</li>
-  
-                            </ul>
-                        </div>
-                        <div style="width: 20%; float: left;">
-                            <img src="diode.png" style="height: 100px;">
-                        </div>
-                        <div style="width: 100%;clear: both;">
-                            <ul>                              
-                                <li>
-                                    Rectifier diode：和普通diode的结构没有区别，只是designed for large currents and voltages - ideal to use in power supplies.
-                                    应用 - diode bridge：<br>
-                                    <img src="diode_bridge.png" style="height: 180px;"><br>
-                                    由于diode是单向通电，其基础表现为half-wave rectifier（整流器）。Diode bridge的结构则能够实现full-wave rectifier。
-                                    只要后面再接一个voltage regulator（稳压器），就能实现AC supply到DC的转换。
-                                    详细原理见<a href="https://www.build-electronic-circuits.com/rectifier-diode/">这里</a>。
-                                </li>
-                                
-                                <li>
-                                    Zener diode：普通silicon-based diode的forward voltage为0.7V，breakdown voltage很高。
-                                    Zener diode的forward voltage也是0.7V，但breakdown voltage被设计为一个较低的固定值，比如3.3V或12V。
-                                </li>
-                                <li>Light-emitting diode (LED)：原理是利用一些材料（比如GaAs）的electroluminescence现象，当electrons和holes recombine时，
-                                    产生的能量以光子的形式发出。详见<a href="https://www.build-electronic-circuits.com/what-is-an-led/">这里</a>。
-                                </li>
-                                <li>Schottky diode：并非PN junction，而是metal + N junction。特点是forward voltage小（0.3V左右），因而能做到fast switching。
-                                    详见<a href="https://www.build-electronic-circuits.com/schottky-diode/">这里</a>。
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-
-                    <div style="width: 100%;display: block;clear: both;">
-
-                        <div style="width: 70%;float: left;">
-                            <b>Transistor</b>
-                            <ul>
-                                
-                                <li>Transistor作为amplifier的原理：
-                                    <br>
-                                    把transistor作为开关来理解的话，amplifier的用法是turn it partly on。
-                                </li>
-                            </ul>
-
-                        </div>
-                        <div style="width: 30%; float: left;">
-                            <img src="tran_amp.png" style="height: 150px;">
-                        </div>
-                        <div style="width: 70%;float: left;">
-                            <ul>
-                                <li>
-                                    Transistor作为开关，为什么BJT的base，MOSFET的gate会连一个resistor，
-                                    见<a href="https://www.build-electronic-circuits.com/how-transistors-work/">这里</a>。
-                                    对MOSFET，可能既需要pull-down resistor又需要gate resistor（limit turn on时的transient current）：
-                                </li>
-                            </ul>
-
-                        </div>
-                        <div style="width: 30%; float: left;">
-                        
-                            <img src="mosfet_res.png" style="height: 200px;">
-                        </div>
-                    </div>
-                    
-                </div>  
                     
                 
             </div> <!-- column -->

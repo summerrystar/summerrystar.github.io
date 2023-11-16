@@ -166,6 +166,7 @@
             <a href="#topic_pkg">Packaging</a>
             <a href="#topic_pkg_xga">&nbsp;&nbsp;&nbsp;&nbsp;- PGA/BGA/LGA</a>
             <a href="#topic_pkg_flpchp">&nbsp;&nbsp;&nbsp;&nbsp;- Flip Chip</a>
+            <a href="#topic_pkg_adv">&nbsp;&nbsp;&nbsp;&nbsp;- Advanced Packaging</a>
             <!------------------------------------------------------------------>
             <a href="#topic_cont">Continuity Test</a>
             <!------------------------------------------------------------------>
@@ -336,6 +337,8 @@
                             <ul>
                                 <li>Contact是小球形。Substrate里放thermal vias，相比于PGA可以提升thermal performance。</li>
                                 <li>Soldering需要用solder reflow oven。先用机械臂把chip精准地放在motherboard上，然后用oven准确控制加热的温度和时间，让小球融化形成连接。</li>
+                                <li>（<mark>*关于reflow oven</mark>：Reflow的意思就是对已经solidify的solder控制温度和时间重新软化，因此中文为软熔或回熔。
+                                    这一步最关键的是温度和时间的characterization。要融化足够的程度来形成connection，但不能融化太多，导致solder完全软化，和相邻的pin连起来。）</li>
                             </ul>
                         </td>
                         <td>
@@ -373,10 +376,47 @@
                     <p>制作过程（及名字由来）见下图，有些类似于BGA。</p>
                     <p style="text-align: center;">
                         <img src="flpchp_proc.png" style="width: 70%;"></p>
-                </div> 
+                    <p>
+                        最后重要的一步是加上epoxy underfill。此物最关键的作用在于：
+                        Chip在使用过程中会热胀冷缩；由于silicon和substrate的材料不同，他们的thermal expansion程度也不同，会在solder balls上产生sheer stress，导致over time failure；Epoxy最主要的作用就是take up大部分的stress，保护这些connection。
+                        除此之外还有一些其他作用，如protect bump from moisture, increase mechanical strength。要形成这个underfill，有各种不同的技巧，本身也是一个research topic。
+                    </p>
+                </div>
                 
 
                 
+                <h3 id="topic_pkg_adv">Advanced Packaging</h3>
+                <table style="border-collapse: separate; border-spacing: 1em;">
+                    <tr>
+                        <td><b>Multi-chip module (MCM)</b></td>
+                        <td>
+                            <ul>
+                                <li>multiple chips on a single substrate / package</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>System on a chip (SoC)</b></td>
+                        <td>
+                            <ul>
+                                <li>Multiple functions on a single die.</li>
+                                <li>Highest performance at lowest power, but extremely complex</li>
+                                <li>例如processor & memory (不止cache) on the same die, digital & analog on the same die</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>System in package (SiP)</b></td>
+                        <td>
+                            <ul>
+                                <li>chip-scale packaged (CSP) devices mounted on a common substrate used to connect them all together.</li>
+                                <li>和MCM很类似，不过MCM是多个chip放在一个substrate上，SiP则是多个package放在一个substrate上（即substrate叠substrate）</li>
+                                <li>Potential是不同technology node的chip，analog, digital, RF都能放进一个package</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+
                 
 
                 <!-------------------------->
