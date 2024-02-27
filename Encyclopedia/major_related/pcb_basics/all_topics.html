@@ -202,6 +202,9 @@
                                 <li>
                                     另一个常见作用是voltage divider，在看电路图的时候如果能认出这个结构，就能猜测其功能。
                                 </li>
+                                <li>
+                                    另一个常见作用是pull-up or pull-down。当开关断开时，保证pin能正常pull-up或-down到VDD/GND。
+                                </li>
                             </ul>
                         </div>
                         <div style="width: 30%;float: left;">
@@ -219,7 +222,10 @@
                             <ul>
                                 <li>
                                     Stores energy in an electric field by accumulating electric charges on two closely spaced surfaces that are insulated from each other. 
-                                    两端电压不会突变。由于它可以暂时存charge，可以用来做time delay circuit。
+                                    由于电子一个个积累、build up静电场需要时间，所以cap两端的电压不会突变。（但电子charge和discharge的流动速度可以突变，所以电流可以突变。）由于它可以暂时存charge，可以用来做time delay circuit。
+                                </li>
+                                <li>
+                                    只要不直接接触，两个metal plate的间距越小，电子隔得越近，产生的静电场就越强大，capacitance也就越大。改变中间填充的dielectric也可以帮助产生更大的capacitance。
                                 </li>
                                 <li>
                                     DC的情况，uncharged capacitor先会有transient current，直到被完全charge，变为open circuit。
@@ -257,7 +263,7 @@
                         <div style="width: 80%;float: left;">
                             <ul>
                                 <li>
-                                    Stores energy in the form of magnetic energy，电流不会突变。
+                                    Stores energy in the form of magnetic energy，电流不会突变。（根据Lenz's Law，inductor通电产生的磁场一定会oppose the direction of the current flow。）
                                 </li>
                                 <li>
                                     DC的情况，根据Water Analogy，就是用一个电压去推动水车，让它慢慢开始转动。最终效果为short circuit。
@@ -272,9 +278,9 @@
                                     LC tank：根据L的电流不突变的原理，L会用电流慢慢charge C。而C被charge之后，会反过来drive L，从而能量在两个元件之间不停转换。
                                     （类似于钟摆，L对应速度/动能，C对应势能。）
                                 </li>
-                                <li>L一般会出现在：power supplies, oscillators, filters, electromagnets (relays, motors), transformers（变压器）。</li>
+                                <li>L一般会出现在：power supplies, oscillators, filters, electromagnets (relays, motors), transformers（变压器）。Relay：通电后磁场吸引住金属，闭合开关。不通电则开关打开。</li>
                                 <li>
-                                    Breakdown：当电压过高的时候，the insulation between the coils会break，产生arcing。
+                                    Breakdown：当电压过高的时候，the insulation between the coils会break，产生arcing。当电流过高，则可能会融化coil，因此inductor一般有max current rating。
                                 </li>
                             </ul>
                         </div>
