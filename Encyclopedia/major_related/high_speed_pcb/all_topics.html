@@ -196,7 +196,7 @@
                 <!-------------------------->
                 <h2 id="topic_tl">Transmission Line & Reflection</h2>
                 <p>现代电路的两个特点：信号的rise/fall time越来越快；wire连接越来越长。此时如果driver, transmission line和receiver的impedance不match，有discontinuity，就会产生reflection，导致各种undershoot和overshoot。</p>
-                
+                <p>Transmission line是一对impedance-controlled导线，包括signal和return。为了实现impedance-controlled，需要uniform cross-sections along their length。切面的geometry和material properties决定了Z<sub>0</sub>的值。在PCB中，使用特定的stack-up和trace width来控制Z<sub>0</sub>。</p>
                 
                 <button class="collapsible">Water analogy</button>
                 <div class="content">
@@ -221,12 +221,12 @@
                 <button class="collapsible">Reflection coefficient的计算</button>
                 <div class="content">
 
-                    <p>Reflection coefficient的计算是根据driver impedance (R<sub>D</sub>)和transmission line impedance Z<sub>0</sub>：</p>
-                    <p style="text-align: center;">ρ = (R<sub>D</sub>-Z<sub>0</sub>) / (R<sub>D</sub>+Z<sub>0</sub>)</p>
+                    <p>Reflection coefficient的计算是根据load impedance Z<sub>L</sub>和transmission line impedance Z<sub>0</sub>：</p>
+                    <p style="text-align: center;">ρ = (Z<sub>L</sub>-Z<sub>0</sub>) / (Z<sub>L</sub>+Z<sub>0</sub>)</p>
                     <p>这个coefficient会在-1到1之间。理解以下3种情况：
                         <ul>
-                            <li>ρ=-1：说明R<sub>D</sub> = 0，表示short circuit</li>
-                            <li>ρ=1：说明R<sub>D</sub> = ∞，表示open circuit</li>
+                            <li>ρ=-1：说明Z<sub>L</sub> = 0 (short circuit), reflected voltage negates incident voltage</li>
+                            <li>ρ=1：说明Z<sub>L</sub> = ∞ (open circuit), reflected voltage adds to incident voltage</li>
                             <li>ρ=0：No reflection – ideal situation。</li>
                         </ul>
                         
@@ -280,6 +280,7 @@
                                 <ul>
                                     <li>好处：low power dissipation, good noise reduction, low cost, space saving</li>
                                     <li>坏处：会reduce rise time, hard to define resistance value, cannot use in daisy-chain topologies</li>
+                                    <li>常用于LVCMOS driver的termination</li>
                                 </ul>
                             </td>
                         </tr>
@@ -292,6 +293,7 @@
                                 <ul>
                                     <li>好处：不加delay、不影响rise time，low cost, good for distributive loads (daisy-chain topology)</li>
                                     <li>坏处：more power dissipation</li>
+                                    <li>给R串联一个C，可以避免给driver叠加load。如果signal是AC-coupled则还好，但如果是DC-coupled，就会产生一个DC电流。加一个DC blocking capacitor，则driver不用提供这个电流。</li>
                                 </ul>       
                             </td>
                         </tr>
@@ -304,6 +306,7 @@
                                 <ul>
                                     <li>好处：no delay, good reflection attenuation, <mark>level adaptation</mark> is possible（比如说3.3V LVPECL和2.5V LVPECL用不同的R<sub>TH</sub>/R<sub>TL</sub>数值组合）</li>
                                     <li>坏处：takes more space (needs 2 resistors), high cost, additional power dissipation</li>
+                                    <li>常用于DC-coupled LVPECL</li>
                                 </ul>
                             </td>
                         </tr>
@@ -391,7 +394,9 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <ul><li>这两种parallel termination的variation各自解决了parallel本身的一些问题。此处略过，详见Reference。</li></ul>
+                                <ul>
+                                    <li>这两种parallel termination的variation各自解决了parallel本身的一些问题。此处略过，详见Reference。</li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
