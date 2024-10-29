@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <style>
+            .column_left {
+                float:  left;
+                width:  20%;
+            }
+            .column_right {
+                float:  left;
+                width:  80%;
+            }
+            /* .column {
+                float:  center;
+                margin-left:  10%;
+                margin-right: 10%
+            } */
+            .book_name_tag {
+                display: none;
+            }
+            .note_type_tag {
+                display: none;
+            }
+
+            /* https://www.w3schools.com/html/html_links_colors.asp */
+            /* a:link {
+                color: green;
+                background-color: transparent;
+                text-decoration: none;
+            }
+            a:visited {
+                color: pink;
+                background-color: transparent;
+                text-decoration: none;
+            }
+            a:hover {
+                color: red;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+            a:active {
+                color: yellow;
+                background-color: transparent;
+                text-decoration: underline;
+            } */
+        </style>
+        <title>零碎笔记</title>
+    </head>
+    <body>
+        
+        <h1 style="text-align:center;">零碎笔记</h1>
+
+        <!--TODO: Toggle tag on/off with grey, italics display-->
+        <!--TODO: Filter by book name and note type-->
+        <!--TODO: How to automatically list out all book names and note types?-->
+
+        <div class="column_left">
+            <h3>Filter by books:</h3>
+            <div id="book_list"></div>
+            <br>
+            <h3>Filter by type:</h3>
+            <div id="type_list"></div>
+            <br>
+            <br>
+            <a href='#' onclick="reset_all()">重置 Reset</a>
+        </div>
+
+        <div class="column_right">
+            <ul>
+                <li>
+                    沙质土壤适合种植根茎类作物，因此土豆和胡萝卜可以长得很大，例如美国和中国西部。
+                    <div class="book_name_tag">走出戈壁</div>
+                    <div class="note_type_tag">农业</div>
+                </li>
+                <li>
+                    St. Partick's Day是爱尔兰人的传统节日。
+                    <div class="book_name_tag">走出戈壁</div>
+                    <div class="note_type_tag">常识</div>
+                </li>
+                
+                <li>
+                    远古时期，印度大陆分离出来，漂移到亚洲大陆附近与之撞击，形成了喜马拉雅山。
+                    <div class="book_name_tag">印度：漂浮的次大陆</div>
+                    <div class="note_type_tag">常识</div>
+                </li>
+                
+                <li>
+                    所谓“上城区”(uptown)和“下城区”(downtown)，其实是用于区分政治（上）和生活（下）中心。
+                    <div class="book_name_tag">印度：漂浮的次大陆</div>
+                    <div class="note_type_tag">常识</div>
+                </li>
+            </ul>
+
+
+        </div>
+
+
+        <script>
+            // Create unique list of all book names
+            var book_name_elems = document.getElementsByClassName("book_name_tag");
+            var book_list = document.getElementById("book_list");
+            var book_list_arr = [];
+            var book_list_str = "";
+            for (var i=0; i<book_name_elems.length; i++){
+                book_list_arr.push(book_name_elems[i].innerHTML);
+            }
+            book_list_arr = book_list_arr.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+            for (var i=0; i<book_list_arr.length; i++){
+                book_list_str += "<a href='#' onclick=\"filter_booknames('" + book_list_arr[i] + "')\">" + book_list_arr[i] + "</a><br>";
+            }
+            // book_list_str += "<a href='#' onclick=\"reset_booknames()\">重置 Reset</a>"
+            book_list.innerHTML = book_list_str;
+
+            // Function to filter by book name
+            function filter_booknames(key){
+                items = document.getElementsByTagName("li");
+                for (var i=0; i<items.length; i++){
+                    if (items[i].getElementsByClassName("book_name_tag")[0].innerHTML.includes(key)){
+                      items[i].style.display = "";
+                    }
+                    else {
+                      items[i].style.display = "none";
+                    }
+                }
+            }
+        
+            // Create unique list of all types
+            var type_elems = document.getElementsByClassName("note_type_tag");
+            var type_list = document.getElementById("type_list");
+            var type_list_arr = [];
+            var type_list_str = "";
+            for (var i=0; i<type_elems.length; i++){
+                type_list_arr.push(type_elems[i].innerHTML);
+            }
+            type_list_arr = type_list_arr.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+            for (var i=0; i<type_list_arr.length; i++){
+                type_list_str += "<a href='#' onclick=\"filter_types('" + type_list_arr[i] + "')\">" + type_list_arr[i] + "</a><br>";
+            }
+            // type_list_str += "<a href='#' onclick=\"reset_types()\">重置 Reset</a>"
+            type_list.innerHTML = type_list_str;
+
+            // Function to filter by book name
+            function filter_types(key){
+                items = document.getElementsByTagName("li");
+                for (var i=0; i<items.length; i++){
+                    if (items[i].getElementsByClassName("note_type_tag")[0].innerHTML.includes(key)){
+                      items[i].style.display = "";
+                    }
+                    else {
+                      items[i].style.display = "none";
+                    }
+                }
+            }
+
+            function reset_all(){
+                items = document.getElementsByTagName("li");
+                for (var i=0; i<items.length; i++){
+                    items[i].style.display = "";
+                }
+            }
+
+        </script>
+    </body>
+</html>
