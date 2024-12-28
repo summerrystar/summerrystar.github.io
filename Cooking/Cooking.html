@@ -204,6 +204,7 @@
             <div class="ingred" onclick="filter_dishes('winter',this)">冬瓜 Winter Melon</div>
             <div class="ingred" onclick="filter_dishes('edamame',this)">毛豆 Edamame</div>
             <div class="ingred" onclick="filter_dishes('zucchini',this)">西葫芦 Zucchini</div>
+            <div class="ingred" onclick="filter_dishes('gr-be',this)">四季豆 Green Beans</div>
 
             <h4 style="width: 100%; display: block;">稀有食材 Misc</h4>
             <div class="ingred" onclick="filter_dishes('thousand-eg',this)">皮蛋 Thousand-Year Eggs</div>
@@ -222,6 +223,7 @@
             <button onclick="shuffle()">翻滚吧！Scramble!</button>
             <button onclick="get_todays_dish()">今日随缘菜谱 Random menu for today ^^</button>
             <button onclick="reset()">重置 Reset</button>
+            <button onclick="get_2024_xmas()" style="background-color: cadetblue;">2024圣诞菜谱</button>
         </div>
         <!--------------- filtered results ---------------->
         <div class="columns-for-dishes">
@@ -390,7 +392,7 @@
                   <span style="display: none">rice chicken carrot</span>
               </a>
               <a class="protein">
-                  <p>蒜蓉粉丝蒸扇贝 Steamed Garlic Clams</p>
+                  <p>蒜蓉粉丝蒸扇贝 Scallop with Garlic and Vermicelli</p>
                   <span style="display: none">ri-no seafood</span>
               </a>
               <a class="protein veggies" href="#modal_braised_chicken">
@@ -438,6 +440,10 @@
                 <div style="float: right; color: coral;">&#128269;</div>
                 <p>卤牛骨 Braised Beef Bone</p>
                 <span style="display: none">beef</span>
+              </a>
+              <a class="protein">
+                <p>麻婆豆腐 Mapo Tofu</p>
+                <span style="display: none">tofu beef pork gr-po</span>
               </a>
 
           </div>
@@ -514,6 +520,10 @@
                     <p>大煮干丝 Boiled Bean Curds</p>
                     <span style="display: none">bean-prod bokchoy mushroom shrimp seafood</span>
                 </a>
+                <a class="veggies">
+                  <p>干煸四季豆 Sichuan Dry Fried Green Beans</p>
+                  <span style="display: none">pork gr-po gr-be</span>
+                </a>
             </div>
         </div>
 
@@ -522,6 +532,10 @@
             <div class="dish-list">
                 <a class="carbs">
                     <p>白饭 Plain Rice</p>
+                    <span style="display: none">rice</span>
+                </a>
+                <a class="carbs">
+                    <p>杂粮饭 Multigrain Rice</p>
                     <span style="display: none">rice</span>
                 </a>
                 <a class="carbs protein">
@@ -616,25 +630,33 @@
                     <p>简易臊子面 Easy Saozi Noodles</p>
                     <span style="display: none">pork carrot greens gr-po</span>
                 </a>
-                <a class="carbs">
-                    <p>玛德琳蛋糕 Madeleine</p>
-                    <span style="display: none">egg flour</span>
-                </a>
                 <a class="protein veggies carbs" href="#modal_egplant_gluten_noodle">
                   <div style="float: right; color: coral;">&#128269;</div>
                     <p>香菇茄子面筋面 Mushrooms, Eggplants and Gluten Noodles</p>
                     <span style="display: none">noodle mushroom egplant gluten</span>
-                </a>
-                <a class="carbs" href="#modal_mung_soup">
-                  <div style="float: right; color: coral;">&#128269;</div>
-                    <p>绿豆汤 Mung Bean Soup</p>
-                    <span style="display: none">mung</span>
                 </a>
                 <a class="carbs protein" href="#modal_egg_beef">
                   <div style="float: right; color: coral;">&#128269;</div>
                     <p>滑蛋牛肉饭 Beef with Silky Egg on Rice</p>
                     <span style="display: none">beef rice egg onion</span>
                 </a>
+            </div>
+            
+            <h3>甜点/饮料 Sweets/Drinks</h3>
+            <div class="dish-list">
+              <a class="sweets_drinks">
+                <p>玛德琳蛋糕 Madeleine</p>
+                <span style="display: none">egg flour</span>
+              </a> 
+              <a class="sweets_drinks" href="#modal_mung_soup">
+                <div style="float: right; color: coral;">&#128269;</div>
+                  <p>绿豆汤 Mung Bean Soup</p>
+                  <span style="display: none">mung</span>
+              </a>
+              <a class="sweets_drinks">
+                <p>红枣奶茶 Milk Tea with Dates</p>
+                <span style="display: none"></span>
+              </a>
             </div>
         </div>
     </div>
@@ -1912,6 +1934,18 @@
             chosen_dishes.push(dish_no);
           }
 
+          // 10% chance to get sweets/drinks:
+          var treat_chance = Math.random();
+          if (treat_chance < 0.1){
+            var got_treat = false;
+            var treat_no = 0;
+            while (!got_treat){
+              var treat_no = Math.floor(Math.random() * (cards.length));
+              got_treat = cards[treat_no].classList.contains("sweets_drinks");
+            }
+            chosen_dishes.push(treat_no);
+          }
+
           // Display the chosen dishes
           for (i=0; i<cards.length; i++){
             cards[i].style.display = "none";
@@ -1937,6 +1971,24 @@
           }
       }
 
+      function get_2024_xmas(){
+        var menu = ["Multigrain Rice", "Madeleine", "Milk Tea with Dates",
+                    "Braised Beef Bone", "Chicken Soup with Chinese Yam", 
+                    "Mapo Tofu", "Sichuan Dry Fried Green Beans",
+                    "Scallop with Garlic and Vermicelli", 
+                    "Chinese Yellow Chives, Chinese Yam and Egg Stir Fry"]
+        
+        var cards = document.getElementsByClassName('right')[0].getElementsByTagName('a');
+        for (i=0; i<cards.length; i++){
+          cards[i].style.display = "none";
+          // console.log(cards[i].getElementsByTagName('p')[0].innerHTML)
+          for (j=0; j<menu.length; j++){
+            if (cards[i].getElementsByTagName('p')[0].innerHTML.endsWith(menu[j])){
+              cards[i].style.display = "";
+            }
+          }
+        }
+      }
 
 
     </script>
