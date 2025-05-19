@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <style>
+            .header {
+                text-align: center;
+            }
+            /* Style the buttons */
+            .btn {
+                border: none;
+                outline: none;
+                padding: 10px 16px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }
+            
+            .disp{
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+
+            .collapsible {
+                background-color: #f1f1f1;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .collapsible.active, .collapsible:hover {
+                background-color: #dfdfdf;
+            }
+
+            .collapsible:after {
+                content: '\002B';
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+            }
+
+            .collapsible.active:after {
+                content: "\2212";
+            }
+
+            .content {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: #f1f1f1;
+            }
+
+
+
+        </style>
+        <title>Misc 杂七杂八</title>
+    </head>
+    <body>
+        
+        <h1 style="text-align:center;">Misc 杂七杂八</h1>
+
+        <!--------------------->
+        <!-- button section --->
+        <!--------------------->
+        <div class="header", id="myHeader">                           
+            <button class="btn active" onclick="display('travel_list')">短途旅行行李清单</button>
+            <button class="btn" onclick="display('placeholder')">Placeholder</button> 
+        </div>   
+
+
+        <!------------------------------>
+        <!-- contents for each button -->
+        <!------------------------------>
+
+        <div id="travel_list" style="display: block;" class="disp">
+            <p>必备：</p>
+            <label><input type="checkbox" name="checkbox" value="value">旅行文件（护照、身份证、银行卡）</label><br>
+            <br>
+
+            <p>洗护用品：</p>
+            <label><input type="checkbox" name="checkbox" value="value">面霜、精华</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">洗面奶</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">牙膏</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">牙线</label><br>
+            <br>
+
+            <p>衣物：</p>
+            <label><input type="checkbox" name="checkbox" value="value">内衣内裤袜子 ×（天数+1）</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">日常衣物、外套等</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">睡衣套装</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">拖鞋</label><br>
+            <br>
+
+            <p>小物件：</p>
+            <label><input type="checkbox" name="checkbox" value="value">装脏衣服的袋子</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">眼罩</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">水墨屏阅读器</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">卫生巾</label><br>
+            <br>
+            
+            <p>羽毛球比赛：</p>
+            <label><input type="checkbox" name="checkbox" value="value">羽毛球服球裤</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">羽毛球鞋</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">护膝</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">筋膜枪</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">冰敷贴</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">隐形眼镜</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">眼镜盒</label><br>
+            <br>
+
+            <p>临走前带：</p>
+            <label><input type="checkbox" name="checkbox" value="value">手机充电器</label><br>
+            <label><input type="checkbox" name="checkbox" value="value">牙刷</label><br>
+        </div>
+
+        <div id="placeholder" style="display: none;" class="disp">
+            Placeholder
+        </div>
+
+
+
+        <!--------------------->
+        <!--     scripts     -->
+        <!--------------------->
+        <script>
+            /* toggle display */
+            function display(id){
+                var all_disp = document.getElementsByClassName("disp");
+                for (var i=0; i<all_disp.length; i++){
+                    if(all_disp[i].id != id){
+                        all_disp[i].style.display = "none";
+                    }
+                }
+                var to_disp = document.getElementById(id);
+                if (to_disp.style.display==="none"){
+                    to_disp.style.display = "block";
+                }
+                else{
+                    to_disp.style.display = "none";
+                }
+            }
+
+
+            /* Highlight active button */
+            var btns = document.getElementById("myHeader").getElementsByClassName("btn");
+
+            for (var i=0; i<btns.length; i++){
+                btns[i].addEventListener("click", function(){
+
+                    // if the current button is active, just deactivate it
+                    if (this.className === "btn active"){
+                        this.className = "btn";
+                    }
+                    // otherwise, need to activate current button and deactivate active button
+                    else{
+
+                        for (var j=0; j<btns.length; j++){
+                            btns[j].className = "btn";
+                        }
+                        // Change the current active button to not-active, if any
+                        // var current = document.getElementsByClassName("active");
+                        // current[0].className = "btn";
+                    
+                        // Active the new button
+                        this.className = "btn active";
+                    }
+
+
+                });
+            }
+
+            /* Collapsibles */
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+            }
+
+
+
+
+        </script>
+        
+    </body>
+
+
+
+</html>
