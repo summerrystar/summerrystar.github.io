@@ -1,0 +1,571 @@
+<html>
+    
+    <head>
+        <style>
+            .court {
+                font-family: monospace;
+                white-space: pre;
+                line-height: 1.2;
+                background-color: #f4f4f4;
+                padding: 15px;
+                border-radius: 5px;
+                display: inline-block;
+            }
+            .s   { font-weight: bold; color: orange;}
+            .oh  { font-weight: bold; color: royalblue;}
+            .opp { font-weight: bold; color: darkviolet;}
+            .mb  { font-weight: bold; color: firebrick;}
+            .l   { font-weight: bold; color: limegreen;}
+
+            .header {
+                text-align: center;
+                padding: 32px;
+            }
+            .btn {
+                border: none;
+                outline: none;
+                padding: 10px 16px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }
+
+            .disp{
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+        </style>
+        <title>Volleyball Positions 排球站位</title>
+    </head>
+    
+    <body>
+
+        <h1 style="text-align:center;">Volleyball Positions 排球站位</h1>
+
+        <div style="display: inline-block; width: 100%;">
+            <div>
+                <div style="float: left; width: 33%;">
+                    <p>*Based on <a href="https://www.youtube.com/watch?v=UjLq3NH9lDw">this</a> video.</p>
+                    <p>5-1 rotation means 5 hitters and 1 setter.</p>
+                </div>
+                
+                <div style="float: left; width: 33%;">
+                    Starting rotation:
+                    <table>
+                        <tr><td>1</td>  <td><span class='s'>S  </span></td>    <td>Setter          </td></tr>
+                        <tr><td>2</td>  <td><span class='oh'>OH1</span></td>    <td>Outside Hitter 1</td></tr>
+                        <tr><td>3</td>  <td><span class='mb'>MB2</span></td>    <td>Middle Blocker 2</td></tr>
+                        <tr><td>4</td>  <td><span class='opp'>OPP</span></td>    <td>Opposite Hitter </td></tr>
+                        <tr><td>5</td>  <td><span class='oh'>OH2</span></td>    <td>Outside Hitter 2</td></tr>
+                        <tr><td>6</td>  <td><span class='l'>L  </span></td>    <td>Libero          </td></tr>
+                    </table>
+                </div>
+                
+                <div style="float: left; width: 33%;">
+                    <p>Dynamics 1: Serve -> Base/Defense -> Offense -> Base/Defense -> Offense -> ...</p>
+                    <p>Dynamics 2: Receive -> Offense -> Base/Defense -> Offense -> Base/Defense -> ...</p>
+                </div>
+            </div>
+        </div>
+        
+<!----------------------------------------------------------------------------------------------->
+<!-- Main Buttons                                                                              -->
+<!----------------------------------------------------------------------------------------------->
+        <div class="header", id="myHeader">
+            <button class="btn active" onclick="set_num('1')">Rotation 1</button>
+            <button class="btn"        onclick="set_num('2')">Rotation 2</button>
+            <button class="btn"        onclick="set_num('3')">Rotation 3</button>
+            <button class="btn"        onclick="set_num('4')">Rotation 4</button>
+            <button class="btn"        onclick="set_num('5')">Rotation 5</button>
+            <button class="btn"        onclick="set_num('6')">Rotation 6</button>
+        </div>   
+
+        <div id="subHeader">
+            <table style="margin-left: auto; margin-right: auto; text-align: center;">
+                <tr>
+                    <td><button class="btn active" onclick="set_type('defl')">Default        </button></td>
+                    <td><button class="btn"        onclick="set_type('serv')">Serve          </button></td>
+                    <td><button class="btn"        onclick="set_type('base')">Base/Defense   </button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button class="btn"        onclick="set_type('recv')">Receive        </button></td>
+                    <td><button class="btn"        onclick="set_type('offs')">Offense        </button></td>
+                </tr>
+            </table>
+        </div>
+
+<!----------------------------------------------------------------------------------------------->
+<!-- Rotation 1                                                                                -->
+<!----------------------------------------------------------------------------------------------->
+
+        <div id="defl1" class="disp" style="display: block;"><div class="court">
+=================== NET ===================
+|                                         |
+|        4             3              2   |
+|    <span class='opp'>(OPP)</span>         <span class='mb'>(MB2)</span>          <span class='oh'>(OH1)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|        5             6              1   |
+|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="serv1" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                  <span class='mb'>(MB2)</span>                  |
+|              <span class='opp'>(OPP)</span>   <span class='oh'>(OH1)</span>              |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+            
+        <div id="base1" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>         <span class='mb'>(MB2)</span>          <span class='opp'>(OPP)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="recv1" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='opp'>(OPP)</span>         <span class='mb'>(MB2)</span>                  |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                              <span class='oh'>(OH1)</span>      |
+|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>                  |
+|                                   <span class='s'>(S)</span>   |
+================ BACK LINE ================
+        </div>      
+        <p>(OH2, L and OH1 receive. S should not receive 1st ball.)</p>
+        </div>
+        
+        <div id="offs1" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                   <span class='s'>(S)</span>                   |
+|                                         |
+|                                         |
+<span class='opp'>(OPP)</span> - - - - - <span class='mb'>(MB2)</span> - - - - - - - - - -<span class='oh'>(OH1)</span>
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>                  |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+<!----------------------------------------------------------------------------------------------->
+<!-- Rotation 2                                                                                -->
+<!----------------------------------------------------------------------------------------------->
+        <div id="defl2" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>         <span class='opp'>(OPP)</span>          <span class='mb'>(MB2)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='l'>(L)</span>           <span class='s'>(S)</span>            <span class='oh'>(OH1)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="serv2" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                      <span class='mb'>(MB2)</span>              |
+|    <span class='oh'>(OH2)</span>         <span class='opp'>(OPP)</span>                  |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|                    <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|                                         |
+================ BACK LINE ================
+                                  <span class='oh'>(OH1)</span>
+        </div></div>
+        
+        <div id="base2" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>         <span class='mb'>(MB2)</span>          <span class='opp'>(OPP)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="recv2" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                  <span class='opp'>(OPP)</span>                  |
+|                   <span class='s'>(S)</span>           <span class='mb'>(MB2)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|    <span class='oh'>(OH2)</span>                                |
+|            <span class='l'>(L)</span>                  <span class='oh'>(OH1)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div>
+        <p>S should not receive the 1st ball.</p>
+        </div>
+        
+        <div id="offs2" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                   <span class='s'>(S)</span>                   |
+|                                         |
+|                                         |
+<span class='oh'>(OH2)</span> - - - - - <span class='mb'>(MB2)</span> - - - - - - - - - -<span class='opp'>(OPP)</span>
+|                                         |
+|                                         |
+|            <span class='l'>(L)</span>                  <span class='oh'>(OH1)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+<!----------------------------------------------------------------------------------------------->
+<!-- Rotation 3                                                                                -->
+<!----------------------------------------------------------------------------------------------->
+        <div id="defl3" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='mb'>(MB1)</span>         <span class='oh'>(OH2)</span>          <span class='opp'>(OPP)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='s'>(S)</span>           <span class='oh'>(OH1)</span>            <span class='l'>(L)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div>
+        <p>L cannot be in the front row -> Replace with MB1</p>
+        <p>Move L to MB2 to serve</p>
+        </div>
+
+        <div id="serv3" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                <span class='mb'>(MB1)</span>                    |
+|                  <span class='oh'>(OH2)</span>          <span class='opp'>(OPP)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                <span class='s'>(S)</span>                      |
+|                  <span class='oh'>(OH1)</span>                  |
+|                                         |
+================ BACK LINE ================
+                                    <span class='l'>(L)</span>
+        </div></div>
+        
+        <div id="base3" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>         <span class='mb'>(MB1)</span>          <span class='opp'>(OPP)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>          <span class='l'>(L)</span>             <span class='s'>(S)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="recv3" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='mb'>(MB1)</span>                        <span class='opp'>(OPP)</span>   |
+|- - - - - - <span class='s'>(S)</span> - - - - - - - - - - - - -|
+|                                         |
+|       <span class='oh'>(OH2)</span>                             |
+|                  <span class='oh'>(OH1)</span>            <span class='l'>(L)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+        
+        <div id="offs3" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                   <span class='s'>(S)</span>                   |
+|                                         |
+|                                         |
+<span class='oh'>(OH2)</span> - - - - - <span class='mb'>(MB1)</span> - - - - - - - - - -<span class='opp'>(OPP)</span>
+|                                         |
+|                                         |
+|                  <span class='oh'>(OH1)</span>            <span class='l'>(L)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+<!----------------------------------------------------------------------------------------------->
+<!-- Rotation 4                                                                                -->
+<!----------------------------------------------------------------------------------------------->
+        <div id="defl4" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|      <span class='s'>(S)</span>         <span class='mb'>(MB1)</span>          <span class='oh'>(OH2)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="serv4" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                  <span class='mb'>(MB1)</span>                  |
+|                <span class='s'>(S)</span>  <span class='oh'>(OH2)</span>               |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+        
+        <div id="base4" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>         <span class='mb'>(MB1)</span>            <span class='s'>(S)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="recv4" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+| <span class='s'>(S)</span>                                     |
+|   <span class='mb'>(MB1)</span>                                 |
+|       <span class='oh'>(OH2)</span>                             |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+        
+        <div id="offs4" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                   <span class='s'>(S)</span>                   |
+|                                         |
+|                                         |
+<span class='oh'>(OH2)</span> - - - - - <span class='mb'>(MB1)</span> - - - - - - - - - -<span class='opp'>(OPP)</span>
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>                  |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+<!----------------------------------------------------------------------------------------------->
+<!-- Rotation 5                                                                                -->
+<!----------------------------------------------------------------------------------------------->
+        <div id="defl5" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>          <span class='s'>(S)</span>           <span class='mb'>(MB1)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='l'>(L)</span>           <span class='opp'>(OPP)</span>          <span class='oh'>(OH2)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="serv5" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                     <span class='mb'>(MB1)</span>               |
+|    <span class='oh'>(OH1)</span>          <span class='s'>(S)</span>                   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|                   <span class='l'>(L)</span>           <span class='opp'>(OPP)</span>   |
+|                                         |
+================ BACK LINE ================
+                                  <span class='oh'>(OH2)</span>
+        </div></div>
+        
+        <div id="base5" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>         <span class='mb'>(MB1)</span>            <span class='s'>(S)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="recv5" class="disp" style="display: none;"><div class="court">
+
+        </div></div>
+
+        <div id="offs5" class="disp" style="display: none;"><div class="court">
+
+        </div></div>
+
+<!----------------------------------------------------------------------------------------------->
+<!-- Rotation 6                                                                                -->
+<!----------------------------------------------------------------------------------------------->
+        <div id="defl6" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='mb'>(MB2)</span>         <span class='oh'>(OH1)</span>            <span class='s'>(S)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='opp'>(OPP)</span>         <span class='oh'>(OH2)</span>          <span class='mb'>(MB1)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div>
+        <p>L replaced by MB2 because L cannot be in the front row.</p>
+        </div>
+
+        <div id="serv6" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|               <span class='mb'>(MB2)</span>                     |
+|                  <span class='oh'>(OH1)</span>            <span class='s'>(S)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|               <span class='opp'>(OPP)</span>                     |
+|                  <span class='oh'>(OH2)</span>                  |
+|                                         |
+================ BACK LINE ================
+                                   <span class='mb'>(MB1)</span>
+        </div></div>
+        
+        <div id="base6" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='oh'>(OH1)</span>         <span class='mb'>(MB2)</span>            <span class='s'>(S)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    <span class='oh'>(OH2)</span>         <span class='mb'>(MB1)</span>          <span class='opp'>(OPP)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+        <div id="recv6" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    <span class='mb'>(MB2)</span>                          <span class='s'>(S)</span>   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|           <span class='oh'>(OH1)</span>                         |
+|                                         |
+|                  <span class='oh'>(OH2)</span>            <span class='l'>(L)</span>   |
+|        <span class='opp'>(OPP)</span>                            |
+================ BACK LINE ================
+        </div>
+        <p>L comes back to replace MB1</p>
+        </div>
+        
+        <div id="offs6" class="disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                   <span class='s'>(S)</span>   |
+|                                         |
+|                                         |
+<span class='oh'>(OH1)</span> - - - - - <span class='mb'>(MB2)</span> - - - - - - - - - - |
+|                                         |
+|          <span class='oh'>(OH2)</span>                          |
+|               <span class='opp'>(OPP)</span>               <span class='l'>(L)</span>   |
+|                                         |
+================ BACK LINE ================
+        </div></div>
+
+
+        <script>
+            let num  = '1';
+            let type = 'defl';
+
+
+            function update_display() {
+                var siblings = document.getElementsByClassName('disp');
+                var id = type + num;
+                // console.log(id);     // Ctrl + Shift + J
+                for (var i = 0; i < siblings.length; i++) {
+                    if (siblings[i].id !== id) {
+                        siblings[i].style.display = "none";
+                    }
+                }
+                var target = document.getElementById(id);
+                target.style.display = "block";
+            }
+
+            function set_num(n) {
+                num = n;
+                update_display();
+            }
+
+            function set_type(t) {
+                type = t;
+                update_display();
+            }
+
+            // Reusable function to handle button highlight states anywhere on the page
+            function setupButtonListeners(containerId) {
+                var container = document.getElementById(containerId);
+                if (!container) return; // Guard clause in case element doesn't exist yet
+                
+                var btns = container.getElementsByClassName("btn");
+                
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].addEventListener("click", function() {
+                        for (var j = 0; j < btns.length; j++) {
+                            btns[j].className = "btn";
+                        }
+                        this.className = "btn active";
+                    });
+                }
+            }
+
+            // Initialize all button groups when the page loads
+            document.addEventListener("DOMContentLoaded", function() {
+                setupButtonListeners("myHeader");      
+                setupButtonListeners("subHeader");
+            });
+
+        </script>
+    </body>
+    
+
+</html>
