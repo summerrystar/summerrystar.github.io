@@ -53,25 +53,31 @@
 
         <h1 style="text-align:center;">Volleyball Positions 排球站位</h1>
 
-
-        <div>
-            <div style="float: left; width: 33%;">
-                *Reference: <a href="https://www.youtube.com/watch?v=UjLq3NH9lDw">Youtube Video</a>
-            </div>
-            
-            <div style="float: left; width: 67%;">
-                Starting rotation:
-                <table>
-                    <tr><td>1</td>  <td><span class="s">S  </span></td>    <td>Setter          </td></tr>
-                    <tr><td>2</td>  <td><span class="oh">OH1</span></td>    <td>Outside Hitter 1</td></tr>
-                    <tr><td>3</td>  <td><span class="mb">MB2</span></td>    <td>Middle Blocker 2</td></tr>
-                    <tr><td>4</td>  <td><span class="opp">OPP</span></td>    <td>Opposite Hitter </td></tr>
-                    <tr><td>5</td>  <td><span class="oh">OH2</span></td>    <td>Outside Hitter 2</td></tr>
-                    <tr><td>6</td>  <td><span class="l">L  </span></td>    <td>Libero          </td></tr>
-                </table>
+        <div style="display: inline-block; width: 100%;">
+            <div>
+                <div style="float: left; width: 33%;">
+                    <p>*Based on <a href="https://www.youtube.com/watch?v=UjLq3NH9lDw">this</a> video.</p>
+                    <p>5-1 rotation means 5 hitters and 1 setter.</p>
+                </div>
+                
+                <div style="float: left; width: 33%;">
+                    Starting rotation:
+                    <table>
+                        <tr><td>1</td>  <td><span class="s">S  </span></td>    <td>Setter          </td></tr>
+                        <tr><td>2</td>  <td><span class="oh">OH1</span></td>    <td>Outside Hitter 1</td></tr>
+                        <tr><td>3</td>  <td><span class="mb">MB2</span></td>    <td>Middle Blocker 2</td></tr>
+                        <tr><td>4</td>  <td><span class="opp">OPP</span></td>    <td>Opposite Hitter </td></tr>
+                        <tr><td>5</td>  <td><span class="oh">OH2</span></td>    <td>Outside Hitter 2</td></tr>
+                        <tr><td>6</td>  <td><span class="l">L  </span></td>    <td>Libero          </td></tr>
+                    </table>
+                </div>
+                
+                <div style="float: left; width: 33%;">
+                    <p>Dynamics 1: Serve -> Base/Defense -> Offense -> Base/Defense -> Offense -> ...</p>
+                    <p>Dynamics 2: Receive -> Offense -> Base/Defense -> Offense -> Base/Defense -> ...</p>
+                </div>
             </div>
         </div>
-
         
 <!----------------------------------------------------------------------------------------------->
 <!-- Main Buttons                                                                              -->
@@ -94,9 +100,9 @@
             <div id="subHeaderPage1">
                 <button class="btn active" onclick="display('defl1', 'p1-sub-disp')">Default  </button>
                 <button class="btn"        onclick="display('serv1', 'p1-sub-disp')">Serve    </button>
-                <button class="btn"        onclick="display('base1', 'p1-sub-disp')">Base (Post-Serve)     </button>
+                <button class="btn"        onclick="display('base1', 'p1-sub-disp')">Base/Defense     </button>
                 <button class="btn"        onclick="display('recv1', 'p1-sub-disp')">Receive  </button>
-                <button class="btn"        onclick="display('dfsv1', 'p1-sub-disp')">Defensive (Post-Receive)</button>
+                <button class="btn"        onclick="display('dfsv1', 'p1-sub-disp')">Offense</button>
             </div>
             <div id="defl1" class="p1-sub-disp" style="display: block;"><div class="court">
 =================== NET ===================
@@ -173,9 +179,9 @@
             <div id="subHeaderPage2">
                 <button class="btn active" onclick="display('defl2', 'p2-sub-disp')">Default  </button>
                 <button class="btn"        onclick="display('serv2', 'p2-sub-disp')">Serve    </button>
-                <button class="btn"        onclick="display('base2', 'p2-sub-disp')">Base (Post-Serve)     </button>
+                <button class="btn"        onclick="display('base2', 'p2-sub-disp')">Base/Defense     </button>
                 <button class="btn"        onclick="display('recv2', 'p2-sub-disp')">Receive  </button>
-                <button class="btn"        onclick="display('dfsv2', 'p2-sub-disp')">Defensive (Post-Receive)</button>
+                <button class="btn"        onclick="display('dfsv2', 'p2-sub-disp')">Offense</button>
             </div>
             <div id="defl2" class="p2-sub-disp" style="display: block;"><div class="court">
 =================== NET ===================
@@ -193,15 +199,15 @@
             <div id="serv2" class="p2-sub-disp" style="display: none;"><div class="court">
 =================== NET ===================
 |                                         |
-|<span class="oh">(OH2)</span>             <span class="mb">(MB2)</span>                  |
-|      <span class="opp">(OPP)</span>                              |
+|                      (MB2)              |
+|    (OH2)         (OPP)                  |
 |- - - - - - - - - - - - - - - - - - - - -|
-|                               <span class="s">(S)</span>       |
 |                                         |
-|                  <span class="l">(L)</span>                    |
+|                                         |
+|                    (L)            (S)   |
 |                                         |
 ================ BACK LINE ================
-                                    <span class="oh">(OH1)</span>
+                                  (OH1)
             </div></div>
             
             <div id="base2" class="p2-sub-disp" style="display: none;"><div class="court">
@@ -220,7 +226,7 @@
             <div id="recv2" class="p2-sub-disp" style="display: none;"><div class="court">
 =================== NET ===================
 |                                         |
-|                      <span class="opp">(OPP)</span>              |
+|                  <span class="opp">(OPP)</span>                  |
 |                   <span class="s">(S)</span>           <span class="mb">(MB2)</span>   |
 |- - - - - - - - - - - - - - - - - - - - -|
 |                                         |
@@ -228,7 +234,9 @@
 |            <span class="l">(L)</span>                  <span class="oh">(OH1)</span>   |
 |                                         |
 ================ BACK LINE ================
-            </div></div>
+            </div>
+            <p>S should not receive the 1st ball.</p>
+            </div>
 
             
             <div id="dfsv2" class="p2-sub-disp" style="display: none;"><div class="court">
@@ -252,9 +260,9 @@
             <div id="subHeaderPage3">
                 <button class="btn active" onclick="display('defl3', 'p3-sub-disp')">Default  </button>
                 <button class="btn"        onclick="display('serv3', 'p3-sub-disp')">Serve    </button>
-                <button class="btn"        onclick="display('base3', 'p3-sub-disp')">Base (Post-Serve)     </button>
+                <button class="btn"        onclick="display('base3', 'p3-sub-disp')">Base/Defense     </button>
                 <button class="btn"        onclick="display('recv3', 'p3-sub-disp')">Receive  </button>
-                <button class="btn"        onclick="display('dfsv3', 'p3-sub-disp')">Defensive (Post-Receive)</button>
+                <button class="btn"        onclick="display('dfsv3', 'p3-sub-disp')">Offense</button>
             </div>
             <div id="defl3" class="p3-sub-disp" style="display: block;"><div class="court">
 =================== NET ===================
@@ -268,26 +276,45 @@
 |                                         |
 ================ BACK LINE ================
             </div>
-            <p>Libero cannot be in the front row -> Replace with MB1</p>
-            <p>Move Libero to MB2 to serve, since Libero can serve as any player (?)</p>
+            <p>L cannot be in the front row -> Replace with MB1</p>
+            <p>Move L to MB2 to serve</p>
             </div>
 
             <div id="serv3" class="p3-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                                         |
+|                (MB1)                    |
+|                  (OH2)          (OPP)   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                (S)                      |
+|                  (OH1)                  |
+|                                         |
+================ BACK LINE ================
+                                    (L)
             </div></div>
             
             <div id="base3" class="p3-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                                         |
+|                                         |
+|    (OH2)         (MB1)          (OPP)   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    (OH1)          (L)             (S)   |
+|                                         |
+================ BACK LINE ================
             </div></div>
 
             <div id="recv3" class="p3-sub-disp" style="display: none;"><div class="court">
 =================== NET ===================
-|  (MB1)                                  |
 |                                         |
-|     (S)                         (OPP)   |
-|- - - - - - - - - - - - - - - - - - - - -|
 |                                         |
-|      (OH2)                              |
+|    (MB1)                        (OPP)   |
+|- - - - - - (S) - - - - - - - - - - - - -|
+|                                         |
+|       (OH2)                             |
 |                  (OH1)            (L)   |
 |                                         |
 ================ BACK LINE ================
@@ -302,10 +329,9 @@
 (OH2) - - - - - (MB1) - - - - - - - - - -(OPP)
 |                                         |
 |                                         |
-|                   (OH1)           (L)   |
+|                  (OH1)            (L)   |
 |                                         |
 ================ BACK LINE ================
-
             </div></div>
         </div>
 <!----------------------------------------------------------------------------------------------->
@@ -316,38 +342,74 @@
             <div id="subHeaderPage4">
                 <button class="btn active" onclick="display('defl4', 'p4-sub-disp')">Default  </button>
                 <button class="btn"        onclick="display('serv4', 'p4-sub-disp')">Serve    </button>
-                <button class="btn"        onclick="display('base4', 'p4-sub-disp')">Base (Post-Serve)     </button>
+                <button class="btn"        onclick="display('base4', 'p4-sub-disp')">Base/Defense     </button>
                 <button class="btn"        onclick="display('recv4', 'p4-sub-disp')">Receive  </button>
-                <button class="btn"        onclick="display('dfsv4', 'p4-sub-disp')">Defensive (Post-Receive)</button>
+                <button class="btn"        onclick="display('dfsv4', 'p4-sub-disp')">Offense</button>
             </div>
             <div id="defl4" class="p4-sub-disp" style="display: block;"><div class="court">
 =================== NET ===================
 |                                         |
 |                                         |
-|    (OH2)         (OPP)          (MB2)   |
+|      (S)         (MB1)          (OH2)   |
 |- - - - - - - - - - - - - - - - - - - - -|
 |                                         |
 |                                         |
-|    (L)           (S)            (OH1)   |
+|    (OH1)           (L)          (OPP)   |
 |                                         |
 ================ BACK LINE ================
             </div></div>
 
             <div id="serv4" class="p4-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                                         |
+|                  (MB1)                  |
+|                (S)  (OH2)               |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    (OH1)           (L)          (OPP)   |
+|                                         |
+================ BACK LINE ================
             </div></div>
             
             <div id="base4" class="p4-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                                         |
+|                                         |
+|    (OH2)         (MB1)            (S)   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    (OH1)           (L)          (OPP)   |
+|                                         |
+================ BACK LINE ================
             </div></div>
 
             <div id="recv4" class="p4-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+| (S)                                     |
+|   (MB1)                                 |
+|       (OH2)                             |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    (OH1)           (L)          (OPP)   |
+|                                         |
+================ BACK LINE ================
             </div></div>
 
             
             <div id="dfsv4" class="p4-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                   (S)                   |
+|                                         |
+|                                         |
+(OH2) - - - - - (MB1) - - - - - - - - - -(OPP)
+|                                         |
+|                                         |
+|    (OH1)           (L)                  |
+|                                         |
+================ BACK LINE ================
             </div></div>
         </div>
 <!----------------------------------------------------------------------------------------------->
@@ -358,29 +420,48 @@
             <div id="subHeaderPage5">
                 <button class="btn active" onclick="display('defl5', 'p5-sub-disp')">Default  </button>
                 <button class="btn"        onclick="display('serv5', 'p5-sub-disp')">Serve    </button>
-                <button class="btn"        onclick="display('base5', 'p5-sub-disp')">Base (Post-Serve)     </button>
+                <button class="btn"        onclick="display('base5', 'p5-sub-disp')">Base/Defense     </button>
                 <button class="btn"        onclick="display('recv5', 'p5-sub-disp')">Receive  </button>
-                <button class="btn"        onclick="display('dfsv5', 'p5-sub-disp')">Defensive (Post-Receive)</button>
+                <button class="btn"        onclick="display('dfsv5', 'p5-sub-disp')">Offense</button>
             </div>
             <div id="defl5" class="p5-sub-disp" style="display: block;"><div class="court">
 =================== NET ===================
 |                                         |
 |                                         |
-|    (OH2)         (OPP)          (MB2)   |
+|    (OH1)          (S)           (MB1)   |
 |- - - - - - - - - - - - - - - - - - - - -|
 |                                         |
 |                                         |
-|    (L)           (S)            (OH1)   |
+|    (L)           (OPP)          (OH2)   |
 |                                         |
 ================ BACK LINE ================
             </div></div>
 
             <div id="serv5" class="p5-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                                         |
+|                     (MB1)               |
+|    (OH1)          (S)                   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|                   (L)           (OPP)   |
+|                                         |
+================ BACK LINE ================
+                                  (OH2)
             </div></div>
             
             <div id="base5" class="p5-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                                         |
+|                                         |
+|    (OH1)         (MB1)            (S)   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    (OH2)           (L)          (OPP)   |
+|                                         |
+================ BACK LINE ================
             </div></div>
 
             <div id="recv5" class="p5-sub-disp" style="display: none;"><div class="court">
@@ -400,38 +481,79 @@
             <div id="subHeaderPage6">
                 <button class="btn active" onclick="display('defl6', 'p6-sub-disp')">Default  </button>
                 <button class="btn"        onclick="display('serv6', 'p6-sub-disp')">Serve    </button>
-                <button class="btn"        onclick="display('base6', 'p6-sub-disp')">Base (Post-Serve)     </button>
+                <button class="btn"        onclick="display('base6', 'p6-sub-disp')">Base/Defense     </button>
                 <button class="btn"        onclick="display('recv6', 'p6-sub-disp')">Receive  </button>
-                <button class="btn"        onclick="display('dfsv6', 'p6-sub-disp')">Defensive (Post-Receive)</button>
+                <button class="btn"        onclick="display('dfsv6', 'p6-sub-disp')">Offense</button>
             </div>
             <div id="defl6" class="p6-sub-disp" style="display: block;"><div class="court">
 =================== NET ===================
 |                                         |
 |                                         |
-|    (OH2)         (OPP)          (MB2)   |
+|    (MB2)         (OH1)            (S)   |
 |- - - - - - - - - - - - - - - - - - - - -|
 |                                         |
 |                                         |
-|    (L)           (S)            (OH1)   |
+|    (OPP)         (OH2)          (MB1)   |
+|                                         |
+================ BACK LINE ================
+            </div>
+            <p>L replaced by MB2 because L cannot be in the front row.</p>
+            </div>
+
+            <div id="serv6" class="p6-sub-disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|               (MB2)                     |
+|                  (OH1)            (S)   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|               (OPP)                     |
+|                  (OH2)                  |
+|                                         |
+================ BACK LINE ================
+                                   (MB1)
+            </div></div>
+            
+            <div id="base6" class="p6-sub-disp" style="display: none;"><div class="court">
+=================== NET ===================
+|                                         |
+|                                         |
+|    (OH1)         (MB2)            (S)   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|                                         |
+|                                         |
+|    (OH2)         (MB1)          (OPP)   |
 |                                         |
 ================ BACK LINE ================
             </div></div>
 
-            <div id="serv6" class="p6-sub-disp" style="display: none;"><div class="court">
-
-            </div></div>
-            
-            <div id="base6" class="p6-sub-disp" style="display: none;"><div class="court">
-
-            </div></div>
-
             <div id="recv6" class="p6-sub-disp" style="display: none;"><div class="court">
-
-            </div></div>
+=================== NET ===================
+|                                         |
+|                                         |
+|    (MB2)                          (S)   |
+|- - - - - - - - - - - - - - - - - - - - -|
+|           (OH1)                         |
+|                                         |
+|                  (OH2)            (L)   |
+|        (OPP)                            |
+================ BACK LINE ================
+            </div>
+            <p>L comes back to replace MB1</p>
+            </div>
 
             
             <div id="dfsv6" class="p6-sub-disp" style="display: none;"><div class="court">
-
+=================== NET ===================
+|                                   (S)   |
+|                                         |
+|                                         |
+(OH1) - - - - - (MB2) - - - - - - - - - - |
+|                                         |
+|          (OH2)                          |
+|               (OPP)               (L)   |
+|                                         |
+================ BACK LINE ================
             </div></div>
         </div>
 
