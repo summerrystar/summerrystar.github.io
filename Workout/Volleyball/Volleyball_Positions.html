@@ -56,7 +56,8 @@
         <div style="display: inline-block; width: 100%;">
             <div>
                 <div style="float: left; width: 33%;">
-                    <p>*Based on <a href="https://www.youtube.com/watch?v=UjLq3NH9lDw">this</a> video.</p>
+                    <p>*Drafted based on <a href="https://www.youtube.com/watch?v=UjLq3NH9lDw">this</a> video.</p>
+                    <p>*Revised based on <a href="https://learnvolley.com/formation5-1">this</a> page.</p>
                     <p>5-1 rotation means 5 hitters and 1 setter.</p>
                 </div>
                 
@@ -83,12 +84,12 @@
 <!-- Main Buttons                                                                              -->
 <!----------------------------------------------------------------------------------------------->
         <div class="header", id="myHeader">
-            <button class="btn active" onclick="set_num('1')">Rotation 1</button>
-            <button class="btn"        onclick="set_num('2')">Rotation 2</button>
-            <button class="btn"        onclick="set_num('3')">Rotation 3</button>
-            <button class="btn"        onclick="set_num('4')">Rotation 4</button>
-            <button class="btn"        onclick="set_num('5')">Rotation 5</button>
-            <button class="btn"        onclick="set_num('6')">Rotation 6</button>
+            <button class="btn active" onclick="set_num('1')">Rotation 1 <br>(S1)</button>
+            <button class="btn"        onclick="set_num('2')">Rotation 2 <br>(S6)</button>
+            <button class="btn"        onclick="set_num('3')">Rotation 3 <br>(S5)</button>
+            <button class="btn"        onclick="set_num('4')">Rotation 4 <br>(S4)</button>
+            <button class="btn"        onclick="set_num('5')">Rotation 5 <br>(S3)</button>
+            <button class="btn"        onclick="set_num('6')">Rotation 6 <br>(S2)</button>
         </div>   
 
         <div id="subHeader">
@@ -130,8 +131,8 @@
 |              <span class='opp'>(OPP)</span>   <span class='oh'>(OH1)</span>              |
 |-----------------------------------------|
 |                                         |
-|                                         |
-|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|              <span class='oh'>(OH2)</span>                      |
+|                    <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -144,7 +145,7 @@
 |-----------------------------------------|
 |                                         |
 |                                         |
-|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|    <span class='l'>(L)</span>           <span class='oh'>(OH2)</span>            <span class='s'>(S)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -171,8 +172,8 @@
 |                                         |
 <span class='opp'>(OPP)</span>---------------<span class='mb'>(MB2)</span>---------------<span class='oh'>(OH1)</span>
 |                                         |
-|                                         |
-|    <span class='oh'>(OH2)</span>           <span class='l'>(L)</span>                  |
+|         <span class='l'>(L)</span>                             |
+|                   <span class='oh'>(OH2)</span>                 |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -215,7 +216,7 @@
 |-----------------------------------------|
 |                                         |
 |                                         |
-|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>            <span class='s'>(S)</span>   |
+|    <span class='l'>(L)</span>           <span class='oh'>(OH1)</span>            <span class='s'>(S)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -242,8 +243,8 @@
 |                                         |
 <span class='oh'>(OH2)</span>---------------<span class='mb'>(MB2)</span>---------------<span class='opp'>(OPP)</span>
 |                                         |
-|                                         |
-|            <span class='l'>(L)</span>                  <span class='oh'>(OH1)</span>   |
+|         <span class='l'>(L)</span>                             |
+|                   <span class='oh'>(OH1)</span>                 |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -259,12 +260,11 @@
 |-----------------------------------------|
 |                                         |
 |                                         |
-|    <span class='s'>(S)</span>           <span class='oh'>(OH1)</span>            <span class='l'>(L)</span>   |
+|    <span class='s'>(S)</span>           <span class='oh'>(OH1)</span>          <span class='mb'>(MB2)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div>
         <p>L cannot be in the front row -> Replace with MB1</p>
-        <p>Move L to MB2 to serve</p>
         </div>
 
         <div id="serv3" class="disp" style="display: none;"><div class="court">
@@ -278,7 +278,7 @@
 |                  <span class='oh'>(OH1)</span>                  |
 |                                         |
 ================ BACK LINE ================
-                                    <span class='l'>(L)</span>
+                                  <span class='mb'>(MB2)</span>
         </div></div>
         
         <div id="base3" class="disp" style="display: none;"><div class="court">
@@ -289,7 +289,7 @@
 |-----------------------------------------|
 |                                         |
 |                                         |
-|    <span class='oh'>(OH1)</span>          <span class='l'>(L)</span>             <span class='s'>(S)</span>   |
+|    <span class='mb'>(MB2)</span>         <span class='oh'>(OH1)</span>            <span class='s'>(S)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -314,8 +314,8 @@
 |                                         |
 <span class='oh'>(OH2)</span>---------------<span class='mb'>(MB1)</span>---------------<span class='opp'>(OPP)</span>
 |                                         |
-|                                         |
-|                  <span class='oh'>(OH1)</span>            <span class='l'>(L)</span>   |
+|         <span class='l'>(L)</span>                             |
+|                   <span class='oh'>(OH1)</span>                 |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -343,8 +343,8 @@
 |                <span class='s'>(S)</span>  <span class='oh'>(OH2)</span>               |
 |-----------------------------------------|
 |                                         |
-|                                         |
-|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
+|               <span class='oh'>(OH1)</span>                     |
+|                    <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -357,7 +357,7 @@
 |-----------------------------------------|
 |                                         |
 |                                         |
-|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
+|    <span class='l'>(L)</span>           <span class='oh'>(OH1)</span>          <span class='opp'>(OPP)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -366,12 +366,12 @@
 =================== NET ===================
 | <span class='s'>(S)</span>                                     |
 |   <span class='mb'>(MB1)</span>                                 |
-|       <span class='oh'>(OH2)</span>                             |
+|                                         |
 |-----------------------------------------|
 |                                         |
-|                                         |
-|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>          <span class='opp'>(OPP)</span>   |
-|                                         |
+|   <span class='oh'>(OH2)</span>                                 |
+|                  <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>    |
+|                                 <span class='opp'>(OPP)</span>   |
 ================ BACK LINE ================
         </div></div>
         
@@ -382,8 +382,8 @@
 |                                         |
 <span class='oh'>(OH2)</span>---------------<span class='mb'>(MB1)</span>---------------<span class='opp'>(OPP)</span>
 |                                         |
-|                                         |
-|    <span class='oh'>(OH1)</span>           <span class='l'>(L)</span>                  |
+|         <span class='l'>(L)</span>                             |
+|                   <span class='oh'>(OH1)</span>                 |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -426,7 +426,7 @@
 |-----------------------------------------|
 |                                         |
 |                                         |
-|    <span class='oh'>(OH2)</span>          <span class='l'>(L)</span>           <span class='opp'>(OPP)</span>   |
+|     <span class='l'>(L)</span>          <span class='oh'>(OH2)</span>          <span class='opp'>(OPP)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -438,8 +438,8 @@
 |                   <span class='s'>(S)</span>           <span class='mb'>(MB1)</span>   |
 |-----------------------------------------|
 |                                         |
-|    <span class='oh'>(OH1)</span>    <span class='l'>(L)</span>                         |
-|                                 <span class='oh'>(OH2)</span>   |
+|    <span class='oh'>(OH1)</span>                                |
+|                   <span class='l'>(L)</span>           <span class='oh'>(OH2)</span>   |
 |                    <span class='opp'>(OPP)</span>                |
 ================ BACK LINE ================
         </div></div>
@@ -449,11 +449,11 @@
 |                   <span class='s'>(S)</span>                   |
 |                                         |
 |                                         |
-<span class='oh'>(OH1)</span>---------------<span class='mb'>(MB1)</span>---------------<span class='oh'>(OH2)</span>
+<span class='oh'>(OH1)</span>---------------<span class='mb'>(MB1)</span>---------------<span class='opp'>(OPP)</span>
 |                                         |
-|             <span class='l'>(L)</span>                         |
+|         <span class='l'>(L)</span>                             |
+|                   <span class='oh'>(OH2)</span>                 |
 |                                         |
-|                    <span class='opp'>(OPP)</span>                |
 ================ BACK LINE ================
         </div></div>
 
@@ -497,7 +497,7 @@
 |-----------------------------------------|
 |                                         |
 |                                         |
-|    <span class='oh'>(OH2)</span>         <span class='mb'>(MB1)</span>          <span class='opp'>(OPP)</span>   |
+|    <span class='mb'>(MB1)</span>         <span class='oh'>(OH2)</span>          <span class='opp'>(OPP)</span>   |
 |                                         |
 ================ BACK LINE ================
         </div></div>
@@ -508,9 +508,9 @@
 |                                         |
 |    <span class='mb'>(MB2)</span>                          <span class='s'>(S)</span>   |
 |-----------------------------------------|
-|           <span class='oh'>(OH1)</span>                         |
 |                                         |
-|                  <span class='oh'>(OH2)</span>            <span class='l'>(L)</span>   |
+|                                         |
+|    <span class='oh'>(OH1)</span>         <span class='oh'>(OH2)</span>            <span class='l'>(L)</span>   |
 |        <span class='opp'>(OPP)</span>                            |
 ================ BACK LINE ================
         </div>
@@ -519,13 +519,13 @@
         
         <div id="offs6" class="disp" style="display: none;"><div class="court">
 =================== NET ===================
-|                                   <span class='s'>(S)</span>   |
+|                   <span class='s'>(S)</span>                   |
 |                                         |
 |                                         |
-<span class='oh'>(OH1)</span>---------------<span class='mb'>(MB2)</span>-----------------|
+<span class='oh'>(OH1)</span>---------------<span class='mb'>(MB2)</span>---------------<span class='opp'>(OPP)</span>
 |                                         |
-|          <span class='oh'>(OH2)</span>                          |
-|               <span class='opp'>(OPP)</span>               <span class='l'>(L)</span>   |
+|         <span class='l'>(L)</span>                             |
+|                   <span class='oh'>(OH2)</span>                 |
 |                                         |
 ================ BACK LINE ================
         </div></div>
